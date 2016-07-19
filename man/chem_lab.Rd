@@ -22,7 +22,7 @@ specify using a tweaked version of the default LaTeX pandoc template.
 \examples{
 \dontrun{
  output:
-   chemistr::Beers_Law
+   chemistr::chem_lab
 }
 }
 

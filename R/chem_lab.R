@@ -1,4 +1,4 @@
-#' Creates an R Markdown PDF document for the Beers Law Lab
+#' Creates an R Markdown PDF document for the Reed College Chem 101/102 labs
 #'
 #' This is a function called in output in the YAML of the driver Rmd file to
 #' specify using a tweaked version of the default LaTeX pandoc template.
@@ -11,12 +11,10 @@
 #' @examples
 #' \dontrun{
 #'  output:
-#'    chemistr::Beers_Law
+#'    chemistr::chem_lab
 #' }
-#Beers_Law
 chem_lab <- function(fig_height = 2.5, fig_width = 5){
-  template <- find_resource(#"Beers_Law",
-    "template.tex")
+  template <- find_resource("template.tex")
 
     base <- rmarkdown::pdf_document(template = template,
                                     fig_caption = TRUE,
