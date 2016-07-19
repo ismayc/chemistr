@@ -1,0 +1,25 @@
+#' Creates an R Markdown PDF document for the Beers Law Lab
+#'
+#' This is a function called in output in the YAML of the driver Rmd file to
+#' specify using a tweaked version of the default LaTeX pandoc template.
+#'
+#' @export
+#' @param fig_height A positive numeric giving the default height of images
+#' @param fig_width A positive numeric giving the default width of images
+#' @return A modified \code{pdf_document} based on slightly modified knitr
+#' LaTeX default file
+#' @examples
+#' \dontrun{
+#'  output:
+#'    chemistr::Beers_Law
+#' }
+Beers_Law <- function(fig_height = 2.5, fig_width = 5){
+  template <- find_resource("Beers_Law", "template.tex")
+
+    base <- rmarkdown::pdf_document(template = template,
+                                    fig_caption = TRUE,
+                                    fig_height = fig_height,
+                                    fig_width = fig_width,
+                                    keep_tex = TRUE)
+    base
+}

@@ -1,0 +1,175 @@
+---
+title: "Insert Title"
+author: "Enter Name"
+date: "Insert Date"
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 3.4
+    fig_width: 6
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage[labelfont=bf, margin=2in]{caption}
+- \usepackage{floatrow}
+- \floatsetup[table]{capposition=top}
+---
+
+```{r, include = FALSE}
+#This is just for set-up. No need to change anything with this, just keep in document.
+pkg <- c("dplyr", "knitr", "xtable", "rmarkdown", "ggvis", "ggplot2")
+
+new.pkg <- pkg[!(pkg %in% installed.packages())]
+
+if (length(new.pkg)) {
+  install.packages(new.pkg, repos = "http://cran.rstudio.com")
+}
+
+suppressPackageStartupMessages(library(dplyr))
+library(knitr)
+library(xtable)
+library(rmarkdown)
+library(ggvis)
+library(ggplot2)
+```
+
+```{r include = FALSE}
+# This will automatically intent lines that run onto the next line and clean the code up a bit
+opts_chunk$set(tidy = TRUE)
+```
+##Abstract
+
+Here you will provide a one-paragraph summary of the experiment.
+
+##Methods
+
+See apendix 5A for a sample for what the methods section of your lab report should look like.
+
+##Results
+
+The results section should include text describing your results and any figures or tables that you might like to include.  I have included example code for including two tables and a scatter plot as part of your results section. You may or may not want all of these.  
+
+##Discussion
+
+See appendix 3C and page 5.2 for information on how to write your discussion.
+
+Example of writing an equation or molecular formula $H_2O + CO_2 \rightarrow H_2CO_3$
+
+##Calculation
+
+Here is where you put in either your calculations, using equations or inserting a picture of your calcualtions.  
+
+For a good source of writing mathematical equation symbols, see http://www.rpi.edu/dept/arc/training/latex/LaTeX_symbols.pdf
+Example:
+$5M*5L=5 moles Fe$
+
+A figure can be inserted by using the following format, so long as the picture is saved in the same folder as the Rmarkdown file.  NOTE:  You don't have the picture named below, so this markdown file won't knit to PDF until you either delete line 70 or change the picture to be a picture in your markdown folder.
+
+\clearpage
+
+![Caption of Photo](iron.jpg)
+
+\clearpage
+
+```{r, echo=FALSE}
+# Here is where you input your data that you want to put into a table
+Iron <- c(0, 2.5, 5, 10, 20)
+Absorbance <-c(0, 0.00316, 0.006, 0.012, .024)
+# Places the columns next to each other in a data frame
+data <- data.frame(Iron, Absorbance)
+data <- rename(data, "New Iron Label" = Iron, "New Absorbance Label" = Absorbance)
+```
+
+```{r nice_table, results = 'asis', echo=FALSE}
+#Here is where you create your table of your standards data.  You may or may not want to include this.  It is up to you.
+# Function to bold all row names
+bold_all_col_names <- function(x) {paste('\\textbf{', x, '}', sep ='')}
+# Give the caption for the table
+title <- 'A lovely caption for the table'
+# Display a table in the appropriate format with caption on the top
+print(xtable(data,
+             # set the caption to be the specified title above
+             caption = title, 
+             # right align all columns and create vertical lines, need one more |r| than total columns.  Use l or c for left or center aligned
+             align = "|r|r|r|", 
+             # the default number of digits specified for real numbers
+             digits = 6,
+             # the row numbers are the first column here, 
+             # "d" corresponds to integers, "fg" to floating point
+             display = c("d", "fg", "fg")
+             # end the parameters to xtable
+             ), 
+      # Caption on top
+      caption.placement = 'top',  
+      # Horizontal lines on top through bottom of table
+      hline.after = seq(-1, nrow(data)),
+      # The row names are just numbers here & are ignored
+      include.rownames = FALSE, 
+      # There is an annoying extra comment that prints if this is not specified as FALSE
+      comment = FALSE,
+      # To get the caption to be about the width of the table
+      caption.width = '2.7in',
+      # Bold the variable names using the function above
+      sanitize.colnames.function = bold_all_col_names
+      # End the entire call to print
+      )
+```
+
+
+
+``````{r, echo=FALSE, fig.cap = "Insert Caption"}
+# Here is where you create your standard curve.  Notice that we are again fitting the data to the line Y=mX+0.  In order to get the slope of your fit line, run all previous chenkc and this chunk and then type > summary(fit1) into your console.  This will give you the slope of your standard curve (Iron Esitmate) as well as your uncertainty (Std. Error, NOT Residual Standard error) in the coefficients section of the summary.  Include the molar absorpitvity (with units) in your caption.  
+plot(Absorbance ~ Iron + 0, data = data,
+     xlab = "Insert X-axis label",
+     ylab = "Insert Y-axis label",
+     pch = 20) 
+abline(lm(Absorbance ~ Iron + 0))
+fit1 <- lm(Absorbance ~ Iron + 0, data = data)
+```
+
+
+```{r, echo=FALSE}
+# Here is where you input your data that you want to put into another table, maybe of your results
+Sample <- c("1 +/- .001")
+Dilute1 <-c("10 +/- .01")
+Dilute2 <- c("100 +/- 1")
+Tablet <- c("1000 +/- 10")
+# Place the columns next to each other in a data frame
+d <- data.frame(Sample, Dilute2, Dilute1, Tablet)
+d <- rename(d, "New Sample" = Sample, "New Dilute" = Dilute2, "New Dilute 1 (mg/mL)" = Dilute1, "New Tablet (mg)" = Tablet)
+```
+
+```{r nice_table2, results = 'asis', echo=FALSE}
+#Here is where you create a table of your iron concentrations in your different dilutions.  You may or may not want to include this.  It is up to you.
+# Function to bold all row names
+bold_all_col_names <- function(x) {paste('\\textbf{', x, '}', sep ='')}
+# Give the caption for the table
+title <- 'A lovely caption for the table'
+# Display a table in the appropriate format with caption on the top
+print(xtable(d,
+             # set the caption to be the specified title above
+             caption = title, 
+             # right align all columns and create vertical lines, need one more |r| than total columns.  Use l or c for left or center aligned
+             align = "|r|r|r|r|r|", 
+             # the default number of digits specified for real numbers
+             digits = 6,
+             # the row numbers are the first column here, 
+             # "d" corresponds to integers, "fg" to floating point
+             display = c("d", "fg", "fg", "fg", "fg")
+             # end the parameters to xtable
+             ), 
+      # Caption on top
+      caption.placement = 'top',  
+      # Horizontal lines on top through bottom of table
+      hline.after = seq(-1, nrow(d)),
+      # The row names are just numbers here & are ignored
+      include.rownames = FALSE, 
+      # There is an annoying extra comment that prints if this is not specified as FALSE
+      comment = FALSE,
+      # To get the caption to be about the width of the table
+      caption.width = '2.7in',
+      # Bold the variable names using the function above
+      sanitize.colnames.function = bold_all_col_names
+      # End the entire call to print
+      )
+```

@@ -1,0 +1,90 @@
+---
+title: "Enter Title"
+author: "Enter Name"
+date: "Enter Date"
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 3.4
+    fig_width: 6
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage[labelfont=bf, margin=2in]{caption}
+- \usepackage{floatrow}
+- \floatsetup[table]{capposition=top}
+---
+
+## Results
+
+Here is where you will include the text that describes the results of your experiment, including a description of any of the figures presented in the report.  When describing the figures make sure you parenthatically refer to them (figure 1).  For more information on this section see page 4.6 of your lab manual and an example results section in appendix 4A.
+
+```{r, echo = FALSE}
+# Here is where you input your data for the three radioactive samples with different shield types.  Notice, when inputing non-numeric data, the values must have parenthesis around them.  Also, notice that you should change the identity of the shields from their current names below.
+material <- c("Shielding 1", "Shielding 2", "Shielding 3", "Shielding 4")
+#material <- c("None", "Plastic #4", "Aluminum #7", "Lead #11")
+Sr90 <-c(100, 50, 25, 2)
+Co60<- c(100, 100, 50, 2)
+Pu239<- c(100, 100, 100, 50)
+data <- cbind(Sr90, Co60, Pu239)
+```
+
+
+```{r clustered_bar_graph, echo = FALSE, fig.cap = "Insert Caption"}
+# Here is where you create your clustered bar graph.  Notice that we are clustering by element, so we can better see which shields work best for each element. This will allow you to determine the type of radioactivity each element is emitting.
+# The line below allows us to choose the colors we want for our bar graph. If you want to change the colors, R colors can be found at http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf 
+colors <- c("slateblue4", "red", "purple", "cyan")
+# the mar = c( ) allows use to change the placement of the plot.  The default is c(5, 4, 4, 2), where the numbers correspond to bottom, left, top, and right margins.  We need more room on the right to add the legond, therefore we have increased the 2 to a 9 below.
+par(mar=c(5, 4, 4, 9), xpd = TRUE)
+barplot(data,
+        beside=TRUE,
+        xlab="Xaxis label",
+        ylab="yaxis label",
+        axis.lty = 1,
+        col = colors)
+# Below is where we add our legend.  Offset the legend so that it fits into the plotting region
+legend("topright", material, bty = "n", fill = colors, inset = c(-0.5, 0))
+```
+
+
+```{r, echo = FALSE}
+# Here is where you input your data for the absorbance and transmittance of the beta emitter with the different shield thicknesses.
+thickness <- c(0, 161, 328, 590)
+abs <- c(0, 0.3065625, 0.7562979, 1.378102)
+trans <- c(1, 0.494, 0.175, 0.04)
+d <- data.frame(thickness, abs, trans)
+```
+
+```{r double_y_axis_scatter, fig.cap = "Insert Caption", tidy = TRUE, echo = FALSE}
+# We are going to draw the first scatter plot of absorbance versus thickness.  The abline function, adds the best fit line to the data.  We are best fitting to the model of Y=MX+0.
+
+par(mar = c(4, 4, 2, 5))
+plot(abs ~ thickness, data = d,
+     xlab = "Xaxis label",
+     ylab = "yaxis label 1",
+     col = "red",
+     # Filled in diamonds
+     pch = 18,
+     # Make points a little bigger (cex = 1 is default)
+     cex = 1.3)
+abline(lm(abs ~ thickness + 0))
+fit1 <- lm(abs ~ thickness + 0, data =d)
+
+# Now we will draw the second plot on top of the first.  Thr par(new=true) plots it on top of the previous graph.  This is a plot of transmittance versus thickness and is also fit to a straight line using the abline function below. Make sure that after you look at the fits of both transmittance and absorbance, you remove the abline command of the one that does not look linear (if there is one).    
+par(new = TRUE)
+plot(trans ~ thickness, data = d,
+     axes = FALSE, xlab = NA, ylab = NA,
+     col = "blue", pch = 18, cex = 1.3)
+abline(lm(trans ~ thickness))
+fit2 <- lm(trans ~ thickness, data =d)
+
+# Now we add the second axis to the plot and place it on the right side, 1 = below, 2 = left, 3 = above, 4 = right
+axis(side = 4)
+
+# mtext function writes a margin into a plot, this will add a second vertical axis label
+# line = 3 scoots the title out a ways
+mtext(side = 4, line = 3, "yaxis label 2")
+
+#You will also want to include the best fit line parameters in the caption.  In order to get the slope of your fit line, run this chunk and then type > fit1$coefficients or fit2$coefficients into your console.  This will give you the slope of the best fit line and if this is a good model, include this slope and its meaning in the graph caption.  
+```
+
