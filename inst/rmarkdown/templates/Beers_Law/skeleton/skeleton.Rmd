@@ -3,7 +3,7 @@ title: "Lovely Title"
 author: "Insert Name"
 date: "Insert Date"
 output:
-  chemistr::Beers_Law: default
+  chemistr::chem_lab: default
   html_document: default
   pdf_document: default
 ---

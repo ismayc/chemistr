@@ -13,8 +13,10 @@
 #'  output:
 #'    chemistr::Beers_Law
 #' }
-Beers_Law <- function(fig_height = 2.5, fig_width = 5){
-  template <- find_resource("Beers_Law", "template.tex")
+#Beers_Law
+chem_lab <- function(fig_height = 2.5, fig_width = 5){
+  template <- find_resource(#"Beers_Law",
+    "template.tex")
 
     base <- rmarkdown::pdf_document(template = template,
                                     fig_caption = TRUE,
