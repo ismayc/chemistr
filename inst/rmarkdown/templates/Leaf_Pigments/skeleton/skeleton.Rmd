@@ -1,51 +1,29 @@
 ---
 title: "Insert Title"
-author: "Enter Name"
+author: "Insert Name"
 date: "Insert Date"
-output:
-  pdf_document:
-    fig_caption: yes
-    fig_height: 3.4
-    fig_width: 6
-    keep_tex: yes
-  html_document: default
-header-includes:
-- \usepackage[labelfont=bf, margin=2in]{caption}
-- \usepackage{floatrow}
-- \floatsetup[table]{capposition=top}
+output: chemistr::chem_lab
 ---
 
-```{r, include = FALSE}
-#This is just for set-up. No need to change anything with this, just keep in document.
-pkg <- c("dplyr", "knitr", "xtable", "rmarkdown", "ggvis", "ggplot2")
-
-new.pkg <- pkg[!(pkg %in% installed.packages())]
-
-if (length(new.pkg)) {
-  install.packages(new.pkg, repos = "http://cran.rstudio.com")
-}
-
-suppressPackageStartupMessages(library(dplyr))
-library(knitr)
-library(xtable)
-library(rmarkdown)
-library(ggvis)
-library(ggplot2)
+```{r setup, include=FALSE}
+library(chemistr)
+library(dplyr)
+library(pander)
 ```
 
-##Abstract
+## Abstract
 
 A brief description of the purpose, procedure, and conclusions.
 
-##Leaf Sample
+## Leaf Sample
 
 Description of leaf sample.  May be helpful to include a picture of the leaf used.
 
-##Results
+## Results
 
 Text that describes both your observations as well as commentary on your chromatograms and spectroscopy results.  Figures should be included of the chromatograms and the spectra collected.  Each figure should have a complete caption.  Look at Iron_Analysis markdown file on how to include a pcture with a caption in your report.
 
-##Discussion
+## Discussion
 
 Analysis of your results.  See page 8.10 in your lab manual for more detailed information on what this section should include.
 
@@ -53,44 +31,17 @@ Analysis of your results.  See page 8.10 in your lab manual for more detailed in
 # Here is where you input your chromatography data that you want to put into a table.  There should be more than 4 pieces of data.  Make sure as you add another line, you add all components of that piece of data:  Chromatogram, Rf, Color, and ID.
 Chromatogram <- c("Green+Acid", "Green", "Red", "Red+Acid")
 Rf <- c(0, 0.4, 0.8, 1)
-Color <-c("Green", "Blue", "Red", "Yellow")
+Color <- c("Green", "Blue", "Red", "Yellow")
 ID <- c("Chlorophyll A", "Chlorophyll B", "Carotenoid", "Anthocyanin")
 # Place the columns next to each other in a data frame
 Green <- data.frame(Chromatogram, Rf, Color, ID)
-Green <- rename(Green,"Chromatogram Type"=Chromatogram, "Retention Factor, Rf" = Rf, "Color of pigment band" = Color, "Identification of pigment band" = ID)
+Green <- rename(Green,"Chromatogram Type" = Chromatogram,
+                "Retention Factor, Rf" = Rf, 
+                "Color of pigment band" = Color, 
+                "Identification of pigment band" = ID)
 ```
 
 ```{r nice_table1, results = 'asis', echo=FALSE}
 #Here is where you create a table describing all your chromatogram bands.  This will include their identities and Rf values.  
-# Function to bold all row names
-bold_all_col_names <- function(x) {paste('\\textbf{', x, '}', sep ='')}
-# Give the caption for the table
-title <- 'Identification of pigment bands obtained from chromatograms.'
-# Display a table in the appropriate format with caption on the top
-print(xtable(Green,
-             # set the caption to be the specified title above
-             caption = title, 
-             # right align all columns and create vertical lines, need one more |r| than total columns.  Use l or c for left or center aligned
-             align = "|r|r|r|r|r|", 
-             # the default number of digits specified for real numbers
-             digits = 6,
-             # the row numbers are the first column here, 
-             # "d" corresponds to integers, "fg" to floating point
-             display = c("d", "fg", "fg", "fg", "fg")
-             # end the parameters to xtable
-             ), 
-      # Caption on top
-      caption.placement = 'top',  
-      # Horizontal lines on top through bottom of table
-      hline.after = seq(-1, nrow(Green)),
-      # The row names are just numbers here & are ignored
-      include.rownames = FALSE, 
-      # There is an annoying extra comment that prints if this is not specified as FALSE
-      comment = FALSE,
-      # To get the caption to be about the width of the table
-      caption.width = '2.7in',
-      # Bold the variable names using the function above
-      sanitize.colnames.function = bold_all_col_names
-      # End the entire call to print
-      )
+chem_table(Green, caption = "Insert caption")
 ```

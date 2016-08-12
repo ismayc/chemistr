@@ -2,9 +2,9 @@
 % Please edit documentation in R/chem_lab.R
 \name{chem_lab}
 \alias{chem_lab}
-\title{Creates an R Markdown PDF document for the Beers Law Lab}
+\title{Creates an R Markdown Word document for the Reed College Chem 101/102 labs}
 \usage{
-chem_lab(fig_height = 2.5, fig_width = 5)
+chem_lab(fig_height = 3, fig_width = 6)
 }
 \arguments{
 \item{fig_height}{A positive numeric giving the default height of images}
@@ -12,7 +12,7 @@ chem_lab(fig_height = 2.5, fig_width = 5)
 \item{fig_width}{A positive numeric giving the default width of images}
 }
 \value{
-A modified \code{pdf_document} based on slightly modified knitr
+A modified \code{word_document} based on slightly modified knitr
 LaTeX default file
 }
 \description{

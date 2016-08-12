@@ -1,11 +1,8 @@
 ---
-title: "Lovely Title"
+title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
-output:
-  chemistr::chem_lab: default
-  html_document: default
-  pdf_document: default
+output: chemistr::chem_lab
 ---
 
 ```{r setup, include=FALSE}
@@ -22,9 +19,9 @@ film <- c(0, 1, 2, 4, 8)
 film_data <- data.frame(film, Absorbance, Transmittance)
 ```
 
-```{r absVfilm_ggplot, echo=FALSE, fig.cap="Insert Caption"}
+```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
 # Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption. 
-chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, intercept = 0)
 ```
 
 ```{r fit1coef}
@@ -32,14 +29,9 @@ fit1 <- lm(Absorbance ~ film + 0, data = film_data)
 coefficients(fit1)
 ```
 
-```{r absVfilm_base, echo=FALSE, fig.cap="Insert Caption", fig.width=6, fig.height=5}
-# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption. 
-chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
-```
-
-```{r, echo=FALSE, fig.cap = "Insert Caption"}
+```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
 # Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption. 
-chem_scatter(data = film_data, xvar = film, yvar = Transmittance, intercept = TRUE)
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance)
 ```
 
 ```{r fit2coef}
@@ -55,8 +47,9 @@ dye <- c(0, 0.01, 0.02, 0.04, 0.08)
 dye_data <- data.frame(dye, Absorbance, Transmittance)
 ```
 
-```{r, echo=FALSE, fig.cap = "Insert Caption"}
-chem_scatter(data = dye_data, xvar = dye, yvar = Absorbance)
+
+```{r plot3, echo=FALSE, fig.cap=knitr:::escape_latex("Insert Caption")}
+chem_scatter(data = dye_data, xvar = dye, yvar = Absorbance, intercept = 0)
 ```
 
 ```{r fit3coef}
@@ -64,12 +57,13 @@ fit3 <- lm(Absorbance ~ dye + 0, data = dye_data)
 coefficients(fit3)
 ```
 
-```{r, echo=FALSE, fig.cap = "Insert Caption"}
-chem_scatter(data = dye_data, xvar = dye, yvar = Transmittance)
+
+```{r plot4, echo=FALSE, fig.cap=knitr:::escape_latex("Insert Caption")}
+chem_scatter(data = dye_data, xvar = dye, yvar = Transmittance, intercept = 1)
 ```
 
 ```{r fit4coef}
-fit4 <- lm(Transmittance ~ dye, data = dye_data)
+fit4 <- lm(I(Transmittance - 1) ~ dye + 0, data = dye_data)
 coefficients(fit4)
 ```
 

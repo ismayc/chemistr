@@ -5,7 +5,7 @@ Version: 0.0.0.9000
 Authors@R: person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = c("aut", "cre"))
 Description: This package is designed to assist students with little to no
     programming experience create reproducible analyses using R and R Markdown.
-    One goal is to reduce the sometimes large amount of arguments pass into
+    One goal is to reduce the sometimes large amount of arguments passed into
     functions, while also allowing students to be able to customize as they
     wish.  Another goal is to add error messages into R when, say, a percent
     sign is used in a LaTeX table title to assist with debugging.
@@ -14,7 +14,10 @@ Depends:
 Imports:
     dplyr,
     xtable,
-    ggplot2
+    ggplot2,
+    knitr,
+    bookdown,
+    ggthemes
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

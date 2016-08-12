@@ -5,7 +5,7 @@
 \title{Creates a scatterplot with regression line}
 \usage{
 chem_scatter(data, xvar, yvar, xlab = "Insert X-axis label",
-  ylab = "Insert Y-axis label", gg = TRUE, intercept = FALSE)
+  ylab = "Insert Y-axis label", intercept = NULL)
 }
 \arguments{
 \item{data}{A data frame containing variables to be plotted}
@@ -17,6 +17,9 @@ chem_scatter(data, xvar, yvar, xlab = "Insert X-axis label",
 \item{xlab}{A string containing the x-axis label}
 
 \item{ylab}{A string containing the y-axis label}
+
+\item{intercept}{Set to NULL by default, but can be changed to 0 to
+force regression line to go through origin}
 }
 \value{
 A plot
