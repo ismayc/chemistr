@@ -17,8 +17,8 @@ Here is where you will include the text that describes the results of your exper
 
 ```{r, echo = FALSE}
 # Here is where you input your data for the three radioactive samples with different shield types.  Notice, when inputing non-numeric data, the values must have parenthesis around them.  Also, notice that you should change the identity of the shields from their current names below.
-material <- c("Shielding 1", "Shielding 2", "Shielding 3", "Shielding 4")
-#material <- c("None", "Plastic #4", "Aluminum #7", "Lead #11")
+#material <- c("Shielding 1", "Shielding 2", "Shielding 3", "Shielding 4")
+##material <- c("None", "Plastic #4", "Aluminum #7", "Lead #11")
 #Sr90 <-c(100, 50, 25, 2)
 #Co60 <- c(100, 100, 50, 2)
 #Pu239 <- c(100, 100, 100, 50)
