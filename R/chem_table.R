@@ -12,7 +12,7 @@
 
 chem_table <- function(data, caption){
   names(data) <- pandoc.strong.return(names(data))
-  pandoc.table(data, caption = caption, style = "rmarkdown",
+  pandoc.table(data, caption = caption, style = "multiline",
                split.tables = Inf)
   #pandoc.horizontal.rule()
   cat("\\newline")
