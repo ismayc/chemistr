@@ -1,7 +1,7 @@
 Package: chemistr
 Title: Facilitates use of R functions and R Markdown files for Chemistry lab
     reports
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = c("aut", "cre"))
 Description: This package is designed to assist students with little to no
     programming experience create reproducible analyses using R and R Markdown.
@@ -10,14 +10,13 @@ Description: This package is designed to assist students with little to no
     wish.  Another goal is to add error messages into R when, say, a percent
     sign is used in a LaTeX table title to assist with debugging.
 Depends:
-    R (>= 3.2.0)
-Imports:
+    R (>= 3.2.0),
     dplyr,
     xtable,
     ggplot2,
     knitr,
     bookdown,
-    ggthemes
+    pander
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

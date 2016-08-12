@@ -7,8 +7,6 @@ output: chemistr::chem_lab
 
 ```{r setup, include=FALSE}
 library(chemistr)
-library(dplyr)
-library(pander)
 ```
 
 ## Abstract

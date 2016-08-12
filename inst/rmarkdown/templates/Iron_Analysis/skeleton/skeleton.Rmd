@@ -7,11 +7,6 @@ output: chemistr::chem_lab
 
 ```{r, include=FALSE}
 library(chemistr)
-library(dplyr)
-library(knitr)
-library(xtable)
-library(ggplot2)
-library(pander)
 ```
 
 # Lab
