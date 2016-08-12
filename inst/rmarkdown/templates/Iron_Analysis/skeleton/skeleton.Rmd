@@ -42,7 +42,7 @@ A figure can be inserted by using the following format, so long as the picture i
 
 
 ```{r image, echo=FALSE, fig.cap="Insert Caption"}
-include_graphics("iron.jpg")
+include_graphics("Iron.jpg")
 ```
 
 \clearpage
