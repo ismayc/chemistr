@@ -25,7 +25,8 @@ chem_table <- function(data, caption){
 #   print(xtable(data,
 #                # set the caption to be the specified title above
 #                caption = title,
-#                # right align all columns and create vertical lines, need one more |r| than total columns.  Use l or c for left or center aligned
+#                # right align all columns and create vertical lines, need one
+#                # more |r| than total columns.  Use l or c for left or center aligned
 #                align = align,#"|r|r|r|",
 #                # the default number of digits specified for real numbers
 #                digits = digits,#6,

@@ -2,6 +2,6 @@
 
 export(chem_clustered.bar)
 export(chem_dual.scatter)
-export(chem_lab)
+export(chem_lab_word)
 export(chem_scatter)
 export(chem_table)

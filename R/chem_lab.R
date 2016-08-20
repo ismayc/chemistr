@@ -11,9 +11,9 @@
 #' @examples
 #' \dontrun{
 #'  output:
-#'    chemistr::chem_lab
+#'    chemistr::chem_lab_word
 #' }
-chem_lab <- function(fig_height = 3, fig_width = 6){
+chem_lab_word <- function(fig_height = 3, fig_width = 6){
   #template <- find_resource("template.tex")
 
   #   base <- rmarkdown::pdf_document(template = template,

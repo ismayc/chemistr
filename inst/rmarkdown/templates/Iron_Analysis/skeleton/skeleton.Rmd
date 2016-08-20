@@ -2,7 +2,7 @@
 title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
-output: chemistr::chem_lab
+output: chemistr::chem_lab_word
 ---
 
 ```{r, include=FALSE}
