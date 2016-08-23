@@ -9,11 +9,6 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```
 
-
-```{r setup, include=FALSE}
-library(chemistr)
-```
-
 ## Q1: What colors are found in a white light source?
 
 ```{r, echo=FALSE}
