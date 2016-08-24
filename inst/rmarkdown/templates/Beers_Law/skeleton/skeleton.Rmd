@@ -7,65 +7,46 @@ output: chemistr::chem_lab_word
 
 ```{r setup, include=FALSE}
 library(chemistr)
-```
+```        
 
 
 ```{r, echo=FALSE}
 # Here is where you input your data for the film thickness
-Absorbance <- c(0, 2.5, 5, 10, 20)
-Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
 film <- c(0, 1, 2, 4, 8)
-film_data <- data.frame(film, Absorbance, Transmittance)
+Transmittance <- c(1, 10, 100, 1000, 100000)
+film_data <- data.frame(film, Transmittance)
 ```
 
 ```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
-# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption. 
-chem_scatter(data = film_data, xvar = film, yvar = Absorbance, intercept = 0)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope and its meaning in the graph caption. 
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, xlab = "Axis Label", ylab = "Axis Label")
 ```
 
-```{r fit1coef}
-fit1 <- lm(Absorbance ~ film + 0, data = film_data)
-coefficients(fit1)
+```{r fit1coef, include=FALSE}
+fit1 <- lm(Transmittance ~ film, data = film_data)
+summary(fit1)
 ```
 
-```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
-# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption. 
-chem_scatter(data = film_data, xvar = film, yvar = Transmittance)
-```
 
-```{r fit2coef}
-fit2 <- lm(Transmittance ~ film, data = film_data)
-coefficients(fit2)
-```
 
 ```{r dye_date, echo=FALSE}
 # Here is where you input your data for the blue food dye
-Absorbance <- c(0, 0.25, 0.5, 1, 2)
-Transmittance <- c(1, 0.5623, 0.3162, 0.1, .01)
 dye <- c(0, 0.01, 0.02, 0.04, 0.08)
-dye_data <- data.frame(dye, Absorbance, Transmittance)
+Transmittance <- c(1, 10, 100, 1000, 10000)
+
+dye_data <- data.frame(dye, Transmittance)
 ```
 
+```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
 
-```{r plot3, echo=FALSE, fig.cap=knitr:::escape_latex("Insert Caption")}
-chem_scatter(data = dye_data, xvar = dye, yvar = Absorbance, intercept = 0)
+chem_scatter(data = dye_data, xvar = dye, yvar = Transmittance, xlab = "Axis Label", ylab = "Axis Label")
 ```
 
-```{r fit3coef}
-fit3 <- lm(Absorbance ~ dye + 0, data = dye_data)
-coefficients(fit3)
-```
-
-
-```{r plot4, echo=FALSE, fig.cap=knitr:::escape_latex("Insert Caption")}
-chem_scatter(data = dye_data, xvar = dye, yvar = Transmittance, intercept = 1)
-```
-
-```{r fit4coef}
-fit4 <- lm(I(Transmittance - 1) ~ dye + 0, data = dye_data)
-coefficients(fit4)
+```{r fit2coef, include=FALSE}
+fit2 <- lm(Transmittance ~ dye, data = dye_data)
+summary(fit2)
 ```
 
 ## Discussion
 
-Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two).  Please refer to the Beer's Law lab worksheet for information on what to include in your discussion.
+Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two).  Please refer to the Beer's Law Experiment #2 for information on what to include in your discussion as well as an example discussion.
