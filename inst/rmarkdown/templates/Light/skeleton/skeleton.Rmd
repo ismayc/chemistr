@@ -49,7 +49,7 @@ Water molecules do not interact with water.  This is based upon the fact that wh
 
 
 
-## Q3:  How can the color of $NiSO_{4}(aq)$ be expalined?
+## Q3:  How can the color of $NiSO_{4}(aq)$ be explained?
 
 ```{r echo=FALSE, fig.cap="Absorbance spectrum of 1 M $Ni(SO_{4})$ in a 1-cm cuvette."}
 include_graphics("name of figure in directory")
