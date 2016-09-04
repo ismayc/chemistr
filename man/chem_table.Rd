@@ -7,12 +7,12 @@
 chem_table(data, caption)
 }
 \arguments{
-\item{data}{A data frame containing variables to be plotted}
+\item{data}{A data frame containing variables to be included in the table}
 
-\item{x}{A character string of column names}
+\item{caption}{A character string specifying the caption of the table}
 }
 \value{
-A string of bolded column names
+A nicely formatted table to be included in the Word document
 }
 \description{
 Creates a nice table for data frames
