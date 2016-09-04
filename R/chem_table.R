@@ -2,9 +2,9 @@
 #'
 #'
 #' @export
-#' @param data A data frame containing variables to be plotted
-#' @param x A character string of column names
-#' @return A string of bolded column names
+#' @param data A data frame containing variables to be included in the table
+#' @param caption A character string specifying the caption of the table
+#' @return A nicely formatted table to be included in the Word document
 #' @examples
 #' \dontrun{
 #'  chem_table(head(iris), caption = "First six rows of iris data")
@@ -14,7 +14,6 @@ chem_table <- function(data, caption){
   names(data) <- pandoc.strong.return(names(data))
   pandoc.table(data, caption = caption, style = "multiline",
                split.tables = Inf)
-  #pandoc.horizontal.rule()
   cat("\\newline")
 }
 
