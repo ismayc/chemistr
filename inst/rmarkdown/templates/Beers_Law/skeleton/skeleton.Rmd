@@ -1,7 +1,7 @@
 ---
-title: "Quantitative Model of Light Interacting With Matter"
-author: "Sample"
-date: "9/12/16"
+title: "Insert Title"
+author: "Insert Name"
+date: "Insert Date"
 output: chemistr::chem_lab_word
 ---
 
@@ -9,72 +9,59 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```        
 
+## Data
 
-```{r, echo=FALSE}
-# Here is where you input your data for the Film thickness
-Independent1 <- c(1, 2, 4, 8, 16)
-Dependent1 <- c(10, 100, 1000, 100000, 1000000)
-LogIndependent1 <- log10(Independent1)
-LogT <- log10(Dependent1)
-Film_data <- data_frame(Independent1, Dependent1, LogT, LogIndependent1)
+ 
+```{r, include=FALSE}
+
+#This region should include R chunks (tan boxes) for the two data sets (part A and Part B) and 6 graphs.  2 XvsY plots, 2 Xvslog(Y) plots, and 2 log(X)vsLog(Y) plots.  The R chunks for the XvsY plots are given.  You need to use the e-book and how the given graphs were formated to create the code for the semi log and log plots.
+
 ```
 
-```{r plot1, echo=FALSE, fig.cap="Transmittance at 400 nm of an increasing number of pink film slices placed in front of the light source.  The data (black circles) is fit to a linear model (black line), but is not a good fit."}
-# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope and its meaning in the graph caption. 
-chem_scatter(data = Film_data, xvar = Independent1, yvar = Dependent1, xlab = "Number of Independent1 Slices", ylab = "Percent Transmittance (%)")
-fit1 <- lm(Dependent1 ~ Independent1, data = Film_data)
+```{r, echo=FALSE}
+# Here is where you input your data for Part A.  Don't forget to include variables for the log(x) and log(Y).  Check out Chester's e-book on how to add these variables and make the calculations.
+Independent1 <- c(0, 1, 2, 4, 8) #You're welcome to rename any variable to something that is easier for you to follow.  You will also need to repalce any given values to reflect your experiment and your values.
+Dependent1 <- c(1, 10, 100, 1000, 100000)
+
+
+
+film_data <- data_frame(Independent1, Dependent1) #You will need to add your new variables to the data frame too.
+```
+
+
+```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope in the graph caption.
+
+#This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
+chem_scatter(data = film_data, xvar = Independent1, yvar = Dependent1, 
+  xlab = "Axis Label", ylab = "Axis Label") 
+fit1 <- lm(Independent1 ~ Dependent1, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
 summary(fit1)
 ```
 
 
 
-```{r plot2, echo=FALSE, fig.cap="A semi log plot of transmittance at 400 nm with an increasing number of pink Independent1 slices placed in front of the light source.  The data (black circles) is fit to a linear model (black line), but is not a good fit."}
 
-chem_scatter(data = Film_data, xvar = Independent1, yvar = LogT, xlab = "Number of Film Slices", ylab = "Log(%T)")
-fit2 <- lm(LogT ~ Independent1, data = Film_data)
+
+```{r dye_date, echo=FALSE}
+# Here is where you input your data for Part B
+Independent2 <- c(0, 0.01, 0.02, 0.04, 0.08)
+Dependent2 <- c(1, 10, 100, 1000, 10000)
+
+
+
+
+dye_data <- data_frame(Independent2, Dependent2)
+```
+
+```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
+#See info above about what this is doing.
+chem_scatter(data = dye_data, xvar = Independent2, yvar = Dependent2, xlab = "Axis Label", ylab = "Axis Label")
+fit2 <- lm(Dependent2 ~ Independent2, data = dye_data)
 summary(fit2)
 ```
 
 
-```{r plot3, echo=FALSE, fig.cap="A log plot of transmittance at 400 nm with an increasing number of pink Film slices placed in front of the light source.  The data (black circles) is fit to a linear model (black line), that fits with an equation of Y=."}
- 
-chem_scatter(data = Film_data, xvar = LogIndependent1, yvar = LogT, xlab = "Log(Film Slices)", ylab = "Log(%T)")
-fit3 <- lm(LogT ~ LogIndependent1, data = Film_data)
-summary(fit3)
-```
-
-```{r dye_date, echo=FALSE}
-# Here is where you input your data for the blue food dye
-Independent2 <- c(0.005, 0.01, 0.02, 0.04, 0.08)
-Dependent2 <- c(1, 10, 100, 1000, 10000)
-LIndependent2 <- log10(Independent2)
-LT <- log10(Dependent2)
-
-dye_data <- data_frame(Independent2, Dependent2, LIndependent2, LT)
-```
-
-```{r plot4, echo=FALSE, fig.cap="Transmittance at 600 nm of an increasing concentration of Blue Dye 1 placed in front of the light source.  The data (black circles) is fit to a linear model (black line), but is not a good fit."}
- 
-chem_scatter(data = dye_data, xvar = Independent2, yvar = Dependent2, xlab = "[Blue Dye] (uM)", ylab = "Percent Transmittance (%)")
-fit4 <- lm(Dependent2 ~ Independent2, data = dye_data)
-summary(fit4)
-```
-
-
-
-```{r plot5, echo=FALSE, fig.cap="A semi log plot of transmittance at 600 nm of an increasing concentration of Blue Dye 1 placed in front of the light source.  The data (black circles) is fit to a linear model (black line), but is not a good fit."}
-
-chem_scatter(data = dye_data, xvar = Independent2, yvar = LT, xlab = "[Blue Dye] (uM)", ylab = "Log(%T)")
-fit5 <- lm(LT ~ Independent2, data = dye_data)
-summary(fit5)
-```
-
-```{r plot6, echo=FALSE, fig.cap="A log plot of transmittance at 600 nm of an increasing concentration of Blue Dye 1 placed in front of the light source.  The data (black circles) is fit to a linear model (black line), that fits with an equation of Y=."}
-
-chem_scatter(data = dye_data, xvar = LIndependent2, yvar = LT, xlab = "Log([Blue Dye] (uM))", ylab = "Log(%T)")
-fit6 <- lm(LT ~ LIndependent2, data = dye_data)
-summary(fit6)
-```
 
 ## Discussion
 

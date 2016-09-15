@@ -1,0 +1,512 @@
+data_gd <- NULL
+data_gd$xvar <- tryCatch(
+expr = lazyeval::lazy_eval(substitute(xvar), data = data),
+error = function(e) eval(envir = data, expr = parse(text = xvar))
+)
+data_gd$yvar <- tryCatch(
+expr = lazyeval::lazy_eval(substitute(yvar), data = data),
+error = function(e) eval(envir = data, expr = parse(text = yvar))
+)
+if(gg == TRUE){
+#   if(intercept == FALSE){
+ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+geom_point() +
+theme_bw() +
+geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+ifelse(intercept == FALSE, formula = y ~ x + 0, formula = y ~ x)) +
+labs(x = xlab, y = ylab)}
+#   else{
+#    ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+#     geom_point() +
+#    theme_bw() +
+#   geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+#    formula = y ~ x) +
+# labs(x = xlab, y = ylab)}
+#  }
+else{
+if(intercept == FALSE){
+plot(yvar ~ xvar + 0, data = data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(yvar ~ xvar + 0))
+}
+else{
+plot(yvar ~ xvar, data = data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(yvar ~ xvar))
+}
+}
+}
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = TRUE)
+chem_scatter <- function(data, xvar, yvar,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+gg = TRUE, intercept = FALSE){
+data_gd <- NULL
+data_gd$xvar <- tryCatch(
+expr = lazyeval::lazy_eval(substitute(xvar), data = data),
+error = function(e) eval(envir = data, expr = parse(text = xvar))
+)
+data_gd$yvar <- tryCatch(
+expr = lazyeval::lazy_eval(substitute(yvar), data = data),
+error = function(e) eval(envir = data, expr = parse(text = yvar))
+)
+if(gg == TRUE){
+#   if(intercept == FALSE){
+ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+geom_point() +
+theme_bw() +
+geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+if(intercept == FALSE) formula = y ~ x + 0
+else{formula = y ~ x}) +
+labs(x = xlab, y = ylab)}
+#   else{
+#    ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+#     geom_point() +
+#    theme_bw() +
+#   geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+#    formula = y ~ x) +
+# labs(x = xlab, y = ylab)}
+#  }
+else{
+if(intercept == FALSE){
+plot(yvar ~ xvar + 0, data = data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(yvar ~ xvar + 0))
+}
+else{
+plot(yvar ~ xvar, data = data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(yvar ~ xvar))
+}
+}
+}
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = TRUE)
+chem_scatter <- function(data, xvar, yvar,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+gg = TRUE, intercept = FALSE){
+data_gd <- NULL
+data_gd$xvar <- tryCatch(
+expr = lazyeval::lazy_eval(substitute(xvar), data = data),
+error = function(e) eval(envir = data, expr = parse(text = xvar))
+)
+data_gd$yvar <- tryCatch(
+expr = lazyeval::lazy_eval(substitute(yvar), data = data),
+error = function(e) eval(envir = data, expr = parse(text = yvar))
+)
+if(gg == TRUE){
+if(intercept == FALSE){
+ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+geom_point() +
+theme_bw() +
+geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+formula = y ~ x + 0) +
+labs(x = xlab, y = ylab)}
+else{
+ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+geom_point() +
+theme_bw() +
+geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+formula = y ~ x) +
+labs(x = xlab, y = ylab)}
+}
+else{
+if(intercept == FALSE){
+plot(yvar ~ xvar + 0, data = data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(yvar ~ xvar + 0))
+}
+else{
+plot(yvar ~ xvar, data = data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(yvar ~ xvar))
+}
+}
+}
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = TRUE)
+devtools::install("chemistr")
+devtools::install("./chemistr")
+devtools::build()
+library(chemistr)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, gg = TRUE, intercept = TRUE)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are again fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your first graph.  Notice that we are again fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are again fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your first graph.  Notice that we are again fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, gg = TRUE, intercept = TRUE)
+fit2 <- lm(Transmittance ~ film, data = film_data)
+coefficients(fit2)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance)
+fit2 <- lm(Transmittance ~ film, data = film_data)
+coefficients(fit2)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance)
+fit2 <- lm(Transmittance ~ film, data = film_data)
+coefficients(fit2)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slop of your fit line, run this chunk and then type > fit2$coefficients into your console.  This will give you the slope of the best fit line and if this is a good model, include this slope and its meaning in the graph caption.
+plot(Transmittance ~ film, data = film_data,
+xlab = "Insert X-axis label",
+ylab = "Insert Y-axis label",
+pch = 20)
+abline(lm(Transmittance ~ film))
+fit2 <- lm(Transmittance ~ film, data =film_data)
+film_data
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance)
+fit2 <- lm(Transmittance ~ film, data = film_data)
+coefficients(fit2)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, intercept = TRUE)
+fit2 <- lm(Transmittance ~ film, data = film_data)
+coefficients(fit2)
+chem_scatter(data = dye_data, xvar = dye, yvar = Absorbance, gg = TRUE)
+library(chemistr)
+library(ggplot2)
+# This will automatically intent lines that run onto the next line and clean
+# the code up a bit
+knitr::opts_chunk$set(tidy = TRUE)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, gg = FALSE)
+fit1 <- lm(Absorbance ~ film + 0, data = film_data)
+coefficients(fit1)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, intercept = TRUE)
+fit2 <- lm(Transmittance ~ film, data = film_data)
+coefficients(fit2)
+# Here is where you input your data for the blue food dye
+Absorbance <- c(0, 0.25, 0.5, 1, 2)
+Transmittance <-c(1, 0.5623, 0.3162, 0.1, .01)
+dye <- c(0, 0.01, 0.02, 0.04, 0.08)
+dye_data <- data.frame(dye, Absorbance, Transmittance)
+# Here is where you input your data for the blue food dye
+Absorbance <- c(0, 0.25, 0.5, 1, 2)
+Transmittance <-c(1, 0.5623, 0.3162, 0.1, .01)
+dye <- c(0, 0.01, 0.02, 0.04, 0.08)
+dye_data <- data.frame(dye, Absorbance, Transmittance)
+chem_scatter(data = dye_data, xvar = dye, yvar = Absorbance, gg = TRUE)
+fit3 <- lm(Absorbance ~ dye + 0, data =dye_data)
+coefficients(fit3)
+library(chemistr)
+library(chemistr)
+devtools::document()
+library(chemistr)
+?beers_law_lab
+devtools::document()
+library(chemistr)
+devtools::document()
+library(chemistr)
+devtools::document()
+template <- "Beers_Law"
+file <- "template.tex"
+system.file("rmarkdown", "templates", template, file,
+package = "chemistr")
+library(chemistr)
+system.file("inst", "rmarkdown", "templates", template, file,
+package = "chemistr")
+?system.file
+devtools::load_all()
+system.file("inst", "rmarkdown", "templates", template, file,
+package = "chemistr")
+system.file(template, file,
+package = "chemistr")
+system.file(package = "chemistr")
+system.file("inst", package = "chemistr")
+system.file("inst", "rmarkdown", "templates", template, package = "chemistr")
+devtools::document()
+library(chemistr)
+devtools::install()
+library(chemistr)
+devtools::document()
+chem_scatter(iris, Sepal.Width, Sepal.Length)
+devtools::document()
+library(chemistr)
+devtools::document()
+library(chemistr)
+devtools::document()
+library(chemistr)
+library(chemistr)
+devtools::document()
+library(chemistr)
+devtools::document()
+library(chemistr)
+devtools::document()
+system.file("rmarkdown", "template.tex", package = "chemistr")
+library(chemistr)
+devtools::document()
+library(chemistr)
+library(chemistr)
+devtools::document()
+devtools::document()
+library(chemistr)
+?knitr:::escape_latex()
+?knitr:::escape_latex
+?escape_latex
+knit_hooks$get("inline")
+knitr::knit_hooks$get("inline")
+knit_hooks$set(inline = function(x) {
+if (is.character(x))
+x <- knitr:::escape_latex(x)
+hook_inline(x)
+})
+library(chemistr)
+library(ggplot2)
+# get the default inline hook
+hook_inline <- knit_hooks$get("inline")
+library(chemistr)
+library(ggplot2)
+# get the default inline hook
+hook_inline <- knitr::knit_hooks$get("inline")
+# build a new inline hook
+knitr::knit_hooks$set(inline = function(x) {
+if (is.character(x))
+x <- knitr:::escape_latex(x)
+hook_inline(x)
+})
+?knit_hooks
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+library(chemistr)
+library(ggplot2)
+# get the default inline hook
+hook_inline <- knitr::knit_hooks$get("inline")
+# build a new inline hook
+knitr::knit_hooks$set(inline = function(x) {
+if (is.character(x))
+x <- knitr:::escape_latex(x)
+hook_inline(x)
+})
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = "film", yvar = Absorbance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance) +
+opts(panel.background = theme_blank())
+source('~/Google Drive/r-packages+apps/chemistr/R/chem_scatter.R')
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance)
+?`NULL`
+?`NA`
+library(chemistr)
+library(ggplot2)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance)
+chem_scatter(data = dye_data, xvar = dye, yvar = Absorbance, intercept = 0)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, intercept = 1)
+devtools::document()
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, intercept = 0)
+library(chemistr)
+library(ggplot2)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, intercept = 0)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, intercept = 1)
+# Here is where you create your second graph.  Notice that we are this time fitting the data to the line Y=b+mx.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The values given below your plot uses `coefficients()` on the fitted model to give the slope of the best fit line and also the intercept of the fitted line. If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Transmittance, intercept = 1.5)
+library(chemistr)
+library(chemistr)
+?element_rect
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, intercept = 0)
+library(chemistr)
+library(chemistr)
+library(ggplot2)
+# Here is where you input your data for the film thickness
+Absorbance <- c(0, 2.5, 5, 10, 20)
+Transmittance <- c(1, 0.00316, 0.00001, .0000000001, .00000000000000000001)
+film <- c(0, 1, 2, 4, 8)
+film_data <- data.frame(film, Absorbance, Transmittance)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+0.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `coefficients()` on the fitted model gives the slope of the best fit line (m in the equation above). If this is a good model, include this slope and its meaning in the graph caption.
+chem_scatter(data = film_data, xvar = film, yvar = Absorbance, intercept = 0)
+document()
+devtools::document()
+library(chemistr)
+library(chemistr)
+devtools::install_github("rstudio/bookdown")
+devtools::install_github("rstudio/bookdown", force = TRUE)
+devtools::install_github("rstudio/bookdown", force = TRUE)
+library(chemistr)
+?pandoc.table
+library(chemistr)
+library(chemistr)
+?source_files
+?bookdown:::source_files
+?clean_book
+periodic_table <- read_csv(file = "data-raw/periodic_table_2016-08.csv")
+setwd("~/Google Drive/r-packages+apps/chemistr")
+library(chemistr)
+data("periodic_table")
+periodic_table <- readr::read_csv(file = "data-raw/periodic_table_2016-08.csv")
+devtools::use_data(periodic_table, overwrite = TRUE)
+library(chemistr)
+View(periodic_table)
+table(periodic_table$state_at_stp)
+table(periodic_table$occurrence)
+periodic_table <- readr::read_csv(file = "data-raw/periodic_table_2016-08.csv")
+devtools::use_data(periodic_table, overwrite = TRUE)
+library(chemistr)
+?periodic_table
+library(chemistr)
+install.packages("githubinstall")
+githubinstall::gh_install_packages("chemistr")
