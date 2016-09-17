@@ -20,12 +20,12 @@ library(chemistr)
 
 ```{r, echo=FALSE}
 # Here is where you input your data for Part A.  Don't forget to include variables for the log(x) and log(Y).  Check out Chester's e-book on how to add these variables and make the calculations.
-Dependent1 <- c(0, 1, 2, 4, 8) #You're welcome to rename any variable to something that is easier for you to follow.  You will also need to repalce any given values to reflect your experiment and your values.
-Independent1 <- c(1, 10, 100, 1000, 100000)
+Independent1 <- c(0, 1, 2, 4, 8) #You're welcome to rename any variable to something that is easier for you to follow.  You will also need to repalce any given values to reflect your experiment and your values.
+Dependent1 <- c(1, 10, 100, 1000, 100000)
 
 
 
-film_data <- data_frame(Dependent1, Independent1) #You will need to add your new variables to the data frame too.
+film_data <- data_frame(Independent1, Dependent1) #You will need to add your new variables to the data frame too.
 ```
 
 
@@ -35,7 +35,7 @@ film_data <- data_frame(Dependent1, Independent1) #You will need to add your new
 #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
 chem_scatter(data = film_data, xvar = Dependent1, yvar = Independent1, 
   xlab = "Axis Label", ylab = "Axis Label") 
-fit1 <- lm(Independent1 ~ Dependent1, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
+fit1 <- lm(Dependent1 ~ Independent1, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
 summary(fit1)
 ```
 
@@ -45,20 +45,20 @@ summary(fit1)
 
 ```{r dye_date, echo=FALSE}
 # Here is where you input your data for Part B
-Dependent2 <- c(0, 0.01, 0.02, 0.04, 0.08)
-Independent2 <- c(1, 10, 100, 1000, 10000)
+Independent2 <- c(0, 0.01, 0.02, 0.04, 0.08)
+Dependent2 <- c(1, 10, 100, 1000, 10000)
 
 
 
 
-dye_data <- data_frame(Dependent2, Independent2)
+dye_data <- data_frame(Independent2, Dependent2)
 ```
 
-```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
+```{r plot4, echo=FALSE, fig.cap="Insert Caption"}
 #See info above about what this is doing.
-chem_scatter(data = dye_data, xvar = Dependent2, yvar = Independent2, xlab = "Axis Label", ylab = "Axis Label")
-fit2 <- lm(Independent2 ~ Dependent2, data = dye_data)
-summary(fit2)
+chem_scatter(data = dye_data, xvar = Independent2, yvar = Dependent2, xlab = "Axis Label", ylab = "Axis Label")
+fit4 <- lm(Dependent2 ~ Independent2, data = dye_data)
+summary(fit4)
 ```
 
 
