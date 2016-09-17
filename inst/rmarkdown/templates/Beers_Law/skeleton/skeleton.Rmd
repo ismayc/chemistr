@@ -33,7 +33,7 @@ film_data <- data_frame(Independent1, Dependent1) #You will need to add your new
 # Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope in the graph caption.
 
 #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
-chem_scatter(data = film_data, xvar = Dependent1, yvar = Independent1, 
+chem_scatter(data = film_data, xvar = Independent1, yvar = Dependent1, 
   xlab = "Axis Label", ylab = "Axis Label") 
 fit1 <- lm(Dependent1 ~ Independent1, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
 summary(fit1)
