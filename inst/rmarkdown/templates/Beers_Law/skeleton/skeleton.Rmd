@@ -20,12 +20,12 @@ library(chemistr)
 
 ```{r, echo=FALSE}
 # Here is where you input your data for Part A.  Don't forget to include variables for the log(x) and log(Y).  Check out Chester's e-book on how to add these variables and make the calculations.
-Independent1 <- c(0, 1, 2, 4, 8) #You're welcome to rename any variable to something that is easier for you to follow.  You will also need to repalce any given values to reflect your experiment and your values.
-Dependent1 <- c(1, 10, 100, 1000, 100000)
+Dependent1 <- c(0, 1, 2, 4, 8) #You're welcome to rename any variable to something that is easier for you to follow.  You will also need to repalce any given values to reflect your experiment and your values.
+Independent1 <- c(1, 10, 100, 1000, 100000)
 
 
 
-film_data <- data_frame(Independent1, Dependent1) #You will need to add your new variables to the data frame too.
+film_data <- data_frame(Dependent1, Independent1) #You will need to add your new variables to the data frame too.
 ```
 
 
@@ -45,13 +45,13 @@ summary(fit1)
 
 ```{r dye_date, echo=FALSE}
 # Here is where you input your data for Part B
-Independent2 <- c(0, 0.01, 0.02, 0.04, 0.08)
-Dependent2 <- c(1, 10, 100, 1000, 10000)
+Dependent2 <- c(0, 0.01, 0.02, 0.04, 0.08)
+Independent2 <- c(1, 10, 100, 1000, 10000)
 
 
 
 
-dye_data <- data_frame(Independent2, Dependent2)
+dye_data <- data_frame(Dependent2, Independent2)
 ```
 
 ```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
