@@ -17,29 +17,78 @@ A brief description of the purpose, procedure, and conclusions.
 
 Description of leaf sample.  May be helpful to include a picture of the leaf used.
 
-## Results
 
-Text that describes both your observations as well as commentary on your chromatograms and spectroscopy results.  Figures should be included of the chromatograms and the spectra collected.  Each figure should have a complete caption.  Look at Iron_Analysis markdown file on how to include a pcture with a caption in your report.
+## Chromatography Results
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+#Here is where you input the code for your first Chromatogram picture.
+
+```
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+#Here is where you input the code for your second Chromatogram picture.
+
+```
+
+The text that accompanies this section should include (written in paragraph format):
+
+1.  Purpose of this part of lab.
+2.  A summary of the observations you made of the chromatograms. (see lab instructions for details)
+3.  Directly reference both figures (Figure 1 and Figure 2) when telling the reader what is important to see in those figures.
+4.  Directly reference the table when telling the reader what is important to see in the table, regarding the chromatograms (Table 1)
+
+## Spectroscopy Results
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+
+#Here is where you input the code for your first spectroscopy picture.  You don't need to include all your pictures, since the data is reported in the table, but you should include a few as examples of what you were looking at.  For more figures, just repeat the same type of code you place here, but in a new R chunk.
+
+```
+
+
+The text that accompanies this section should include (written in paragraph format):
+
+1.  Purpose of this part of lab.
+2.  A summary of the observations you made of the spectrum. (see lab instructions for details)
+3.  Directly reference both figures (Figures 3, etc. Reference all figures of spectrum) when telling the reader what is important to see in those figures.
+4.  Directly reference the table when telling the reader what is important to see in the table, regarding the UV/VIS results (Table 1)
+
 
 ## Discussion
 
-Analysis of your results.  See page 8.10 in your lab manual for more detailed information on what this section should include.
+In a well worded paragraph include the following discussion points:
+
+1.  What model did your data support?
+2.  How did the data (both parts) support your conclusion.
+3.  What are the assumptions you made in interpreting your results or what concerns do you have with the interpreting your results (specific examples of accuracy or precision problems, be clear what type of error it is).
+4.  How does your data compare with others, either other lab groups or, even better, other literature sources.
+5.  What should be done next?  How can you expand upon what you discovered in this experiment?
+
+\clearpage
 
 ```{r, echo=FALSE}
-# Here is where you input your chromatography data that you want to put into a table.  There should be more than 4 pieces of data.  Make sure as you add another line, you add all components of that piece of data:  Chromatogram, Rf, Color, and ID.
-Chromatogram <- c("Green+Acid", "Green", "Red", "Red+Acid")
+# Here is where you input your chromatography and spectroscopy data that you want to put into a table.  There should be more than 4 pieces of data.  Make sure as you add another line, you add all components of that piece of data:  Chromatogram, Rf, Color, lambda1, lambda2, lambda3, lambda4, and ID.
+Sample <- c("Green+Acid", "Green", "Red", "Red+Acid")
 Rf <- c(0, 0.4, 0.8, 1)
 Color <- c("Green", "Blue", "Red", "Yellow")
-ID <- c("Chlorophyll A", "Chlorophyll B", "Carotenoid", "Anthocyanin")
+lambda1 <- c(450, 500, 675, 200) #This is one of the lambda maxes reported from your spectra of these purified bands.  This should be input as nm.  Yuo should report 4 lambda maxes, but if you have fewer then report " ", this will leave that spot blank.
+lambda2 <- c(570, 280, 330, 900)
+lambda3 <- c(100, 200, 400, " ")
+lambda4 <- c(100, 200, " ", " ")
+ID <- c("Chlorophyll A", "Chlorophyll B", "Carotenoid", "Unknown")
 # Place the columns next to each other in a data frame
-Green <- data.frame(Chromatogram, Rf, Color, ID)
-Green <- rename(Green,"Chromatogram Type" = Chromatogram,
-                "Retention Factor, Rf" = Rf, 
-                "Color of pigment band" = Color, 
-                "Identification of pigment band" = ID)
+Green <- data_frame(Sample, Rf, Color, lambda1, lambda2, lambda3, lambda4, ID)
+Green <- rename(Green, "Leaf Sample" = Sample,
+                "$R_f$" = Rf, 
+                "Band Color" = Color, 
+                "Band ID" = ID,
+                "$\\lambda1$(nm)" = lambda1,
+                "$\\lambda2$(nm)" = lambda2,
+                "$\\lambda3$(nm)" = lambda3,
+                "$\\lambda4$(nm)" = lambda4)
 ```
 
 ```{r nice_table1, results = 'asis', echo=FALSE}
-#Here is where you create a table describing all your chromatogram bands.  This will include their identities and Rf values.  
+#Here is where you create the table that you input data for above.   
 chem_table(Green, caption = "Insert caption")
 ```
