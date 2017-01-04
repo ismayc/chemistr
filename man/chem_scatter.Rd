@@ -18,8 +18,9 @@ chem_scatter(data, xvar, yvar, xlab = "Insert X-axis label",
 
 \item{ylab}{A string containing the y-axis label}
 
-\item{intercept}{Set to NULL by default, but can be changed to 0 to
-force regression line to go through origin}
+\item{intercept}{Set to NULL by default, but can be changed to a numeric value
+to force the regression to through a specified y-value.  For example,
+\code{intercept = 0} forces the regression line to go through origin}
 }
 \value{
 A plot

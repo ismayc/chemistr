@@ -7,8 +7,9 @@
 #' @param yvar The name of the y-variable
 #' @param xlab A string containing the x-axis label
 #' @param ylab A string containing the y-axis label
-#' @param intercept Set to NULL by default, but can be changed to 0 to
-#' force regression line to go through origin
+#' @param intercept Set to NULL by default, but can be changed to a numeric value
+#' to force the regression to through a specified y-value.  For example,
+#' \code{intercept = 0} forces the regression line to go through origin
 #' @return A plot
 #' @examples
 #' \dontrun{
@@ -28,11 +29,24 @@ chem_scatter <- function(data, xvar, yvar,
     expr = lazyeval::lazy_eval(substitute(yvar), data = data),
     error = function(e) eval(envir = data, expr = parse(text = yvar))
   )
+  if(is.null(intercept)){
   ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
     geom_point() +
     geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
-      formula = if(!is.null(intercept)){y ~ I(x + intercept)} else{y ~ x}) +
+      formula = y ~ x) +
     labs(x = xlab, y = ylab) +
-    theme(panel.border = element_rect(linetype = "solid", colour = "black", fill = NA),
+    theme(panel.border = element_rect(linetype = "solid", colour = "black",
+      fill = NA),
       panel.background = element_rect(fill = "white"))
+  }
+  else{
+    ggplot(data = as.data.frame(data_gd), mapping = aes(x = xvar, y = yvar)) +
+      geom_point() +
+    geom_smooth(method = "lm", se = FALSE, color = "black", size = 0.3,
+      formula = y ~ I(x - intercept) + 0) +
+      labs(x = xlab, y = ylab) +
+      theme(panel.border = element_rect(linetype = "solid", colour = "black",
+        fill = NA),
+        panel.background = element_rect(fill = "white"))
+  }
 }
