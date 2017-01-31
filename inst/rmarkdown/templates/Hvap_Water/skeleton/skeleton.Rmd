@@ -1,0 +1,86 @@
+---
+title: "E3: Vapor Pressure"
+author: "Student Names"
+date: "Lab Date"
+output: chemistr::chem_lab_word
+---
+
+```{r setup, include=FALSE}
+library(chemistr)
+``` 
+
+
+
+
+```{r, echo=FALSE}
+# Here is where you input your data for temperature (in ˚C) and volume (in mL). Do not include your lowest T data.
+Temp.C <- c(27,41,51,55,61,66,76,80)
+Vol.mL <- c(4.2,4.7,5.0,5.2,5.5,5.9,7.4,9.1)
+N <- length(Temp.C)
+
+# Now convert to Kelvin and Liters
+Temp.K <- Temp.C + 273.15
+Vol.L <- Vol.mL/1000
+
+#Assume that the gas at your low temperature is all air, no water vapor. Calculate moles of air.
+n.air <- 1.0*.0038/(0.08206*281) # n = PV/RT at your low temperature
+  
+#From the moles of air, calculate partial pressure of air at each temperature
+P.air <- n.air*0.08206*Temp.K/Vol.L  # P = nRT/V
+  
+# Calculate partial pressure of water, P.water by subtracting P.air from P.atm
+P.water <- 1.0 - P.air
+
+# And now the data we need.
+InvT <- 1/Temp.K # inverse temperature
+lnP <- log(P.water) # natural logarithm of partial pressure of water
+pdata <- data.frame(InvT,lnP) # create a dataframe
+
+```
+
+##Results
+
+```{r, echo=FALSE, fig.cap = "Add caption"}
+
+chem_scatter(data = pdata, xvar = InvT, yvar = lnP, xlab = "x label",
+     ylab = "y label")
+fit1 <- lm(lnP ~ InvT)
+
+```
+
+```{r, echo=FALSE}
+Slope <-summary(fit1)$coef[2]
+SE <-summary(fit1)$coef[4]
+CI95_Slope <- qt(0.975,df=N-1)*SE
+
+
+# calculate ∆Hvap and CI95 for ∆Hvap
+Hvap <- -(0.0083145)*Slope # in kJ/mol
+CI95_Hvap <- (0.0083145)*CI95_Slope 
+
+
+Stats <-data_frame(Slope, CI95_Slope, Hvap, CI95_Hvap)
+
+```
+
+```{r, results="asis", echo=FALSE}
+Stats <-data_frame(Slope, CI95_Slope, Hvap, CI95_Hvap) #Here is a data frame of the statistical results.
+chem_table(Stats, caption = "Table 1: A lovely caption for the table") #Here is the creation of table 1.  Don't forget to go back and change the values in word to the correct number of sig figs.
+```
+
+##Discussion
+
+In the discussion include the following:
+1.	Report the purpose of the experiment and the conclusion.  
+2.	Mention and cite the data that supports this conclusion. 
+3.	Report and cite the literature value for the heat of vaporization of water (specifying the source and the temperature at which it is given) and compare to your result. 
+4.	In one or two sentences, discuss the impact of random and/or systematic error on your result.
+
+##Authors' Contributions
+
+Under this section please report what you did to contribute to this lab report and sign it with your initials.
+
+_____(initials) I ____________________ did __________________________________
+
+
+_____(initials) I ____________________ did __________________________________
