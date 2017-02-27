@@ -1,0 +1,96 @@
+---
+title: "Insert Title"
+author: "Insert Name"
+date: "Insert Date"
+output: chemistr::chem_lab_word
+---
+
+```{r, include=FALSE}
+library(chemistr)
+```
+
+
+
+```{r, echo=FALSE}
+# The statistics code for finding the average and 95% CI of Fe
+Fe <- c(10, 20, 30, 40) #You must put the database results here
+avgFe <- mean(Fe)
+SdFe <- sd(Fe)
+NFe <- length(Fe)
+CI95Fe <- qt(0.975, df = NFe - 1) * SdFe/(sqrt(NFe))
+
+```
+
+
+```{r, echo=FALSE}
+
+#The statistics code for finding the average and 95% CI of K
+
+```
+
+```{r, echo=FALSE}
+
+#The statistics code for finding the average and 95% CI of Oxalate
+
+```
+
+```{r, echo=FALSE}
+
+#The statistics code for finding the average and 95% CI of Water
+
+```
+
+##Results
+
+```{r, echo=FALSE, fig.cap = "A caption for the iron standard curve that includes the slope with units"}
+
+#Below you should input the variables for the Iron standard curve and then the code that will plot and fit the data.  See experiment 1 for the corresponding code.
+
+
+
+```
+
+
+
+```{r, results="asis", echo=FALSE}
+
+# Below you create a data frame and a table for your statistical results.  Make sure that after you knit your report to word, you go back to this table and fix the column headings to better represent the columns and include units in the column headings.  You should also look at the numbers in the table and be certain they correctly represent the correct number of sig figs.
+
+MassPer <- c("% Fe", "% K", "% Ox", "% W")
+Avg <- c(avgFe, avgK, avgOx, avgWa) #Make sure these vectors match how you named the averages above.
+CI95 <-  c(CI95Fe, CI95K, CI95Ox, CI95Wa) #Make sure these vectore match how you named the averages above.
+MatchPercent <- c() #Based upon the calculated mass percentages from Table 4.1 in your instructions, which molecular formulas matches your data best.  Report the calculated mass percentages for that formula here.
+Stats <- data_frame(MassPer, Avg, CI95, MatchPercent) #Here are the items you want to include in Table 1
+chem_table(Stats, caption = "Table 1: A lovely caption for the table") #Here is the creation of table 1
+
+
+```
+
+
+
+## Discussion
+
+Report the possible molecular formula(s) supported by your data.  Is the class-wide data precise?  Why or why not?  Is the class-wide data accurate?  Look in the literature, what have others found to be the molecular formula of iron oxalate complex?  Make sure you cite your source(s).  What was one source of error in this experiment?  Was it a random or systematic error?  How did this error influence your conclusion?  This may require you to go back and look at how each of the mass percentages was obtained.
+
+## Bibliography
+
+Use the ACS format to include full citations of all references used in writting this report.  See the Library reference sheet on Moodle for more information.
+
+## Calculations Appendix
+
+Either include a figure from your notebook or type in a sample of the calculations done to determine the Mass percentags. Make sure every calculation is present starting with your raw data.  The calculations should be clear, easy to follow, and includes units with all numbers.
+
+To insert a figure of your calculations you should use the code below and the figure should be saved in the same folder as your report file:
+
+```{r echo=FALSE, fig.cap="Insert Caption"}
+include_graphics("Title of Figure, example: Calc.pdf")
+```
+
+##Authors' Contributions
+
+Under this section please report what you did to contribute to this lab report and sign it with your initials.
+
+_____(initials) I ____________________ did __________________________________
+
+
+_____(initials) I ____________________ did __________________________________
