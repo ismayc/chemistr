@@ -73,4 +73,3 @@ data(periodic_table, package = "chemistr")
 
 }
 \keyword{datasets}
-

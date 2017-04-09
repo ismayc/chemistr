@@ -22,4 +22,3 @@ Creates a nice table for data frames
  chem_table(head(iris), caption = "First six rows of iris data")
 }
 }
-

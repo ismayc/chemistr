@@ -39,4 +39,3 @@ A plot
 Creates a scatterplot with a common horizontal axis and two different
 variables plotted on the vertical axis with regression lines
 }
-

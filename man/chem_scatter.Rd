@@ -33,4 +33,3 @@ Creates a scatterplot with regression line
  chem_scatter(iris, Sepal.Width, Sepal.Length)
 }
 }
-

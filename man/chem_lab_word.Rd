@@ -25,4 +25,3 @@ specify using a tweaked version of the default LaTeX pandoc template.
    chemistr::chem_lab_word
 }
 }
-
