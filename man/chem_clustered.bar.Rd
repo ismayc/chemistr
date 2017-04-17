@@ -32,4 +32,3 @@ A plot
 \description{
 Creates a clustered bar graph
 }
-
