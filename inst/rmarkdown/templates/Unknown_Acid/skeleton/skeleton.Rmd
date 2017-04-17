@@ -19,20 +19,20 @@ library(chemistr)
 
 ```
 
-A well-written paragraph that covers the following:
+A well written paragraph that covers the following:
 
-- Restate the purpose.  
+•Restate the purpose.  
 
-- Describe (BRIEFLY) how the experiment was used to analyze the purpose.  Don’t describe the calculations.
+•Describe (BRIEFLY) how the experiment was used to analyze the purpose.  Don’t describe the calculations.
 
-- State the main take home message or result (MW and pKa of unknown acid) and how your data supports this conclusion.  
+•State the main take home message or result (MW and pKa of unknown acid) and how your data supports this conclusion.  
 
-- Include direct parenthetical reference to figure 1.  
+•Include direct parenthetical reference to figure 1.  
 
-- Identify one concern or reservation you may have regarding your results.  (Please do not include "inexperience" as one such reservation.)
+•Identify one concern or reservation you may have regarding your results.  (Please do not include "inexperience" as one such reservation.)
 
 
-## Calculations Appendix
+##Calculations Appendix
 
 Either include a figure from your notebook or type in a sample of the calculations done to determine:
 

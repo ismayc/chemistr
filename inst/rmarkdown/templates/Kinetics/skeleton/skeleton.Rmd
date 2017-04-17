@@ -26,9 +26,10 @@ I_Data <- data_frame(LogI, LogRateB) #Here are the items you want to graph
 
 chem_scatter(data =I_Data, xvar = LogI, yvar = LogRateB, xlab = "Input",
      ylab = "Input")
-fit1 <- lm( LogRateB ~ LogI)
+fit1 <- lm(LogRateB ~ LogI)
 Slope <-summary(fit1)$coef[1]
 SE <-summary(fit1)$coef[2]
+N <- length(I)
 CI95_Slope <- qt(0.975,df=N-1)*SE
 
 #By typing Slope or CI95_Slope into the console, you can determine what the slope +/-95% CI is and include it in the text and caption of your report.
@@ -87,7 +88,7 @@ include_graphics("Title of Figure, example: Calc.pdf)
 ```
 
 
-## Authors' Contributions
+##Authors' Contributions
 
 Under this section please report what you did to contribute to this lab report and sign it with your initials.
 
