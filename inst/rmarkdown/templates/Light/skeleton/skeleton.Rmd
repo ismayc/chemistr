@@ -9,7 +9,7 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```
 
-## Q1: What colors are found in a white light source?
+## Q1: What colors are found in a white light source?  Are all white light sources the same?
 
 ```{r, echo=FALSE}
 # Here is where you input your data for the white light source
