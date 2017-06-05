@@ -24,7 +24,7 @@ chem_table(Q1_data, caption = "A lovely caption for the table")
 ```
 
 
-## Q2:  Does water absorb visible light?
+## Q2:  Does water absorb visible light? Maybe?
 
 ```{r echo=FALSE, fig.cap="Absorbance spectrum of $H_{2}O$ in a 1-cm cuvette."}
 include_graphics("name of figure in directory")
