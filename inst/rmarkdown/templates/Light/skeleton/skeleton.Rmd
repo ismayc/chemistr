@@ -13,7 +13,7 @@ library(chemistr)
 
 ```{r, echo=FALSE}
 # Here is where you input your data for the white light source
-Color <- c() 
+Color <- c() #These colors need to be surrounded by parenthesis ""
 WavelengthRange <- c()
 Q1_data <- data_frame(Color, WavelengthRange)
 ```
