@@ -31,7 +31,7 @@ include_graphics("name of figure in directory")
 ```
 
 ```{r echo=FALSE, fig.cap="Transmittance spectrum of $H_{2}O$ in a 1-cm cuvette."}
-include_graphics("name of figure in directory")
+include_graphics("name of figure in directory") #Make sure file is in your folder
 ```
 
 
