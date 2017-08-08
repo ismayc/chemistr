@@ -11,21 +11,14 @@ library(chemistr)
 
 ## Data
 
- 
-```{r, include=FALSE}
-
-#This region should include R chunks (tan boxes) for the two data sets (part A and Part B) and 6 graphs.  2 XvsY plots, 2 Xvslog(Y) plots, and 2 log(X)vsLog(Y) plots.  The R chunks for the XvsY plots are given.  You need to use the e-book and how the given graphs were formated to create the code for the semi log and log plots.
-
-```
 
 ```{r, echo=FALSE}
 # Here is where you input your data for Part A.  Don't forget to include variables for the log(x) and log(Y).  Check out Chester's e-book on how to add these variables and make the calculations.
-Independent1 <- c(0, 1, 2, 4, 8) #You're welcome to rename any variable to something that is easier for you to follow.  You will also need to repalce any given values to reflect your experiment and your values.
-Dependent1 <- c(1, 10, 100, 1000, 100000)
-
-
-
-film_data <- data_frame(Independent1, Dependent1) #You will need to add your new variables to the data frame too.
+Filter <- c(0, 1, 2, 4, 8) #This is the # of filters you have added to the cuvette
+log_F <-
+T1 <- c(1, 10, 100, 1000, 100000) #This is the vector that includes the transmittance value you collected for each of the filters added.
+log_T1 <-
+film_data <- data_frame(Filter, T1, log_F, log_T1) #This is a data frame.  This links all your variables into a single table.
 ```
 
 
@@ -33,35 +26,57 @@ film_data <- data_frame(Independent1, Dependent1) #You will need to add your new
 # Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope in the graph caption.
 
 #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
-chem_scatter(data = film_data, xvar = Independent1, yvar = Dependent1, 
+chem_scatter(data = film_data, xvar = Filter, yvar = T1, 
   xlab = "Axis Label", ylab = "Axis Label") 
-fit1 <- lm(Dependent1 ~ Independent1, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
+fit1 <- lm(T1 ~ Filter, data = film_data)  #This is how we get the fit values out.  Notice we are fitting the data to a straight line, in the form of Y ~ X.  If you change the variables you're graphing, the same will need to be done to this fit line.
 summary(fit1)
 ```
 
 
-
-
-
-```{r dye_date, echo=FALSE}
-# Here is where you input your data for Part B
-Independent2 <- c(0, 0.01, 0.02, 0.04, 0.08)
-Dependent2 <- c(1, 10, 100, 1000, 10000)
+```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
+#Here is the code for your first plot for part A, log(x) vs Y.  
 
 
 
 
-dye_data <- data_frame(Independent2, Dependent2)
+```
+
+```{r plot3, echo=FALSE, fig.cap="Insert Caption"}
+#Here is the code for your first plot for part A, log(x) vs log(Y).  
+
+
+
+
+```
+
+```{r dye_data, echo=FALSE}
+# Here is where you input your data for Part B,  Use part A as a model for this.
+
 ```
 
 ```{r plot4, echo=FALSE, fig.cap="Insert Caption"}
-#See info above about what this is doing.
-chem_scatter(data = dye_data, xvar = Independent2, yvar = Dependent2, xlab = "Axis Label", ylab = "Axis Label")
-fit4 <- lm(Dependent2 ~ Independent2, data = dye_data)
-summary(fit4)
+#Here is the code for your first plot for part B, X vs Y.  
+
+
+
+
 ```
 
+```{r plot5, echo=FALSE, fig.cap="Insert Caption"}
+#Here is the code for your first plot for part B, log(X) vs Y.  
 
+
+
+
+```
+
+```{r plot6, echo=FALSE, fig.cap="Insert Caption"}
+#Here is the code for your first plot for part B, log(X) vs log(Y).  
+
+
+
+
+```
 
 ## Discussion
 
