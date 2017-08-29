@@ -9,32 +9,30 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```        
 
+
 ## Data
 
-
+ 
 ```{r, echo=FALSE}
-# Here is where you input your data for Part A.  Don't forget to include variables for the log(x) and log(Y).  Check out Chester's e-book on how to add these variables and make the calculations.
-Filter <- c(0, 1, 2, 4, 8) #This is the # of filters you have added to the cuvette
+# Here is where you input your data for Part A.  
+Film <- c(1, 2, 4, 8) #This is the # of films you have added to the cuvette
 log_F <-
-T1 <- c(1, 10, 100, 1000, 100000) #This is the vector that includes the transmittance value you collected for each of the filters added.
+T1 <- c(10, 100, 1000, 100000) #This is the vector that includes the transmittance value you collected for each of the films added.
 log_T1 <-
-film_data <- data_frame(Filter, T1, log_F, log_T1) #This is a data frame.  This links all your variables into a single table.
+film_data <- data_frame(Film, T1, log_F, log_T1) #This is a data frame.  This links all your variables into a single table.
 ```
 
 
 ```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
-# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope in the graph caption.
-
-#This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
-chem_scatter(data = film_data, xvar = Filter, yvar = T1, 
-  xlab = "Axis Label", ylab = "Axis Label") 
-fit1 <- lm(T1 ~ Filter, data = film_data)  #This is how we get the fit values out.  Notice we are fitting the data to a straight line, in the form of Y ~ X.  If you change the variables you're graphing, the same will need to be done to this fit line.
-summary(fit1)
+# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope in the graph caption. 
+chem_scatter(data = film_data, xvar = Film, yvar = T1, xlab = "Axis Label", ylab = "Axis Label") #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
+fit1 <- lm(T1~Film, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
+summary(fit1) #This will show the fit parameters in your document
 ```
 
 
 ```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for your first plot for part A, log(x) vs Y.  
+#Here is the code for plotting the model of an exponential relationship for part A, log(x) vs Y.  
 
 
 
@@ -42,7 +40,7 @@ summary(fit1)
 ```
 
 ```{r plot3, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for your first plot for part A, log(x) vs log(Y).  
+#Here is the code for plotting the model of a power relationship for part A, log(x) vs log(Y).  
 
 
 
@@ -55,7 +53,7 @@ summary(fit1)
 ```
 
 ```{r plot4, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for your first plot for part B, X vs Y.  
+#Here is the code for plotting the model of a linear relationship for part B, X vs Y.  
 
 
 
@@ -63,7 +61,7 @@ summary(fit1)
 ```
 
 ```{r plot5, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for your first plot for part B, log(X) vs Y.  
+#Here is the code for plotting the model of an exponential relationship for part B, log(X) vs Y.  
 
 
 
@@ -71,13 +69,28 @@ summary(fit1)
 ```
 
 ```{r plot6, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for your first plot for part B, log(X) vs log(Y).  
+#Here is the code for plotting the model of a power relationship for part B, log(X) vs log(Y).  
 
 
 
 
 ```
 
+```{r, echo=FALSE}
+#Here you input the data that you will use in your table
+Model <- c("Linear", "Exponential", "Power") #This is the names of the different models
+Film_R2 <- c() #Here are the R^2 values for the film data related to the above models
+Dye_R2 <- c() #Here are the R^2 values for the dye data related to the above models
+R2 <- data_frame(Model, Film_R2, Dye_R2) #Here are the items you want to include in Table 1
+```
+
+
+```{r nice_table1, results = 'asis', echo=FALSE}
+#Here is where you create the table that you input data for above.   
+chem_table(R2, caption = "Insert Caption")
+```
+
 ## Discussion
 
 Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two).  Please refer to the Beer's Law Experiment #2 for information on what to include in your discussion as well as an example discussion.
+
