@@ -32,7 +32,7 @@ summary(fit1) #This will show the fit parameters in your document
 
 
 ```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of an exponential relationship for part A, log(x) vs Y.  
+#Here is the code for plotting the model of an exponential relationship for part A, log(Y) vs X.  
 
 
 
@@ -61,7 +61,7 @@ summary(fit1) #This will show the fit parameters in your document
 ```
 
 ```{r plot5, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of an exponential relationship for part B, log(X) vs Y.  
+#Here is the code for plotting the model of an exponential relationship for part B, log(Y) vs X.  
 
 
 
