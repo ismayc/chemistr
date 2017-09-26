@@ -18,40 +18,38 @@ Here you will provide a SHORT one-paragraph summary of the experiment.  It shoul
 
 ```{r, echo=FALSE}
 # Here is where you input your standards data that you want to graph
-Iron <- c(0, 2.5, 5, 10, 20) # This should be in units of Molarity (M)
-Absorbance <- c(0, 0.00316, 0.006, 0.012, .024)
+Iron <- c() # This should be concnetration in units of Molarity (M)
+Absorbance <- c() #Don't forget to include your blank value (0 M Fe)
 iron_data <- data_frame(Iron, Absorbance)
 ```
 
 
 ```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
 # Here is where you create your standard curve.  Notice that we are again fitting the data to the line Y=mX+0.  In order to get the slope of your fit line, run all previous chunks and this chunk.  The summary(fit1) will give you the slope of your standard curve (Iron Estimate) as well as your uncertainty (Std. Error, NOT Residual Standard error) in the coefficients section of the summary.  Include the molar absorptivity (with units) in your caption.
-chem_scatter(data = iron_data, xvar = Iron, yvar = Absorbance, 
-             xlab = "New Iron Label",
-             ylab = "New Absorbance Label",
-             intercept = 0)
-fit1 <- lm(Absorbance ~ Iron + 0, data = iron_data)
-summary(fit1)
+
+
+
+
+
+
+
 ```
 
 
+## Discussion
 
-## Calculations
+See Exp. 3 Lab Report Instruction, page 3 for information on what to include in your discussion.
 
-Here is where you put in either your calculations, using equations or inserting a picture of your calculations. 
+## References
 
-Calculations to include:
 
-1.  Concentration of Iron in final sample dilution (using standard curve equation)
 
-2.  Amount of Iron in Tablet (in mg/tablet), accounting for dilutions done in processing the sample.
 
-3.  Calculation of Average Iron in Tablet for Class
+\clearpage
 
-4.  Calculation of Standard Deviation in Tablet for Class
+## Calculations Appendix
 
-5.  Calculation of 90% Confidence Interval in Tablet for Class
-
+Here is where you put in your calculations, either by using equations or inserting a picture of your calculations or using R for the statistics. 
 
 For a good source of writing mathematical equation symbols, see <http://www.rpi.edu/dept/arc/training/latex/LaTeX_symbols.pdf>
 
@@ -67,8 +65,27 @@ A figure can be inserted by using the following format, so long as the picture i
 include_graphics("Name of Figure, ex: Iron.jpg")
 ```
 
-\clearpage
+Calculations to include by hand:
 
-## Discussion
+1.  Concentration of Iron in final sample dilution (using standard curve equation)
 
-See appendix 3C and page 5.2 for information on how to write your discussion.
+2.  Amount of Iron in Tablet (in mg/tablet), accounting for dilutions done in processing the sample.
+
+3.  Percent Variation
+
+
+```{r Stats, echo=TRUE}
+
+#R Calculations: Average Iron, Standard Deviation, 95% Confidence Interval.  Use the Stats help sheet on Moodle for inputting this code.
+
+
+
+
+
+
+```
+
+
+
+
+
