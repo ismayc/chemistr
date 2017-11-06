@@ -29,7 +29,7 @@ include_graphics("Fig1.jpg")
 include_graphics("Fig2.jpg")
 ```
 
-```{r, echo=FALSE}
+```{r, results = 'asis', echo=FALSE}
 # Table 1 - A table showing the chromatogram results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
 Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
 Rf_Control <- c() #Input the calculated Rf values from the control chromatogram provided
@@ -44,7 +44,7 @@ chem_table(Rf, caption = "Table 1: Insert caption")
 include_graphics("Fig3.jpg")
 ```
 
-```{r, echo=FALSE}
+```{r, results = 'asis', echo=FALSE}
 # Table 2 - A table showing the spectroscopy results.  Use the Anthocyanin data from the acid samples and the other pigment data from the non-acid samples.
  
 Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
