@@ -1,4 +1,4 @@
----
+----
 title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
@@ -15,43 +15,69 @@ A brief description of the purpose, procedure, and conclusions.
 
 ## Leaf Sample
 
-Description of leaf sample.  May be helpful to include a picture of the leaf used.
+Description of leaf sample with where and when it was obtained.  May be helpful to include a picture of the leaf used.
 
-
-## Chromatography Results
+## Results
 
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
 #Here is where you input the code for your first Chromatogram picture.
-
+include_graphics("Fig1.jpg")
 ```
 
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
 #Here is where you input the code for your second Chromatogram picture.
-
+include_graphics("Fig2.jpg")
 ```
 
-The text that accompanies this section should include (written in paragraph format):
-
-1.  Purpose of this part of lab.
-2.  A summary of the observations you made of the chromatograms. (see lab instructions for details)
-3.  Directly reference both figures (Figure 1 and Figure 2) when telling the reader what is important to see in those figures.
-4.  Directly reference the table when telling the reader what is important to see in the table, regarding the chromatograms (Table 1)
-
-## Spectroscopy Results
+```{r, echo=FALSE}
+# Table 1 - A table showing the chromatogram results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
+Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
+Rf_Control <- c() #Input the calculated Rf values from the control chromatogram provided
+Rf_Green <- c() #input the calculated Rf values from the Green leaf chromatogram
+Rf_Colored <- c() #input the calculated Rf values from the Colored leaf chromatogram
+Rf <- data.frame(Pigment, Rf_Control, Rf_Green, Rf_Colored)
+chem_table(Rf, caption = "Table 1: Insert caption")
+```
 
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
-
 #Here is where you input the code for your first spectroscopy picture.  You don't need to include all your pictures, since the data is reported in the table, but you should include a few as examples of what you were looking at.  For more figures, just repeat the same type of code you place here, but in a new R chunk.
-
+include_graphics("Fig3.jpg")
 ```
 
+```{r, echo=FALSE}
+# Table 2 - A table showing the spectroscopy results.  Use the Anthocyanin data from the acid samples and the other pigment data from the non-acid samples.
+ 
+Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
+Spec_Control<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments. 
+Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place.
+Spec_Colored <- c() #This is the lambda max from the UV/VIS spectrum of the colored leaves. If the pigment was not seen, use "NA" in its place.
+Spec <- data.frame(Pigment, Spec_Control, Spec_Green, Spec_Colored)
+chem_table(Spec, caption = "Table 2: Insert caption")
+```
 
-The text that accompanies this section should include (written in paragraph format):
+# Chromatography Results
+
+The text that accompanies this section should include (written in a single paragraph):
 
 1.  Purpose of this part of lab.
+
+2.  A summary of the observations you made of the chromatograms. (see example results section on Moodle)
+
+3.  Directly reference both chromatogram figures(Figure 1 and Figure 2) when telling the reader what is important to see in those figures.
+
+4.  Directly reference the table when telling the reader what is important to see in the table regarding the chromatograms (Table 1)
+
+# Spectroscopy Results
+
+The text that accompanies this section should include (written in a single paragraph):
+
+1.  Purpose of this part of lab.
+
 2.  A summary of the observations you made of the spectrum. (see lab instructions for details)
-3.  Directly reference both figures (Figures 3, etc. Reference all figures of spectrum) when telling the reader what is important to see in those figures.
-4.  Directly reference the table when telling the reader what is important to see in the table, regarding the UV/VIS results (Table 1)
+
+3.  Directly reference and spectrum figures (Figures 3, etc. Reference all figures of spectrum) when telling the reader what is important to see in those figures.
+
+4.  Directly reference the table when telling the reader what is important to see in the table, regarding the UV/VIS results (Table 2)
 
 
 ## Discussion
@@ -63,32 +89,3 @@ In a well worded paragraph include the following discussion points:
 3.  What are the assumptions you made in interpreting your results or what concerns do you have with the interpreting your results (specific examples of accuracy or precision problems, be clear what type of error it is).
 4.  How does your data compare with others, either other lab groups or, even better, other literature sources.
 5.  What should be done next?  How can you expand upon what you discovered in this experiment?
-
-\clearpage
-
-```{r, echo=FALSE}
-# Here is where you input your chromatography and spectroscopy data that you want to put into a table.  There should be more than 4 pieces of data.  Make sure as you add another line, you add all components of that piece of data:  Chromatogram, Rf, Color, lambda1, lambda2, lambda3, lambda4, and ID.
-Sample <- c("Green+Acid", "Green", "Red", "Red+Acid")
-Rf <- c(0, 0.4, 0.8, 1)
-Color <- c("Green", "Blue", "Red", "Yellow")
-lambda1 <- c(450, 500, 675, 200) #This is one of the lambda maxes reported from your spectra of these purified bands.  This should be input as nm.  Yuo should report 4 lambda maxes, but if you have fewer then report " ", this will leave that spot blank.
-lambda2 <- c(570, 280, 330, 900)
-lambda3 <- c(100, 200, 400, " ")
-lambda4 <- c(100, 200, " ", " ")
-ID <- c("Chlorophyll A", "Chlorophyll B", "Carotenoid", "Unknown")
-# Place the columns next to each other in a data frame
-Green <- data_frame(Sample, Rf, Color, lambda1, lambda2, lambda3, lambda4, ID)
-Green <- rename(Green, "Leaf Sample" = Sample,
-                "$R_f$" = Rf, 
-                "Band Color" = Color, 
-                "Band ID" = ID,
-                "$\\lambda1$(nm)" = lambda1,
-                "$\\lambda2$(nm)" = lambda2,
-                "$\\lambda3$(nm)" = lambda3,
-                "$\\lambda4$(nm)" = lambda4)
-```
-
-```{r nice_table1, results = 'asis', echo=FALSE}
-#Here is where you create the table that you input data for above.   
-chem_table(Green, caption = "Insert caption")
-```
