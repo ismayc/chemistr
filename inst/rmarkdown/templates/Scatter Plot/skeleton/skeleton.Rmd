@@ -1,0 +1,28 @@
+---
+title: "Insert Title"
+author: "Insert Name"
+date: "Insert Date"
+output: chemistr::chem_lab_word
+---
+
+```{r setup, include=FALSE}
+library(chemistr)
+```        
+
+
+## Creating a Scatter Plot
+ 
+```{r, echo=FALSE}
+# Here is where you input your data for your two variables.  
+Independent <- c(1, 2, 4, 8) #This is the X-axis values
+Dependent <- c(10, 100, 1000, 100000) #This is the Y-axis values
+data <- data_frame(Independent, Dependent) #This is a data frame.  This links all your variables into a single table.
+```
+
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+# Here is where you create your first graph.   
+chem_scatter(data = data, xvar = Independent, yvar = Dependent, xlab = "Axis Label", ylab = "Axis Label") #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
+fit1 <- lm(Dependent ~ Independent, data = data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
+summary(fit1) #This will show the fit parameters in your document
+```
