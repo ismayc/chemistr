@@ -1,4 +1,4 @@
-----
+---
 title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
@@ -9,33 +9,143 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```
 
-## Results and Discussion
+##Results
 
-```{r, echo=FALSE, fig.cap = "Input Caption that clearly identify the unknown number, equivalence point and the pKa of the unknown acid"}
+```{r, results="asis", echo=FALSE}
+# This is the information for Table 1 - a table that has all of the raw data for calculating mass % K.
 
-#Here is the chunk in which you will input the data and graph your volume versus pH plot.  See many of the previous lab reports for the code to do this.
+Sample <- c("KHP", "Green Crystals")
+Mass <- c(0.2002, 0.2124) #The mass used for the analysis
+EOB <- c("12:45 pm", "12:45 pm") #The time the sample was removed from the reactor
+T_Analysis <- c("1:30 pm", "1:50 pm") #The time the analysis began
+Raw_Counts <- c(22310, 15320) #The counts obtained directyl from the instrument
+Counts_o <- c(23268, 16279) #The counts at T=0
+Mass_K <- c(0.03833, 0.02682) #calculated amount of K in each sample
+K <- data_frame(Sample, Mass, EOB, T_Analysis, Raw_Counts, Counts_o, Mass_K) #Here are the items you want to include in Table 1
+chem_table(K, caption = "Table 1: Raw data for calculating the mass percent potassium in an unknown sample using neutron activation analysis") #Here is the creation of table 1
 
+```
+
+```{r, results="asis", echo=FALSE}
+# This is the information for Table 2 - a table that has all of the raw data for calculating mass % Fe.
+
+Mass <- c() #The mass used for the analysis
+Slope <- c() #The slope from the standard curve.  
+Fe_dilute <- c() #The concentration of Fe in the diluted sample (M)
+Mass_Fe <- c() #The mass of iron in the analyzed sample
+Fe <- data_frame(Mass, Slope, Fe_dilute, Mass_Fe) #Here are the items you want to include in Table 2
+chem_table(Fe, caption = "Table 2: A lovely caption for the table") #Here is the creation of table 2
+
+```
+
+```{r, results="asis", echo=FALSE}
+# This is the information for Table 3 - a table that has all of the raw data for calculating mass % Oxalate.
+
+Mass <- c() #The mass used for the analysis
+Titrant <- c() #Molarity of the titrant
+Volume <- c() #The volume of titrant used in the titration in mL
+Mass_Oxalate <- c() #The mass of oxalate in the analyzed sample
+Oxalate <- data_frame(Mass, Titrant, Volume, Mass_Oxalate) #Here are the items you want to include in Table 3
+chem_table(Oxalate, caption = "Table 3: A lovely caption for the table") #Here is the creation of table 3
+
+```
+
+```{r, results="asis", echo=FALSE}
+# This is the information for Table 4 - a table that has all of the raw data for calculating mass % water.
+
+Mass <- c() #The mass used for the analysis
+Mass_final <- c() #mass after heating
+Mass_water <- c() #The mass of water in the analyzed sample
+Water <- data_frame(Mass, Mass_final, Mass_water) #Here are the items you want to include in Table 3
+chem_table(Water, caption = "Table 4: A lovely caption for the table") #Here is the creation of table 4
+
+```
+
+```{r, echo=FALSE}
+# The statistics code for finding the average and 95% CI of Mass % Fe.  This is the same code used in CHEM 101 and can be found on the statistics help sheet found on Moodle. 
 
 
 ```
 
-A well-written paragraph that covers the following:
 
-- Restate the purpose.  
+```{r, echo=FALSE}
 
-- Describe (BRIEFLY) how the experiment was used to analyze the purpose.  Don’t describe the calculations.
+#The statistics code for finding the average and 95% CI of K. This is the same code used in CHEM 101 and can be found on the statistics help sheety found on Moodle.
 
-- State the main take home message or result (MW and pKa of unknown acid) and how your data supports this conclusion.  
+```
 
-- Include direct parenthetical reference to figure 1.  
+```{r, echo=FALSE}
 
-- Identify one concern or reservation you may have regarding your results.  (Please do not include "inexperience" as one such reservation.)
+#The statistics code for finding the average and 95% CI of Oxalate. This is the same code used in CHEM 101 and can be found on the statistics help sheety found on Moodle.
+
+```
+
+```{r, echo=FALSE}
+
+#The statistics code for finding the average and 95% CI of Water. This is the same code used in CHEM 101 and can be found on the statistics help sheety found on Moodle.
+
+```
+
+
+```{r, results="asis", echo=FALSE}
+
+# Below you create a data frame and a table for your statistical results.  Make sure that after you knit your report to word, you go back to this table and fix the column headings to better represent the columns and include units in the column headings.  You should also look at the numbers in the table and be certain they correctly represent the correct number of sig figs.
+
+MassPer <- c("% Fe", "% K", "% Ox", "% W")
+Avg <- c(avgFe, avgK, avgOx, avgWa) #Make sure these vectors match how you named the averages above.
+CI95 <-  c(CI95Fe, CI95K, CI95Ox, CI95Wa) #Make sure these vectore match how you named the averages above.
+SD <- c(SdFe, SdK, SdOx, SdW) #Make sure these vectors match how you named the standard deviations above.
+RSD <-       #Calculate the Relative Standard Deviation
+Stats <- data_frame(MassPer, Avg, CI95, RSD) #Here are the items you want to include in Table 5
+chem_table(Stats, caption = "Table 5: A lovely caption for the table") #Here is the creation of table 5
+
+
+```
+
+```{r, results="asis", echo=FALSE}
+
+# Below you create a data frame and a table for your empirical formula calculations.  Make sure that after you knit your report to word, you go back to this table and fix the column headings to better represent the columns and include units in the column headings.  You should also look at the numbers in the table and be certain they correctly represent the correct number of sig figs.
+
+Item <- c("Fe", "K", "Oxalate", "Water")
+Avg <- c(avgFe, avgK, avgOx, avgW) #Make sure these vectors match how you named the averages above.
+Mass <-   #Calculate the mass in 100 g of green crystal product
+MW <- c() #The molecular weight for each of the items.  Make sure you include at least 4 sig figs.
+moles <-   #Calculate the moles of each item in 100 g of green crystal product.
+R_moles <-   #Calculate the relative moles of each item in the green crytal product.
+RSD_Low <-   #The RSD for the lowest number of relative moles.
+RSD_moles <- (RSD^2+RSD_Low^2)^0.5  #Calculate the RSD for the R_moles
+EX_SD <- R_moles*RSD_moles/100 #Calculate the absolute standard devation for the R moles
+EX_95CI <- qt(0.975,df=NW-1)*EX_SD/(sqrt(R_moles))
+Formula <- data_frame(Item, Mass, MW, moles, R_moles, EX_95CI) #Here are the items you want to include in Table 6
+chem_table(Formula, caption = "Table 6: Wonderful Caption") #Here is the creation of table 6
+
+```
+
+## Discussion
+
+
+
+## Bibliography
+
 
 
 ## Calculations Appendix
 
-Either include a figure from your notebook or type in a sample of the calculations done to determine:
 
-1.[NaOH] by standardization
+```{r echo=FALSE, fig.cap=" "}
+#Include the calculations from your notebook.  Make sure every calculation is present starting with your raw data.  The calculations should be clear, easy to follow, and includes units with all numbers.
 
-2.Molecular Weight of unknown acid 
+#To insert a picture of your calculations you should use the code below and the figure should be saved in the same folder as your report file:
+
+include_graphics("Calc.pdf")
+
+```
+
+##Authors' Contributions
+
+Under this section please report what you did to contribute to this lab report and sign it with your initials.
+
+_____(initials) I ____________________ did __________________________________
+
+
+_____(initials) I ____________________ did __________________________________

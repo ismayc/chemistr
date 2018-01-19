@@ -14,25 +14,24 @@ library(chemistr)
 
 
 ```{r, echo=FALSE}
-# Here is the chunk in which you will input all of your raw data and also do the mathematical analysis to get the GAWs for all your trials.
+#Here is the chunk in which you will input all of your raw data and also do the mathematical analysis to get the GAWs of Mg for eacho f your trials.
 
-Trial <- c(1, 2, 3) #Make sure you replace the values in each vector with your own data.
-Mass <- c(0.0400, 0.0320, 0.0400) #This is in grams
-VolumeH2 <- c(10.0, 10.0, 11.1) #This is the volume of H2 collected in mL
-Temp <- c(18.2, 18.2, 18.8) #This is in Celcius
-Patm <- c(29.83, 29.83, 29.83) #This is in inches of Hg
-Pvap <- c(2.090, 2.090, 2.170) #This is in kPa
+Trial <- c() #To make a nice table we want to number our trials
+Mass <- c() #This is the mass of the metal in grams.  Include all sig figs
+VolumeH2 <- c() #This is the volume of H2 collected in mL.  Include all sig figs
+Temp <- c() #This is the temperature recorded in Celcius
+Patm <- c() #This is the pressure in the room in units of mm Hg
+Pvap <- c() #This is the vapor pressure of water in kPa
 PH2 <- #Here is where you write the math to calculate partial pressure H2 in units of atm
-nH2 <- #Here is where you write the math to calculate moles of H2 from grams 
-GAW <- #here is where you will write the math to calculate the GAW of Mg for each trial in g/mol
+nH2 <- #Here is where you write the math to calculate moles of H2 from all the other data 
+GAW <- #Here is where you will write the math to calculate the GAW of Mg for each trial in g/mol
 GAWs <- data_frame(Trial, Mass, VolumeH2, GAW) #Here are the items you want to include in Table 1
 ```
 
 ```{r, results="asis", echo=FALSE}
 
-# Below you create a data frame and a table for your raw data and results.  Make sure that after you knit your report to word, you go back to this table and fix the column headings to better represent the columns and include units in the column headings.  You should also look at the numbers in the table and be certain they correctly reresent the correct number of sig figs.
+# Below you create a table for your data frame created above.  Make sure that after you knit your report to word, you go back to this table and fix the column headings to better represent the columns and include units in the column headings.  You should also look at the numbers in the table and be certain they correctly represent the correct number of sig figs.
 
-GAWs <- data_frame(Trial, Mass, VolumeH2, GAW) #Here are the items you want to include in Table 1
 chem_table(GAWs, caption = "Table 1: A lovely caption for the table") #Here is the creation of table 1
 
 
@@ -40,7 +39,7 @@ chem_table(GAWs, caption = "Table 1: A lovely caption for the table") #Here is t
 ```
 
 ```{r, echo=FALSE}
-# Here is where you will use the code used in Exp. 1 and last semester to calculate the average and 95% confidence interval for the GAW of Mg from your data. 
+#Here is where you will use the code used previously to calculate the average and 95% confidence interval for the GAW of Mg from your data.
 
 
 
@@ -48,24 +47,14 @@ chem_table(GAWs, caption = "Table 1: A lovely caption for the table") #Here is t
 ```
 
 
-```{r, results="asis", echo=FALSE}
-# Below is where you will create a data frame for your statistic results and then create a nice table to present the results in your report.  DON'T forget to go back in your word document and change the column headings and the numbers in the table to reflect the correct number of sig figs.
-
-GAWStats <- data_frame(average, N, CI95) #This is the data you are going to put into Table 2
-chem_table(GAWStats, caption = "A lovely caption for the table") #Here is the creation of table 2
-
-```
-
-
-
-In the text of this section a paragraph should be present that: 1.  Restates the purpose of the experiment, 2.  Describes (BRIEFLY) how the experiment was used to analyze the purpose, 3.  Describes the results including the important information from each table (while directly referencing them parenthetically) and any observations or other sources of data that will be further used in your analysis of the metal, 4. Reports the Avg +/- 95% CI of the GAW for Mg.  Watch sig figs!
+In a single paragraph summarize the results of this experiment. See Instructions for details.
 
 
 \clearpage
 
 ## Discussion
 
-In this paragraph(s) you should 1.  Restate the purpose, 2.  State the main take home message or result (GAW of Mg), 3.  Report the literature value for the GAW for Mg (with a citation and reference), 4.  Analyze the data for systematic error, explain how you came to your conclusion of whether there is or is not systematic error,  5.  Report the % Relative Error (see Exp. 1 for details on this), 6.  If there is evidence of systematic error, then explain ONE source of systematic error.  Make sure in describing the source that you explain how it would effect the outcome (larger/smaller GAW). If there is no evidence of systematic error, then describe ONE (most likely largest) source of random error and how that source can be improved.   
+In a single well-formulated paragraph report your results along with an analysis of the errors in the experiment.  See Instructions for details. 
 
 ## References
 
@@ -74,16 +63,14 @@ Include the reference for your GAW of Mg.
 
 ## Calculations Appendix
 
-Either include a figure from your notebook or type in a sample of the calculations done for to determine the GAW of Mg for trial #1. Make sure every calculation is present starting with your raw data.  The calculations should be clear, easy to follow, and includes units with all numbers.  Scan your calculations from your notebook. DO NOT use a camera to take a picture.  These pictures are much harder to read.
-
-To insert a figure of your calculations you should use the code below and the figure should be saved in the same folder as your report file:
+Include a picture of your calucations for the GAW of Trial 1.  Make sure they are easy to read and include all units and conversion factors.
 
 ```{r echo=FALSE, fig.cap="Insert Caption"}
-include_graphics("Title of Figure, example: Calc.pdf")
+include_graphics("Title of Figure, example: Calc.pdf)
 ```
 
 
-## Authors Contributions
+##Authors' Contributions
 
 Under this section please report what you did to contribute to this lab report and sign it with your initials.
 
