@@ -115,7 +115,8 @@ R_moles <-   #Calculate the relative moles of each item in the green crytal prod
 RSD_Low <-   #The RSD for the lowest number of relative moles.
 RSD_moles <- (RSD^2+RSD_Low^2)^0.5  #Calculate the RSD for the R_moles
 EX_SD <- R_moles*RSD_moles/100 #Calculate the absolute standard devation for the R moles
-EX_95CI <- qt(0.975,df=NW-1)*EX_SD/(sqrt(R_moles))
+n <-  #The lowest number of trials included in the mass percent averages.  For example if you has 7 trials for Fe and 11 for all the others, then n = 7. 
+EX_95CI <- qt(0.975,df=n-2)*EX_SD/(sqrt(n))
 Formula <- data_frame(Item, Mass, MW, moles, R_moles, EX_95CI) #Here are the items you want to include in Table 6
 chem_table(Formula, caption = "Table 6: Wonderful Caption") #Here is the creation of table 6
 
