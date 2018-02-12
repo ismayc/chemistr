@@ -1,94 +1,65 @@
----
+----
 title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
 output: chemistr::chem_lab_word
 ---
 
-```{r, include=FALSE}
+```{r setup, include=FALSE}
 library(chemistr)
-```
+```        
 
+## Data
 
-## Results and Discussion
-
-```{r, echo=FALSE, fig.cap = "Input Caption"}
-
-#Here is the chunk in which you will analyze the Part A data: determining the order in respect to iodide.
-
-
-I <- c() #This is the concentrations of iodide in M
-RateA <- c() #This is rate in Absorbance/sec
-RateB <-  #Here we mathematically change the rate from Abs/sec to M/sec
-LogI <-  #Here you mathematically change the [I-] to Log([I-])
-LogRateB <- #Here you mathematically change the Rate to Log(Rate)  
-I_Data <- data_frame(LogI, LogRateB) #Here are the items you want to graph
-
-chem_scatter(data =I_Data, xvar = LogI, yvar = LogRateB, xlab = "Input",
-     ylab = "Input")
-fit1 <- lm(LogRateB ~ LogI)
-Slope <-summary(fit1)$coef[1]
-SE <-summary(fit1)$coef[2]
-N <- length(I)
-CI95_Slope <- qt(0.975,df=N-1)*SE
-
-#By typing Slope or CI95_Slope into the console, you can determine what the slope +/-95% CI is and include it in the text and caption of your report.
-```
-
-
-```{r, echo=FALSE, fig.cap = "Input Caption"}
-
-# Here is the chunk in which you analyze the Part B Data: determining the order in respect to persulfate.  Use the above chunk as a guide for anlayzing this data.
-
-
+```{r}
+#If you are inserting a csv file that was exported from the spectrophotometers, the following code may be of help to you (details are found in Appendix 9B).  You may also want to mathematically reconfigure the data so it is easier to graph.
+T2 <- read.csv("~/CHEM102_Dcass/E9 Kinetics/TRIAL_2.CSV") #here is the code that reads the csv file.  You will need to change what is in quotes.
+T2 <- subset(T2, Time.s. <= 300) #This code might be useful if you don't want to use all of the data.  In this code only the data which has time less than or equal to 300 seconds will be used.
 
 
 
 ```
 
-
-```{r, echo=FALSE}
-
-#Here is the chunk in which you calculate the k for each trial.
-m <- #Based upon your data above, what is the stoichimetric number for m
-n <-  #Based upon your data above, what is the stoichiometric number for n
-k_PartA <- #Include the math that uses your experimentally determined rate law to caluclate k for each trial in Part A.  Hint:  you don't need to calculate each trial by hand.  Use the values above to do the calculations.
-k_PartB <- #Include the math that uses your experimentally determined rate law to caluclate k for each trial in Part B.
-ktotal <- c(k_PartA, k_PartB) #This combines the two vectors into one set of data
-avek <- mean(ktotal) # our average k
-Stdevk <- sd(ktotal) # our standard deviation of k
-nk <- length(ktotal) # the number of k values 
-CI95k <- qt(0.975,df=nk-1)*Stdevk/(sqrt(nk)) #calculation of 95% CI
-
-#By typing avek or CI95k into the console, you can determine what the k +/-95% CI is and include it in the text of your report.
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+# Here is a R chunk where you may want to create a graph with your kinetics data.   
+chem_scatter(data = T2, xvar = Time.s., yvar = Absorbance, xlab = "X label", ylab = "Y label") #This is the info for making the graph.  You will need to change your data and variables to reflect your naming system. Remember that it is automatically set up to include a fit line to the equation Y=mx+b.
+fit1 <- lm(Absorbance ~ Time.s., data = T2)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
+summary(fit1) #This will show the fit parameters in your document.  Delete this line if you don't want the rough table showing up in your final document.
 ```
 
+```{r, results="asis", echo=FALSE}
 
-In the discussion paragraph(s) you should 1.  Restate the purpose.  2.  Describe (BRIEFLY) how the experiment was used to analyze the purpose.  3.  State the main take home message or result (Mechanism supported) and how your data supports this conclusion.  This should include direct parenthetical references to both figures.  4.  Report the Avg +/- 95% CI of k at 25 C (watch sig figs and units).  5.  Analyze the data for systematic error, explain how you came to your conclusion of whether there is or is not systematic error,  6.  Analyze the data for random error by reporting the % Relative Error for m, n, and k. 7.  If there is evidence of systematic error, then explain ONE source of systematic error.  Make sure in describing the source that you explain how it would effect the outcome. If there is no evidence of systematic error, then random error is your biggest issue (even if it too is small).  Then you should describe ONE (most likely largest) source of random error and how that source can be improved.  7.  Describe how you might expand upon this experiment (not redo it, but assuming this experiment worked what might the next step be?) 
+# If you want to include a data table in your report, you can use this chunk.  It may be modified to fit the data you want in your report.  Below is just an example, NOT necesssary.  Don't forget to modify the table headings and sig figs after knitting your document.
+
+Order <- c(0, 1, 2)
+Blue <- c(0.9977, 0.9997, 0.8253)
+Bleach <- c(0.7653, 0.8882, 0.9999)
+R_2 <- data.frame(Order, Blue, Bleach)
+
+chem_table(R_2, caption = "Table 1: A lovely caption for the table") #Here is the creation of table 1
+
+
+```
+
+## Discussion
+
+See information in E9 Instructions for what should be included in the discussion.
 
 ## References
 
-Include any relevant references.
+Include any references used in writing your report.  See the CHEM101 library site for information on how to write the citation.
 
 
 ## Calculations Appendix
 
-Either include a figure from your notebook or type in a sample of the calculations done to determine:
-1.  The concentration iodide (M)
-2.  The concentration of persulfate (M)
-3.  The rate in M/sec
-4.  A sample calculation of k 
+Include a picture of the calculations outlined in the Exp 9 instructions.  Make sure they are easy to read and include all units and conversion factors.
 
-Make sure every calculation is present starting with your raw data.  The calculations should be clear, easy to follow, and includes units with all numbers.  Scan your calculations from your notebook. DO NOT use a camera to take a picture.  These pictures are much harder to read.
-
-To insert a figure of your calculations you should use the code below and the figure should be saved in the same folder as your report file:
-
-```{r echo=FALSE, fig.cap="Insert Caption"}
+```{r echo=FALSE, fig.cap=" "}
 include_graphics("Title of Figure, example: Calc.pdf)
 ```
 
 
-##Authors' Contributions
+## Authors' Contributions
 
 Under this section please report what you did to contribute to this lab report and sign it with your initials.
 
