@@ -21,7 +21,8 @@ T_Analysis <- c("1:30 pm", "1:50 pm") #The time the analysis began
 Raw_Counts <- c(22310, 15320) #The counts obtained directyl from the instrument
 Counts_o <- c(23268, 16279) #The counts at T=0
 Mass_K <- c(0.03833, 0.02682) #calculated amount of K in each sample
-K <- data_frame(Sample, Mass, EOB, T_Analysis, Raw_Counts, Counts_o, Mass_K) #Here are the items you want to include in Table 1
+MassPer_K <- c(" ", "22.7%") #Mass % K in Green Crystals
+K <- data_frame(Sample, Mass, EOB, T_Analysis, Raw_Counts, Counts_o, Mass_K, MassPer_K) #Here are the items you want to include in Table 1
 chem_table(K, caption = "Table 1: Raw data for calculating the mass percent potassium in an unknown sample using neutron activation analysis") #Here is the creation of table 1
 
 ```
@@ -33,7 +34,8 @@ Mass <- c() #The mass used for the analysis
 Slope <- c() #The slope from the standard curve.  
 Fe_dilute <- c() #The concentration of Fe in the diluted sample (M)
 Mass_Fe <- c() #The mass of iron in the analyzed sample
-Fe <- data_frame(Mass, Slope, Fe_dilute, Mass_Fe) #Here are the items you want to include in Table 2
+MassPer_Fe <- c() #The mass percent of iron in the green crystals
+Fe <- data_frame(Mass, Slope, Fe_dilute, Mass_Fe, MassPer_Fe) #Here are the items you want to include in Table 2
 chem_table(Fe, caption = "Table 2: A lovely caption for the table") #Here is the creation of table 2
 
 ```
@@ -45,7 +47,8 @@ Mass <- c() #The mass used for the analysis
 Titrant <- c() #Molarity of the titrant
 Volume <- c() #The volume of titrant used in the titration in mL
 Mass_Oxalate <- c() #The mass of oxalate in the analyzed sample
-Oxalate <- data_frame(Mass, Titrant, Volume, Mass_Oxalate) #Here are the items you want to include in Table 3
+MassPer_Ox <- c() #The mass percent of oxalate in the green crystals
+Oxalate <- data_frame(Mass, Titrant, Volume, Mass_Oxalate, MassPer_Ox) #Here are the items you want to include in Table 3
 chem_table(Oxalate, caption = "Table 3: A lovely caption for the table") #Here is the creation of table 3
 
 ```
@@ -56,7 +59,8 @@ chem_table(Oxalate, caption = "Table 3: A lovely caption for the table") #Here i
 Mass <- c() #The mass used for the analysis
 Mass_final <- c() #mass after heating
 Mass_water <- c() #The mass of water in the analyzed sample
-Water <- data_frame(Mass, Mass_final, Mass_water) #Here are the items you want to include in Table 3
+MassPer_water <- c() #The mass percent water in the green crystals
+Water <- data_frame(Mass, Mass_final, Mass_water, MassPer_water) #Here are the items you want to include in Table 3
 chem_table(Water, caption = "Table 4: A lovely caption for the table") #Here is the creation of table 4
 
 ```
@@ -95,7 +99,7 @@ MassPer <- c("% Fe", "% K", "% Ox", "% W")
 Avg <- c(avgFe, avgK, avgOx, avgWa) #Make sure these vectors match how you named the averages above.
 CI95 <-  c(CI95Fe, CI95K, CI95Ox, CI95Wa) #Make sure these vectore match how you named the averages above.
 SD <- c(SdFe, SdK, SdOx, SdW) #Make sure these vectors match how you named the standard deviations above.
-RSD <-       #Calculate the Relative Standard Deviation
+RSD <-       #Calculate the Relative Standard Deviation.  See Stats help sheet on Moodle if you need help.
 Stats <- data_frame(MassPer, Avg, CI95, RSD) #Here are the items you want to include in Table 5
 chem_table(Stats, caption = "Table 5: A lovely caption for the table") #Here is the creation of table 5
 
