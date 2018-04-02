@@ -1,41 +1,47 @@
-----
+---
 title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
 output: chemistr::chem_lab_word
 ---
 
-```{r, include=FALSE}
+```{r setup, include=FALSE}
 library(chemistr)
+install.packages("devtools", repos = "http://cran.us.r-project.org")
+library("devtools")
+install_github(repo = "dtharvey/titrationCurves",repos = "http://cran.us.r-project.org")
+library("titrationCurves")
+```        
+
+
+##RESULTS AND DISCUSSION 
+
+```{r, echo=FALSE}
+#Here is the area where you will input your pH and volume data for your titration curve.
+volume <- c()
+volume <- #mathematically subtract your initial volume from all of your values, so that Vi = 0mL
+ph <- c()
+Total <- data.frame(volume, ph)
 ```
 
-## Results and Discussion
+```{r, echo=FALSE, fig.cap="Insert Caption"}
 
-```{r, echo=FALSE, fig.cap = "Input Caption that clearly identify the unknown number, equivalence point and the pKa of the unknown acid"}
+#Here is a plot of the titration curve and a plot of the first derivative of the data.
+par(mfrow=c(1,2)) #This creates one figure with two plots side-by-side.  Therfore you only need to write a single caption that discusses both plots.
 
-#Here is the chunk in which you will input the data and graph your volume versus pH plot.  See many of the previous lab reports for the code to do this.
+plot(Total$volume, Total$ph, xlab = "X axis label", ylab = "Y axis label") #Titration Curve plot.  This is similar to the chem_scatter function, but is set out as plot(xvariable, yvariable).
 
+Deriv <- derivative(Total, plot=FALSE) #This is a function that will take the first derivative of the titration data by caluclating the slope between every two adjoining points.  Then it creates a new first_deriv data frame.
 
+plot(Deriv$first_deriv$x1, Deriv$first_deriv$y1, type = "l", xlab = "X axis label", ylab = "Y axis label", xaxp = c(0, 33, 33)) #xaxp allows you to change the tick marks on the x axis.  This can be helpful for finding the exact volume with the highest first derivative value (slope from graph #1).  Currently the code says to make ticks from 0mL to 33mL with 33 tick marks.  This will create tick marks every 1 mL.
 
 ```
 
-A well written paragraph that covers the following:
-
-•Restate the purpose.  
-
-•Describe (BRIEFLY) how the experiment was used to analyze the purpose.  Don’t describe the calculations.
-
-•State the main take home message or result (MW and pKa of unknown acid) and how your data supports this conclusion.  
-
-•Include direct parenthetical reference to figure 1.  
-
-•Identify one concern or reservation you may have regarding your results.  (Please do not include "inexperience" as one such reservation.)
-
+Include a discussion paragraph as outlined in Exp. 11 instructions.
 
 ##Calculations Appendix
 
-Either include a figure from your notebook or type in a sample of the calculations done to determine:
+Include a picture of the following calculations from your lab notebook:
 
-1.[NaOH] by standardization
-
-2.Molecular Weight of unknown acid 
+1.  [NaOH] by standardization
+2.  MW of unknown acid
