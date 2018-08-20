@@ -10,15 +10,15 @@ library(chemistr)
 ```        
 
 
-## Data
+##Data
 
  
 ```{r, echo=FALSE}
 # Here is where you input your data for Part A.  
-Film <- c(1, 2, 4, 8) #This is the # of films you have added to the cuvette
-log_F <-
-T1 <- c(10, 100, 1000, 100000) #This is the vector that includes the transmittance value you collected for each of the films added.
-log_T1 <-
+Film <- c() #This is the # of films you have added to the cuvette
+T1 <- c() #This is the vector that includes the transmittance value you collected for each of the films added.
+log_F <-              #A power model requires you to take the log of the independent variable
+log_T1 <-           #The power model and the exponential model require you to take the log of the dependent variable.
 film_data <- data_frame(Film, T1, log_F, log_T1) #This is a data frame.  This links all your variables into a single table.
 ```
 
@@ -32,7 +32,7 @@ summary(fit1) #This will show the fit parameters in your document
 
 
 ```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of an exponential relationship for part A, log(Y) vs X.  
+#Here is where you ut the code for plotting the model of an exponential relationship for part A, log(Y) vs X.  Use and modify the code in the previous R chunk.
 
 
 
@@ -40,7 +40,7 @@ summary(fit1) #This will show the fit parameters in your document
 ```
 
 ```{r plot3, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of a power relationship for part A, log(x) vs log(Y).  
+#Here is where you put the code for plotting the model of a power relationship for part A, log(Y) vs log(x).  
 
 
 
@@ -48,12 +48,12 @@ summary(fit1) #This will show the fit parameters in your document
 ```
 
 ```{r dye_data, echo=FALSE}
-# Here is where you input your data for Part B,  Use part A as a model for this.
+# Here is where you input your data for Part B,  Use part A as a model for how to input the correct code.
 
 ```
 
 ```{r plot4, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of a linear relationship for part B, X vs Y.  
+#Here is where you put the code for plotting the model of a linear relationship for part B, Y vs X.  
 
 
 
@@ -69,7 +69,7 @@ summary(fit1) #This will show the fit parameters in your document
 ```
 
 ```{r plot6, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of a power relationship for part B, log(X) vs log(Y).  
+#Here is the code for plotting the model of a power relationship for part B, log(Y) vs log(X).  
 
 
 
@@ -90,7 +90,7 @@ R2 <- data_frame(Model, Film_R2, Dye_R2) #Here are the items you want to include
 chem_table(R2, caption = "Insert Caption")
 ```
 
-## Discussion
+##Discussion
 
 Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two).  Please refer to the Beer's Law Experiment #2 for information on what to include in your discussion as well as an example discussion.
 
