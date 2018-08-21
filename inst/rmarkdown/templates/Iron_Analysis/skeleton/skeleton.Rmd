@@ -1,31 +1,39 @@
 ---
-title: "Insert Title"
-author: "Insert Name"
-date: "Insert Date"
 output: chemistr::chem_lab_word
 ---
 
 ```{r, include=FALSE}
 library(chemistr)
 ```
+| Reed Chemistry Analytics
+| Chem 101 "Insert your Lab Section"
+| Portland, OR 97202
+
+---
+
+| `r format(Sys.Date(), "%B %e, %Y") #This code provides the current date`
+
+Dear Health Advocacy Group:
+`r #Below this line you should type your letter`
 
 
-## Abstract
+Sincerely,
 
-Here you will provide a SHORT one-paragraph summary of the experiment.  It should include the question being asked, the method of analysis, and the take home finding(s) from the experiment.
+Your Names (first and last)
 
-## Results
+
+######Calculations Appendix
 
 ```{r, echo=FALSE}
 # Here is where you input your standards data that you want to graph
-Iron <- c() # This should be concnetration in units of Molarity (M)
-Absorbance <- c() #Don't forget to include your blank value (0 M Fe)
+Iron <- c() # This should be concetration of your iron standards
+Absorbance <- c() #Don't forget to include your blank value 
 iron_data <- data_frame(Iron, Absorbance)
 ```
 
 
 ```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
-# Here is where you create your standard curve.  Notice that we are again fitting the data to the line Y=mX+0.  In order to get the slope of your fit line, run all previous chunks and this chunk.  The summary(fit1) will give you the slope of your standard curve (Iron Estimate) as well as your uncertainty (Std. Error, NOT Residual Standard error) in the coefficients section of the summary.  Include the molar absorptivity (with units) in your caption.
+# Here is where you create your standard curve. 
 
 
 
@@ -34,49 +42,18 @@ iron_data <- data_frame(Iron, Absorbance)
 
 
 ```
-
-
-## Discussion
-
-See Exp. 3 Lab Report Instruction, page 3 for information on what to include in your discussion.
-
-## References
-
-
-
-
-\clearpage
-
-## Calculations Appendix
-
-Here is where you put in your calculations, either by using equations or inserting a picture of your calculations or using R for the statistics. 
-
-For a good source of writing mathematical equation symbols, see <http://www.rpi.edu/dept/arc/training/latex/LaTeX_symbols.pdf>
-
-Example:
-$5M*5L=5 \text{ moles } Fe$
-
-Example of writing an equation or molecular formula $H_2O + CO_2 \rightarrow H_2CO_3$
-
-A figure can be inserted by using the following format, so long as the picture is saved in the same folder as the RMarkdown file.  NOTE:  You don't have the picture named below, so this RMarkdown file might not knit until you either delete line 66-68 or change the picture to be a picture in your RMarkdown folder.
 
 
 ```{r image, echo=FALSE, fig.cap="Insert Caption"}
+#This is a GOOD picture of your calculation from Abs to mg Fe/Tablet.  Include every calc and every unit.
+
 include_graphics("Name of Figure, ex: Iron.jpg")
 ```
 
-Calculations to include by hand:
 
-1.  Concentration of Iron in final sample dilution (using standard curve equation)
+```{r, echo=TRUE, results = "asis"}
 
-2.  Amount of Iron in Tablet (in mg/tablet), accounting for dilutions done in processing the sample.
-
-3.  Percent Variation
-
-
-```{r Stats, echo=TRUE}
-
-#R Calculations: Average Iron, Standard Deviation, 95% Confidence Interval.  Use the Stats help sheet on Moodle for inputting this code.
+#R Calculations for Average Iron, Standard Deviation, 95% Confidence Interval.  Use the Stats help sheet on Moodle for inputting this code.  Finish with creating a chem_table of your stats results (with the correct sig figs)
 
 
 
