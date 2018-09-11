@@ -9,38 +9,42 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```
 
-## Abstract
-
-A brief description of the purpose, procedure, and conclusions.
-
-## Leaf Sample
-
-Description of leaf sample with where and when it was obtained.  May be helpful to include a picture of the leaf used.
 
 ## Results
 
+`r #note that any data chunks below that you don't want in your lab report can simply be deleted.  If you need to add results chunks, feel free to add as needed.`
+
+
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you input the code for your first Chromatogram picture.
+#Here is where you input the code for a Chromatogram picture.  Remember the picture should be uploaded to your lab report folder.
 include_graphics("Fig1.jpg")
 ```
 
-```{r, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you input the code for your second Chromatogram picture.
-include_graphics("Fig2.jpg")
+```{r, results = 'asis', echo=FALSE}
+# Table 1 - A table showing the mobile phase results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
+Mobile_phase <- c("100 % Cyclohexane") #Input the ratio of mobile phase components that were tested
+Rf_Anthocyanin <- c() #Input the calculated Rf values of anthocyanin for the different mobile phase tests
+Rf_ChlorA <- c() #Input the calculated Rf values of chlorophyll A for the different mobile phase tests
+Rf_ChlorB <- c() #Input the calculated Rf values of chlorophyll B for the different mobile phase tests
+Rf_Xan <- c() #Input the calculated Rf values of xanthophyll for the different mobile phase tests
+Rf_Car <- c() #Input the calculated Rf values of carotenoid for the different mobile phase tests
+Mobile <- data.frame(Mobile_phase, Rf_Anthocyanin, Rf_ChlorA, Rf_ChlorB, Rf_Xan, Rf_Car)
+chem_table(Mobile, caption = "Table 1: Insert caption")
 ```
 
+
 ```{r, results = 'asis', echo=FALSE}
-# Table 1 - A table showing the chromatogram results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
+# Table 2 - A table showing the chromatogram results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
 Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
 Rf_Control <- c() #Input the calculated Rf values from the control chromatogram provided
 Rf_Green <- c() #input the calculated Rf values from the Green leaf chromatogram
 Rf_Colored <- c() #input the calculated Rf values from the Colored leaf chromatogram
 Rf <- data.frame(Pigment, Rf_Control, Rf_Green, Rf_Colored)
-chem_table(Rf, caption = "Table 1: Insert caption")
+chem_table(Rf, caption = "Table 2: Insert caption")
 ```
 
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you input the code for your first spectroscopy picture.  You don't need to include all your pictures, since the data is reported in the table, but you should include a few as examples of what you were looking at.  For more figures, just repeat the same type of code you place here, but in a new R chunk.
+#Here is where you input the code for a spectroscopy picture.  You don't need to include all your pictures, since the data is reported in the table, but you may want to include at least one as a example of what you were looking at.  
 include_graphics("Fig3.jpg")
 ```
 
@@ -48,44 +52,21 @@ include_graphics("Fig3.jpg")
 # Table 2 - A table showing the spectroscopy results.  Use the Anthocyanin data from the acid samples and the other pigment data from the non-acid samples.
  
 Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
-Spec_Control<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments. 
-Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place.
+Spec_Control<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments. If there are multiple lambda max values, you can use quotes such as c("252, 298", "520").  This shows the first pigment has two lambda max values at 252 and 298 nm while the second pigment only has a lammbda max at 520 nm.
+Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place.  
 Spec_Colored <- c() #This is the lambda max from the UV/VIS spectrum of the colored leaves. If the pigment was not seen, use "NA" in its place.
 Spec <- data.frame(Pigment, Spec_Control, Spec_Green, Spec_Colored)
 chem_table(Spec, caption = "Table 2: Insert caption")
 ```
 
-# Chromatography Results
 
-The text that accompanies this section should include (written in a single paragraph):
-
-1.  Purpose of this part of lab.
-
-2.  A summary of the observations you made of the chromatograms. (see example results section on Moodle)
-
-3.  Directly reference both chromatogram figures(Figure 1 and Figure 2) when telling the reader what is important to see in those figures.
-
-4.  Directly reference the table when telling the reader what is important to see in the table regarding the chromatograms (Table 1)
-
-# Spectroscopy Results
-
-The text that accompanies this section should include (written in a single paragraph):
-
-1.  Purpose of this part of lab.
-
-2.  A summary of the observations you made of the spectrum. (see lab instructions for details)
-
-3.  Directly reference and spectrum figures (Figures 3, etc. Reference all figures of spectrum) when telling the reader what is important to see in those figures.
-
-4.  Directly reference the table when telling the reader what is important to see in the table, regarding the UV/VIS results (Table 2)
 
 
 ## Discussion
 
-In a well worded paragraph include the following discussion points:
+`r In an evidence based discussion, present a claim for how pigment changes occur to tree leaves in the fall.  See lab instructions for more details.`
 
-1.  What model did your data support?
-2.  How did the data (both parts) support your conclusion.
-3.  What are the assumptions you made in interpreting your results or what concerns do you have with the interpreting your results (specific examples of accuracy or precision problems, be clear what type of error it is).
-4.  How does your data compare with others, either other lab groups or, even better, other literature sources.
-5.  What should be done next?  How can you expand upon what you discovered in this experiment?
+
+## References
+
+'r See how to cite on Moodle [link](https://moodle.reed.edu/mod/page/view.php?id=87220)`
