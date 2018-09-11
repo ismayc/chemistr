@@ -9,11 +9,11 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```
 
-## Statistical Analysis of Hydrogenation
+## Statistical Analysis of FAME
 
-```{r, include=TRUE}
+```{r, echo=TRUE}
 
-#In this section you should put the code for calculating the average, standard deviation, and 95% confidence interval.  This code can be found on the 95% CI help sheet on Moodle.  please include the table, as shown on the help sheet, too.
+#In this section you should put the code for calculating the average, standard deviation, and 95% confidence interval for Palmitic Acid.  Help for this can be found on Moodle.  Make sure to include a data table in your results.  Then repeat this for all of the other fatty acids.
 
 
 ```
