@@ -1,4 +1,4 @@
-----
+---
 title: "Insert Title"
 author: "Insert Name"
 date: "Insert Date"
@@ -12,7 +12,7 @@ library(chemistr)
 
 ## Results
 
-`r #note that any data chunks below that you don't want in your lab report can simply be deleted.  If you need to add results chunks, feel free to add as needed.`
+`r #note that any data chunks below that you don't want in your lab report can simply be deleted.  If you need to add results chunks, feel free to add as needed.  These are simply suggested ways to present your data.`
 
 
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
@@ -21,22 +21,22 @@ include_graphics("Fig1.jpg")
 ```
 
 ```{r, results = 'asis', echo=FALSE}
-# Table 1 - A table showing the mobile phase results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
+# Table 1 - A table showing the mobile phase results.  Note: If a pigment is missing a data point, then use "NA" in place of the value  Use NT if the datapoint was not analyzed due to time or other issue.
 Mobile_phase <- c("100 % Cyclohexane") #Input the ratio of mobile phase components that were tested
-Rf_Anthocyanin <- c() #Input the calculated Rf values of anthocyanin for the different mobile phase tests
-Rf_ChlorA <- c() #Input the calculated Rf values of chlorophyll A for the different mobile phase tests
-Rf_ChlorB <- c() #Input the calculated Rf values of chlorophyll B for the different mobile phase tests
-Rf_Xan <- c() #Input the calculated Rf values of xanthophyll for the different mobile phase tests
-Rf_Car <- c() #Input the calculated Rf values of carotenoid for the different mobile phase tests
+Rf_Anthocyanin <- c(0) #Input the calculated Rf values of anthocyanin for the different mobile phase tests
+Rf_ChlorA <- c(1) #Input the calculated Rf values of chlorophyll A for the different mobile phase tests
+Rf_ChlorB <- c(1) #Input the calculated Rf values of chlorophyll B for the different mobile phase tests
+Rf_Xan <- c(1) #Input the calculated Rf values of xanthophyll for the different mobile phase tests
+Rf_Car <- c(1) #Input the calculated Rf values of carotenoid for the different mobile phase tests
 Mobile <- data.frame(Mobile_phase, Rf_Anthocyanin, Rf_ChlorA, Rf_ChlorB, Rf_Xan, Rf_Car)
 chem_table(Mobile, caption = "Table 1: Insert caption")
 ```
 
 
 ```{r, results = 'asis', echo=FALSE}
-# Table 2 - A table showing the chromatogram results.  Note: If a pigment is missing a data point for any reason (not taken or pigment not present), then use "NA" in place of the value.
+# Table 2 - A table showing the chromatogram results.  Note: If a pigment is missing a data point due to the pigment not present, then use "NA" in place of the value. Use NT if the datapoint was not analyzed due to time or other issue.
 Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
-Rf_Control <- c() #Input the calculated Rf values from the control chromatogram provided
+Rf_Control <- c() #Input the calculated Rf values from the control pigment chromatogram
 Rf_Green <- c() #input the calculated Rf values from the Green leaf chromatogram
 Rf_Colored <- c() #input the calculated Rf values from the Colored leaf chromatogram
 Rf <- data.frame(Pigment, Rf_Control, Rf_Green, Rf_Colored)
@@ -44,7 +44,7 @@ chem_table(Rf, caption = "Table 2: Insert caption")
 ```
 
 ```{r, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you input the code for a spectroscopy picture.  You don't need to include all your pictures, since the data is reported in the table, but you may want to include at least one as a example of what you were looking at.  
+#Here is where you input the code for a spectroscopy picture.  You don't need to include all your pictures, since the data might be reported in a table, but you may want to include at least one as a example of what you were looking at.  
 include_graphics("Fig3.jpg")
 ```
 
@@ -52,9 +52,9 @@ include_graphics("Fig3.jpg")
 # Table 2 - A table showing the spectroscopy results.  Use the Anthocyanin data from the acid samples and the other pigment data from the non-acid samples.
  
 Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
-Spec_Control<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments. If there are multiple lambda max values, you can use quotes such as c("252, 298", "520").  This shows the first pigment has two lambda max values at 252 and 298 nm while the second pigment only has a lammbda max at 520 nm.
-Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place.  
-Spec_Colored <- c() #This is the lambda max from the UV/VIS spectrum of the colored leaves. If the pigment was not seen, use "NA" in its place.
+Spec_Control<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments found in the appendix of the Leaf lab instructions. If there are multiple lambda max values, you can use quotes such as c("252, 298", "520").  This shows the first pigment has two lambda max values at 252 and 298 nm while the second pigment only has a lammbda max at 520 nm.
+Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place. If the pigment was not tested use "NT" 
+Spec_Colored <- c() #This is the lambda max from the UV/VIS spectrum of the colored leaves. If the pigment was not seen, use "NA" in its place. If the pigment was not tested use "NT" 
 Spec <- data.frame(Pigment, Spec_Control, Spec_Green, Spec_Colored)
 chem_table(Spec, caption = "Table 2: Insert caption")
 ```
@@ -64,7 +64,7 @@ chem_table(Spec, caption = "Table 2: Insert caption")
 
 ## Discussion
 
-`r In an evidence based discussion, present a claim for how pigment changes occur to tree leaves in the fall.  See lab instructions for more details.`
+`r #In an evidence based discussion, present a claim for how pigment changes occur to tree leaves in the fall.  See lab instructions for more details.`
 
 
 ## References
