@@ -1,0 +1,198 @@
+---
+title: 'Experiment 9: Quantifying Carbon Dioxide in Leaf Decay'
+author: "Insert Names"
+date: "Insert Lab Section"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+library(chemistr)
+```   
+
+######Please turn in this worksheet as a PDF to the "E9 Lead Decay Worksheet" Assignment on Moodle [**link**](https://moodle.reed.edu/mod/assign/view.php?id=94726).
+
+
+***
+
+1.  **Balance the following chemical equation that describes the reaction between sodium hydroxide and carbon dioxide**.
+
+
+____ NaOH(aq) + ____CO~2~(g) $\rightarrow$ ____Na~2~CO~3~(aq) + ____H~2~O(l)
+
+
+2.  Report the volume and concentration of NaOH used in each leaf decay jar.  Then calculate the number of moles of NaOH present in each jar at the time they were set up. 
+
+<br>
+```{r, echo=TRUE}
+Vi_NaOH <-                           #Initial Volume of NaOH in mL
+M_NaOH <-                          #Concentration of NaOH (based on the standardization results)
+mole_NaOH_initial_control <-       #Calculate the moles of NaOH in the control jar
+mole_NaOH_initial_exp <-          #Calculate the moles of NaOH in the experimental jar (repeat this step for all experimental jars)
+mole_NaOH_initial_control  #Calculator value
+sigfigs_2A <-     #Number of sig figs in mole_NaOH_initial_control
+mole_NaOH_initial_exp      #Calculator value
+sigfigs_2B <-     #Number of sig figs in mole_NaOH_initial_exp
+```
+
+3.  **From a theoretical standpoint, which jar should have the greater number of moles of NaOH present at the time of the titration? Why?**
+
+<br>
+
+
+
+4.  **Using the titration data that you obtained from the CONTROL jar, calculate the number of moles of NaOH that were present in the CONTROL jar at the time of titration?**
+
+<br>
+```{r, echo=TRUE}
+Vt_NaOH_control <-                           #Volume of NaOH from the control jar that was titrated (mL)
+M_HCl <-                          #Concentration of HCl (based on the standardization results)
+V_HCl_Control <-                  #Volume of HCl used in titration of control jar NaOH (mL)
+mole_NaOH_titration_control <-       #Calculate the moles of NaOH in the control jar at the time of titration
+mole_NaOH_titration_control    #Calculator Value
+sigfigs_4 <-    #Number of sig figs in mole_NaOH_titration_control
+```
+
+
+5.  **By comparing the initial moles of NaOH to the time of titration moles of NaOH, calculate the number of moles of NaOH that were consumed in the CONTROL jar over the course of the experiment.**  
+
+<br>
+```{r, echo=TRUE}
+
+mole_NaOH_Consumed_control <-       #Calculate the moles of NaOH consumed in the control jar 
+mole_NaOH_Consumed_control      #Calculator Value
+sigfigs_5 <-    #Number of sig figs in mole_NaOH_Consumed_control
+```
+
+
+6.  **Using the titration data that you obtained from any LEAF jar(s), calculate the number of moles of NaOH present in the jar at the time of titration.** 
+
+<br>
+```{r, echo=TRUE}
+Vt_NaOH_exp <-                           #Volume of NaOH from the experimental jar that was titrated (mL)
+M_HCl <-                          #Concentration of HCl (based on the standardization results)
+V_HCl_exp <-                  #Volume of HCl used in titration of experimental jar NaOH (mL)
+mole_NaOH_titration_exp <-       #Calculate the moles of NaOH in the exp jar at the time of titration
+mole_NaOH_titration_exp     #Calculator Value
+sigfigs_6 <-    #Number of sig figs in mole_NaOH_titration_exp
+```
+
+7.  **By comparing the initial moles of NaOH to the time of titration moles of NaOH, calculate the number of moles of NaOH that were consumed in the LEAF jar(s) over the course of the experiment.**
+
+<br>
+```{r, echo=TRUE}
+
+mole_NaOH_Consumed_exp <-       #Calculate the moles of NaOH consumed in the experimental jar 
+mole_NaOH_Consumed_exp  #Calculator Value
+sigfigs_7 <-    #Number of sig figs in mole_NaOH_Consumed_exp
+```
+
+8.  **If the control represents how many moles of NaOH were consumed due to things other than decay, calculate the number of moles of NaOH that were consumed in each leaf decay jar due solely to the leaf decay.**
+
+<br>
+```{r, echo=TRUE}
+
+mole_NaOH_Consumed_leaf <-  #Calculate the moles of NaOH consumed in the experimental jar due solely to leaf decay
+mole_NaOH_Consumed_leaf  #Calculator Value
+sigfigs_8 <-  3  #Number of sig figs in mole_NaOH_Consumed_leaff
+```
+
+9.  **Based upon the amount of NaOH consumed in each leaf jar, how many moles of CO~2~ were produced in each leaf jar?**
+
+<br>
+```{r, echo=TRUE}
+
+mole_CO2_produced_leaf <-   #Calculate the moles of CO_2 produced in the experimental leaf jar
+mole_CO2_produced_leaf   #Calculator Value
+sigfigs_9 <-    #Number of sig figs in mole_CO2_produced_leaf 
+```
+
+10.  **Since we are looking to see how long it take for an entire leaf to decay, use the length of your experiment to express the leaf decay as moles of CO~2~ per day per gram of leaf.**
+
+<br>
+```{r, echo=TRUE}
+
+mass_leaf <-   #The mass of leaf material used in your experimental jar (g)
+days <- #Number of days your experiment lasted
+rate_leafdecay <-  #Calculate the moles of CO_2 per gram per day
+rate_leafdecay     #Calculator Value
+sigfigs_10 <-  3  #Number of sig figs in rate_leafdecay
+
+```
+
+11. **Assume that leaf decay can be represented by the combustion of glucose. Based upon your rate of CO~2~ production, what is the rate of glucose combustion per day per gram of leaf?**
+
+
+C~6~H~12~O~6~ + 6O~2~ $\rightarrow$ 6CO~2~ + 6H~2~O
+
+<br>
+```{r, echo=TRUE}
+
+rate_glucose <-    #Calulate the rate of glucose combustion
+rate_glucose    #Calculator Value
+sigfigs_11 <-    #Number of sig figs in rate_glucose
+
+```
+
+12.  **Assume that one leaf is composed of 1 g glucose. How long will it take for one leaf to completely decay? Be sure to check the answer for reasonableness. An answer of 14 days, for example, indicates that the leaves would have entirely decomposed, leaving you with an empty jar.**
+
+<br>
+```{r, echo=TRUE}
+MW_Glucose <-  #Calculate the molar mass of glucose
+Mole_glucose <-  #Calculate the moles of glucose in 1 leaf
+Days_Decay <-    #Calulate the number of days it will take for 1 leaf to decay
+Days_Decay #Calculator Value
+Days_Decay <-   #Report the value to the correct number of significant digits
+Days_Decay #Result with Correct sig Figs
+
+```
+
+13. **Based upon your results, what claim can you make about this experiment?**
+
+<br>
+
+
+
+
+
+
+14. **What evidence do you have that supports the claim? Why/How does this evidence support your claim? (Make sure you include all your evidence and use scientific principles to support your reasoning.  If any data you are using is from an outside source, such as the number of days above 42 °C or the temperature at which lead decay essentially stops, etc., you must include the citation.)**
+
+<br>
+
+
+
+
+
+
+15. **Explain a source of systematic error in your experiment and how it may have affected your final results. (Hint:  Did this systematic error cause your number of days calculated to be too high or too low.  Explain why.)**
+<br>
+
+
+
+
+
+
+16.  **Calculate the percent variability for the measurements in the table below (don't forget to include a caption)**
+<br>
+```{r, echo=TRUE, results = 'asis'}
+
+Measurement_Type <- c("[NaOH](M)", "[HCl] (M)", "Volume of NaOH used in Titration (mL)", "Total Volume in Titration (mL)", "Mass of Leaves (g)")
+Value_Measurement <- c() #Input the value for each of the measurements made
+Uncertainty <- c() #Input the uncertainty for each of the measurements made
+Per_Variation <-  #Calculate the percent variation for each of the measurements made (100*uncertainty/value).  Remember these are reported to 2 sig figs.
+T_1 <- data.frame(Measurement_Type, Value_Measurement, Uncertainty, Per_Variation)
+chem_table(T_1, caption="Input Caption")
+
+```
+
+17. **Based upon the table in question 16, what was the least precise measurement and how would you increase the precision of this experiment?**
+<br>
+
+
+
+
+
+
+
