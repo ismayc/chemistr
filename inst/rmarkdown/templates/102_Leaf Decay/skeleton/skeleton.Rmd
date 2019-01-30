@@ -16,13 +16,13 @@ library(chemistr)
 
 ***
 
-1.  **Balance the following chemical equation that describes the reaction between sodium hydroxide and carbon dioxide**.
+1.  **Balance the following chemical equation that describes the reaction between sodium hydroxide and carbon dioxide.**
 
 
 ____ NaOH(aq) + ____CO~2~(g) $\rightarrow$ ____Na~2~CO~3~(aq) + ____H~2~O(l)
 
 
-2.  Report the volume and concentration of NaOH used in each leaf decay jar.  Then calculate the number of moles of NaOH present in each jar at the time they were set up. 
+2.  **Report the volume and concentration of NaOH used in each leaf decay jar.  Then calculate the number of moles of NaOH present in each jar at the time they were set up.** 
 
 <br>
 ```{r, echo=TRUE}
