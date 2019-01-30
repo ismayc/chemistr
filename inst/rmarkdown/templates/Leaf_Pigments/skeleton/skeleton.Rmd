@@ -35,7 +35,7 @@ chem_table(Mobile, caption = "Table 1: Insert caption")
 
 ```{r, results = 'asis', echo=FALSE}
 # Table 2 - A table showing the chromatogram results.  Note: If a pigment is missing a data point due to the pigment not present, then use "NA" in place of the value. Use NT if the datapoint was not analyzed due to time or other issue.
-Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
+Pigment <- c("Anthocyanin", "Chlorophyll B", "Chlorophyll A", "Xanthophyll", "Carotenoid")
 Rf_Control <- c() #Input the calculated Rf values from the control pigment chromatogram
 Rf_Green <- c() #input the calculated Rf values from the Green leaf chromatogram
 Rf_Colored <- c() #input the calculated Rf values from the Colored leaf chromatogram
@@ -51,8 +51,8 @@ include_graphics("Fig3.jpg")
 ```{r, results = 'asis', echo=FALSE}
 # Table 2 - A table showing the spectroscopy results.  Use the Anthocyanin data from the acid samples and the other pigment data from the non-acid samples.
  
-Pigment <- c("Anthocyanin", "Chlorophyll A", "Chlorophyll B", "Xanthophyll", "Carotenoid")
-Spec_Control<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments found in the appendix of the Leaf lab instructions. If there are multiple lambda max values, you can use quotes such as c("252, 298", "520").  This shows the first pigment has two lambda max values at 252 and 298 nm while the second pigment only has a lammbda max at 520 nm.
+Pigment <- c("Anthocyanin", "Chlorophyll B", "Chlorophyll A", "Xanthophyll", "Carotenoid")
+Spec_Literature<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments found in the appendix of the Leaf lab instructions. If there are multiple lambda max values, you can use quotes such as c("252, 298", "520").  This shows the first pigment has two lambda max values at 252 and 298 nm while the second pigment only has a lammbda max at 520 nm.
 Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place. If the pigment was not tested use "NT" 
 Spec_Colored <- c() #This is the lambda max from the UV/VIS spectrum of the colored leaves. If the pigment was not seen, use "NA" in its place. If the pigment was not tested use "NT" 
 Spec <- data.frame(Pigment, Spec_Control, Spec_Green, Spec_Colored)

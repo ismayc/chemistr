@@ -25,4 +25,11 @@ data <- data_frame(Independent, Dependent) #This is a data frame.  This links al
 chem_scatter(data = data, xvar = Independent, yvar = Dependent, xlab = "Axis Label", ylab = "Axis Label") #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
 fit1 <- lm(Dependent ~ Independent, data = data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
 summary(fit1) #This will show the fit parameters in your document
+n <- length(Dependent) #This calculates the number of datapoints that went into calculating the standard error
+slope<-summary(fit1)$coef[[2]] #This creates a variable for the slope
+se_slope<-summary(fit1)$coef[[4]] #This creates a variable for the standard error of the slope
+Intercept<-summary(fit1)$coef[[1]] #This creates a variable for the intercept
+se_intercept<-summary(fit1)$coef[[3]]  #This creates a variable for the standard error of the intercept
+CI_Slope <- se_slope*qt(0.975,df=n-2) #This caluclates the 95% confidence interval for the slope
+
 ```
