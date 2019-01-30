@@ -1,69 +1,68 @@
-----
-title: "Insert Title"
-author: "Insert Name"
-date: "Insert Date"
+---
+title: 'Experiment 8: Chemical Clocks'
+author: "Sample Report"
+date: "Insert Lab Section"
 output: chemistr::chem_lab_word
 ---
 
 ```{r setup, include=FALSE}
 library(chemistr)
-```        
+```   
 
-## Data
+######Please turn in this worksheet as a PDF to the "E8 Chemical Clocks" Assignment on Moodle [**link**](https://moodle.reed.edu/mod/assign/view.php?id=94291).
 
-```{r}
-#If you are inserting a csv file that was exported from the spectrophotometers, the following code may be of help to you (details are found in Appendix 9B).  You may also want to mathematically reconfigure the data so it is easier to graph.
-T2 <- read.csv("~/CHEM102_Dcass/E9 Kinetics/TRIAL_2.CSV") #here is the code that reads the csv file.  You will need to change what is in quotes.
-T2 <- subset(T2, Time.s. <= 300) #This code might be useful if you don't want to use all of the data.  In this code only the data which has time less than or equal to 300 seconds will be used.
+
+***
+
+##Results
+
+
+```{r, echo=FALSE, results = 'asis'}
+#Create a table of the results for identifying the chemical species involved in the clock reaction.  Make sure that anything that is kept constant in all reactions is included in the caption.
+Chemicals <- c("KI", "NaCl", "$KIO_3$", "$Na_2SO_4$", "$NaHSO_3$", "$I_2$") #Identity of chemicals combined
+KI<- c("Clear", "Clear", "Blue", "Clear", "Blue", "Clear" )               #Observation after mixing
+NaCl <- c("Clear", "Clear", "Blue", "Clear", "Blue", "Clear")
+KIO3 <- c("Clear", "Clear", "Blue", "Clear","Blue", "Blue")
+Na2SO4<- c("Clear", "Clear", "Blue", "Clear", "Blue", "Clear")
+I2 <- c("Clear", "Clear", "Blue", "Clear", "Blue", "Blue")
+T_1 <- data.frame(Chemicals, KI, NaCl, KIO3, Na2SO4, I2)
+chem_table(T_1, caption="Table 1: Input Caption")
+```
+
+
+```{r, echo=FALSE, fig.cap = "Input Caption"}
+#Input your data and create a graph to see the relationship between the concentration of one reactant and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  If it doesn't, what might be a better fit to the data.  What evidence do you have for your proposed fit?
 
 
 
 ```
 
-```{r, echo=FALSE, fig.cap="Insert Caption"}
-# Here is a R chunk where you may want to create a graph with your kinetics data.   
-chem_scatter(data = T2, xvar = Time.s., yvar = Absorbance, xlab = "X label", ylab = "Y label") #This is the info for making the graph.  You will need to change your data and variables to reflect your naming system. Remember that it is automatically set up to include a fit line to the equation Y=mx+b.
-fit1 <- lm(Absorbance ~ Time.s., data = T2)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
-summary(fit1) #This will show the fit parameters in your document.  Delete this line if you don't want the rough table showing up in your final document.
-```
 
-```{r, results="asis", echo=FALSE}
+```{r, echo=FALSE, fig.cap = "Input Caption"}
+#Repeat the graph creation for any other reagents that were analyzed by concentration.
 
-# If you want to include a data table in your report, you can use this chunk.  It may be modified to fit the data you want in your report.  Below is just an example, NOT necesssary.  Don't forget to modify the table headings and sig figs after knitting your document.
 
-Order <- c(0, 1, 2)
-Blue <- c(0.9977, 0.9997, 0.8253)
-Bleach <- c(0.7653, 0.8882, 0.9999)
-R_2 <- data.frame(Order, Blue, Bleach)
-
-chem_table(R_2, caption = "Table 1: A lovely caption for the table") #Here is the creation of table 1
 
 
 ```
 
-## Discussion
-
-See information in E9 Instructions for what should be included in the discussion.
-
-## References
-
-Include any references used in writing your report.  See the CHEM101 library site for information on how to write the citation.
+```{r, echo=FALSE, fig.cap="Input Caption "}
+#Create a graph that shows the relationship that temperature has on the reaction rate.   Make sure the caption includes anything that was kept constant, such as reaction concentrations, and also any information you have about the shape of the graph.  Does it follow a linear relationship?  Is it more logarithmic?  What evidence do you have for the proposed relationship? 
 
 
-## Calculations Appendix
-
-Include a picture of the calculations outlined in the Exp 9 instructions.  Make sure they are easy to read and include all units and conversion factors.
-
-```{r echo=FALSE, fig.cap=" "}
-include_graphics("Title of Figure, example: Calc.pdf)
 ```
 
 
-## Authors' Contributions
-
-Under this section please report what you did to contribute to this lab report and sign it with your initials.
-
-_____(initials) I ____________________ did __________________________________
+```{r, echo=FALSE, results = 'asis'}
+#Create a table to show evidence for the reliability of your clock (specifically looking at the precision and accuracy of the clock)
 
 
-_____(initials) I ____________________ did __________________________________
+
+```
+
+
+##Discussion
+
+`r #Provide an evidence based discussion of your results.  The lab report should discuss the answers to the following questions as well as the evidence that supports these answers: 1.	What is the chemical reaction?  2.	How does concentration effect the chemical reaction? 3.	How does temperature effect the chemical reaction? 4.	How were all these factors put together to design a chemical clock?  A description of the clock design should be included. 5.	How successful was the designed clock. Was it accurate?  Was it precise?`
+
+
