@@ -15,7 +15,41 @@ library(chemistr)
 
 
 ***
+**Standardization NaOH**
+```{r, echo=TRUE}
+#Input the code to calculate the concentration of NaOH for each individual trial
+KHP <- c() #Mass of KHP for each trial
+KHP_moles <-   #Moles of KHP for each trial
+Vi_1 <-  c()#Initial Volume of the burette for each trial
+Vf_1 <- c() #Final Volume of the burette for each trial
+NaOH <- #Input the calulation for [NaOH] in M
+n_NaOH <- #Number of trials of NaOH standardization
+Average_NaOH <- #Calculate the average concentration NaOH
+SD_NaOH <- #Calculate the standard Deviation of NaOH
+RSD_NaOH <-  #Calculate the %RSD for NaOH
+CI_NaOH <-  #Calculate the 95% confidence interval for NaOH
+Satatistics_NaOH <- data.frame(Average_NaOH, CI_NaOH, RSD_NaOH )
+Statistics_NaOH
 
+
+```
+
+**Standardization HCl**
+```{r, echo=TRUE}
+#Input the code to calculate the concentration of HCl for each individual trial and the statistics
+Average_NaOH <- Average_NaOH #Average concentration of NaOH from previous chunk
+Vi_2 <-  c()#Initial Volume of the burette for each trial
+Vf_2 <- c() #Final Volume of the burette for each trial
+HCl <- #Input the calulation for [HCl] in M
+n_HCl <-  #Number of trials for HCl standardization
+Average_HCl <- #Calculate the average concentration HCl
+SD_HCl <- #Calculate the standard Deviation of HCl
+RSD_HCl <-  #Calculate the %RSD for HCl
+CI_HCl <-  #Calculate the 95% confidence interval for HCl
+Statistics_HCl <- data.frame(Average_HCl, CI_HCl, RSD_HCl )
+Statistics_HCl
+
+```
 1.  **Balance the following chemical equation that describes the reaction between sodium hydroxide and carbon dioxide.**
 
 
