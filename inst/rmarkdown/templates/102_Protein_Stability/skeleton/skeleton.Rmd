@@ -20,8 +20,8 @@ library(chemistr)
 ```{r, echo=FALSE, results = 'asis'}
 #Create a table of the results for investigating potential denaturants.  In the caption include the constant conditions in all the reactions such as temperature, concentration phycocyanin, pathlength, and wavelength measured.
 Denaturant <- c("Buffer", "Urea", "Guanadinium", "Sucrose", "Ethanol", "SDS", "Acetone") #Identity of denaturants
-Concentration <- c()               #Concentration of denaturant in your reaction
-Absorbance <- c()      #Absorbance at 650 nm
+Concentration <- c()               #Final concentration of denaturant in your reaction
+Absorbance <- c()      #Absorbance at 620 nm
 Fraction_Folded <-      #Calculate the fraction of protein folded.  Use the protein in buffer as 100% folded.  Remember to change to the correct number of sig figs when in Word. 
 T_1 <- data.frame(Denaturant, Concentration, Absorbance, Fraction_Folded)
 chem_table(T_1, caption="Table 1: Input Caption")
@@ -31,7 +31,7 @@ chem_table(T_1, caption="Table 1: Input Caption")
 ```{r, echo=TRUE, results = 'asis'}
 #Create a table of the results for calculating Gibbs Free Energy with a single denaturant at a constant temperature.  In the caption include the constant conditions in all the reactions such as denaturant used, concentration phycocyanin, pathlength, wavelength measured, and temperature.
 Denaturant_Concentration <- c() #Concentration of denaturant used in the reactions
-Absorbance_3 <- c()      #Absorbance at 650 nm
+Absorbance_3 <- c()      #Absorbance at 620 nm
 Fraction_Folded_3 <-    #Calculate the fraction of protein folded.  Use the no denaturant as 100% folded.  Watch sig figs.
 d_G_1 <-  #Calculate dG of folding based upon Equation 2 in the instructions
 T_3 <- data.frame(Denaturant_Concentration, Absorbance_3, Fraction_Folded_3, d_G_1)
@@ -40,7 +40,7 @@ chem_table(T_3, caption="Table 2: Input Caption")
 
 ```{r, echo=FALSE, fig.cap = "Input Caption"}
 #Create a graph to determine the Gibbs Free Energy of folding in the native state based upon Equation 3 in the instructions.  Only include Gibbs values that are significantly above and below the 100% folded and unfolded state (consult an instructor on this if you are unsure). Make sure you include the  y-intercept, slope, and R^2 value in the caption.
-newdata <- subset(T_3, Denaturant_Concentration >= 0.5 & Denaturant_Concentration <= 1.75, select=c(Denaturant_Concentration, d_G_1))  #This code will allow you to only select a subset of your values in Table 2.  This is important in making sure you are significantly above 0% and below 100% folded.
+newdata <- subset(T_3, Denaturant_Concentration >= 0.5 & Denaturant_Concentration <= 5, select=c(Denaturant_Concentration, d_G_1))  #This code will allow you to only select a subset of your values in Table 2.  This is important in making sure you are significantly above 0% and below 100% folded.
 chem_scatter(newdata, Denaturant_Concentration, d_G_1, xlab = "Insert Label", ylab= "Insert Label")
 fit1 <- lm(d_G_1 ~ Denaturant_Concentration, data = newdata) #remember to view the values from this, you must type summary(fit1) into the console.
 
@@ -69,7 +69,7 @@ fit2 <- lm(d_G_2 ~ Denaturant_Concentration, data = newdata_2)
 #Use equation 4 in the instructions to create a graph that will determine the entropy and enthalpy of folding.  Make sure to include the slope (+/- uncertainty) and the intercept (+/- uncertainty) in the caption.
 
 T <- c() #Temperature of Reactions (in K)
-dG <- c() #dG native values from above data analysis
+dG <- c() #dG native values from above Y-intercepts of Equation 3 in the instructions
 T_5 <- data.frame(T, dG)
 chem_scatter() #Fill out the graphing command with variables, etc. See examples above.
 fit5 <- lm() #Fill out the fit parameters command with variable, etc.  See examples above.
