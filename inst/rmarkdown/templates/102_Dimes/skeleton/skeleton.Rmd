@@ -1,0 +1,109 @@
+---
+title: 'Experiment 11: Silver Dimes'
+author: "Insert Names"
+date: "Insert Lab Section"
+output: chemistr::chem_lab_word
+---
+
+```{r setup, include=FALSE}
+library(chemistr)
+```   
+
+##Results
+
+```{r, echo=FALSE, results = 'asis'}
+#Raw Data 
+
+Time <- c()  #Elapsed time at count start in seconds
+Raw_Counts <- c()  #Counts obtained from the radiation detector in units of decays per 10 seconds
+Background <- c()  #The average number of background counts in 10 seconds
+Counts <-     #Subtract the background counts off of the raw counts
+Activity <-   #From the counts, caluclate the activity
+Ln_A <-    #Calculate the ln of activity.  Note natural log (ln) in R code is log().
+
+Data <- data.frame(Time, Raw_Counts, Background, Counts, Activity, Ln_A)
+```
+
+```{r, echo=FALSE, fig.cap = "Input Caption"}
+#Graph of Complete Data.  Graph the data as ln(A) versus time.  The total counts will be from both nucleotides.  Therefore it will be necessary to interpret the data for each individual nuclide. You should notice that the plot has two regions of linearity to it - one for each nuclide.  Therefore it does not make sense to fit the data to a straight line yet (aka in the chem_scatter function, include reg_line = FALSE)
+
+#in your caption make sure it is clear what you are testing and how the data was obtained.  Also include why the graph is ln(A) versus time and not A vs time or 1/[A] vs time.  What does this tell us about the kinetics of nuclide decay?
+
+chem_scatter()
+
+```
+
+```{r, echo=FALSE, fig.cap = "Input Caption"}
+#Graph of longer lived Ag nuclide.  Look at the graph above and determine where the longer lived nuclide (end of your graph) is no longer linear. This should be around 300 seconds).  The best fit line will extrapolate back the activity in the earlier data points that are due to the longer lived Ag nuclide.
+
+#In your caption make sure you identify the nucleotide and report the half-life +/- the standard error (aka uncertainty) of this nucloetide based off of the graphical fit to the data.
+
+long_data <- subset(Data, Time >= 300)  #This code will allow you to only select a subset of your values in Table 1.  This is important in making sure you are trying to fit only the longer lived nucleotide data.
+chem_scatter(long_data, Time, Ln_A, xlab = "Insert Label", ylab= "Insert Label")
+fit1 <- lm(Ln_A ~ Time, data = long_data) #remember to view the values from this, you must type summary(fit1) into the console.
+slope<-summary(fit1)$coef[[2]] #This creates a variable for the slope
+Intercept<-summary(fit1)$coef[[1]] #This creates a variable for the intercept
+```
+
+```{r, echo=FALSE, fig.cap = "Input Caption"}
+#Graph of the shorter lived nucleotide (~ t < 300 seconds).
+
+#Calculate the amount of activity in the early time points (~ t < 300 seconds) that is due to the longer lived nucleotide. This is done by fiting these time points into the best fit line of the graph above.
+
+#In your caption make sure you identify the nucleotide and report the half-life +/- the standard error (aka uncertainty) of this nucloetide based off of the graphical fit to the data.
+
+short_data <- subset(Data, Time <= 300)  #This code will allow you to only select a subset of your values in Table 1.  This is important in making sure you are trying to fit only the shorter lived nucleotide data.
+
+ln_A_Long$short_data <-   #Calculate the amount of ln(activity) in the early time points (~ t < 300 seconds) that is due to the longer lived nucleotide. This is done by fiting these time points into the best fit line of the graph above.  Example: Time*Slope-Intercept = Ln(A)
+
+ln_A_Short$short_data <-   #subtract the long lived nucleotide ln(A) from the total ln(A) to get the ln(A) due to the shorter half-life.
+  
+chem_scatter(short_data, Time, Ln_A_Short, xlab = "Insert Label", ylab= "Insert Label")
+fit1 <- lm(Ln_A_Short ~ Time, data = short_data) #remember to view the values from this, you must type summary(fit1) into the console.
+
+
+```
+
+
+##Discussion (Answer the following questions)
+
+Short-Lived Ag Nuclide
+
+1. What is the identity of the short-lived silver nuclide? 
+
+
+
+
+2. What is the literature value for this nuclide's half-life? (Include a citation) 
+
+
+
+
+3. What is the experimental value for this nuclide's half-life? (Report the uncertainty too).
+
+
+
+
+4. Is the experimental value accurate?  Explain the evidence that supports this statement.
+
+
+
+Long-lived Ag Nuclide
+
+1. What is the identity of the short-lived silver nuclide? 
+
+
+
+
+2. What is the literature value for this nuclide's half-life? (Include a citation) 
+
+
+
+3. What is the experimental value for this nuclide's half-life? (Report the uncertainty too).
+
+
+
+
+
+4. Is the experimental value accurate?   Explain the evidence that supports this statement.
+
