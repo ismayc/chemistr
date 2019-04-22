@@ -16,12 +16,12 @@ library(chemistr)
 
 Time <- c()  #Elapsed time at count start in seconds
 Raw_Counts <- c()  #Counts obtained from the radiation detector in units of decays per 10 seconds
-Background <- c()  #The average number of background counts in 10 seconds
+Background <- c()  #Background counts in 10 seconds
+Avg_Background <-   #calculate the average background counts
 Counts <-     #Subtract the background counts off of the raw counts
-Activity <-   #From the counts, caluclate the activity
-Ln_A <-    #Calculate the ln of activity.  Note natural log (ln) in R code is log().
+Ln_A <-    #Calculate the ln of counts.  Note natural log (ln) in R code is log().
 
-Data <- data.frame(Time, Raw_Counts, Background, Counts, Activity, Ln_A)
+Data <- data.frame(Time, Raw_Counts, Counts, Ln_A)
 ```
 
 ```{r, echo=FALSE, fig.cap = "Input Caption"}
@@ -90,7 +90,7 @@ Short-Lived Ag Nuclide
 
 Long-lived Ag Nuclide
 
-1. What is the identity of the short-lived silver nuclide? 
+1. What is the identity of the long-lived silver nuclide? 
 
 
 
