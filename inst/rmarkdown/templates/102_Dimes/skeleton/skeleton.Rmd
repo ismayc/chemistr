@@ -58,11 +58,18 @@ short_data$ln_A_Long <-   #Calculate the amount of ln(activity) in the early tim
   
 short_data$A_long <- exp(short_data$ln_A_Long) #This converts the ln(A) back into counts due to the long-lived nuclide.
 
-short_data$A_Short<-   #subtract the long lived nuclide short_data$ln_A_Long from the total Counts (variable for this is short_data$counts) to get the counts due to the shorter half-life.
+short_data$A_Short<-   #subtract the long lived nuclide, short_data$A_Long from the total Counts (variable for this is short_data$counts) to get the counts due to the shorter half-life.
   
 short_data$ln_A_Short <- log(short_data$A_Short) #ln(A) for short lived nuclide
 chem_scatter(short_data, Time, ln_A_Short, xlab = "Insert Label", ylab= "Insert Label")
 fit2 <- lm(ln_A_Short ~ Time, data = short_data) #remember to view the values from this, you must type summary(fit2) into the console.
+
+short_data$A_Short<-   #subtract the long lived nuclide short_data$ln_A_Long from the total Counts (variable for this is short_data$counts) to get the A due to the shorter half-life.
+  
+short_data$ln_A_Short <- log(short_data$A_Short) #ln(A) for short lived nuclide
+chem_scatter(short_data, Time, ln_A_Short, xlab = "Insert Label", ylab= "Insert Label")
+fit2 <- lm(ln_A_Short ~ Time, data = short_data) #remember to view the values from this, you must type summary(fit1) into the console.
+
 
 
 ```
