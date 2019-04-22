@@ -34,14 +34,18 @@ chem_scatter()
 ```
 
 ```{r, echo=FALSE, fig.cap = "Input Caption"}
-#Graph of longer lived Ag nuclide.  Look at the graph above and determine where the longer lived nuclide (end of your graph) is no longer linear. This should be around 300 seconds).  The best fit line will extrapolate back the activity in the earlier data points that are due to the longer lived Ag nuclide.
+#Graph of longer lived Ag nuclide.  Look at the graph above and determine where the longer lived nuclide (end of your graph) is no longer linear. This should be around 300 seconds.  The best fit line will extrapolate back the activity in the earlier data points that are due to the longer lived Ag nuclide.
 
 #In your caption make sure you identify the nuclide and report the half-life +/- the standard error (aka uncertainty) of this nucloetide based off of the graphical fit to the data.
 
 long_data <- subset(Data, Time >= 300)  #This code will allow you to only select a subset of your values in Table 1.  This is important in making sure you are trying to fit only the longer lived nuclide data.
+
 chem_scatter(long_data, Time, Ln_A, xlab = "Insert Label", ylab= "Insert Label")
+
 fit1 <- lm(Ln_A ~ Time, data = long_data) #remember to view the values from this, you must type summary(fit1) into the console.
+
 slope<-summary(fit1)$coef[[2]] #This creates a variable for the slope
+
 Intercept<-summary(fit1)$coef[[1]] #This creates a variable for the intercept
 ```
 
@@ -58,17 +62,13 @@ short_data$ln_A_Long <-   #Calculate the amount of ln(activity) in the early tim
   
 short_data$A_long <- exp(short_data$ln_A_Long) #This converts the ln(A) back into counts due to the long-lived nuclide.
 
-short_data$A_Short<-   #subtract the long lived nuclide, short_data$A_Long from the total Counts (variable for this is short_data$counts) to get the counts due to the shorter half-life.
+short_data$A_Short <-   #subtract the long lived nuclide, short_data$A_Long from the total Counts (variable for this is short_data$Counts) to get the counts due to the shorter half-life.
   
 short_data$ln_A_Short <- log(short_data$A_Short) #ln(A) for short lived nuclide
-chem_scatter(short_data, Time, ln_A_Short, xlab = "Insert Label", ylab= "Insert Label")
-fit2 <- lm(ln_A_Short ~ Time, data = short_data) #remember to view the values from this, you must type summary(fit2) into the console.
 
-short_data$A_Short<-   #subtract the long lived nuclide short_data$ln_A_Long from the total Counts (variable for this is short_data$counts) to get the A due to the shorter half-life.
-  
-short_data$ln_A_Short <- log(short_data$A_Short) #ln(A) for short lived nuclide
 chem_scatter(short_data, Time, ln_A_Short, xlab = "Insert Label", ylab= "Insert Label")
-fit2 <- lm(ln_A_Short ~ Time, data = short_data) #remember to view the values from this, you must type summary(fit1) into the console.
+
+fit2 <- lm(ln_A_Short ~ Time, data = short_data) #remember to view the values from this, you must type summary(fit2) into the console.
 
 
 
