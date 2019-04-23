@@ -58,11 +58,11 @@ Intercept<-summary(fit1)$coef[[1]] #This creates a variable for the intercept
 
 short_data <- subset(Data, Time <= 300)  #This code will allow you to only select a subset of your values in Table 1.  This is important in making sure you are trying to fit only the shorter lived nuclide data.
 
-short_data$ln_A_Long <-   #Calculate the amount of ln(activity) in the early time points (~ t < 300 seconds) that is due to the longer lived nuclide. This is done by fiting these time points into the best fit line of the graph above.  Example: short_data$Time*Slope-Intercept = Ln(A).  The format data_frame$New_variable is a way to add a column to a data frame.  It is also a way to reference a column in a data frame if you haven't specified it separately.
+short_data$ln_A_Long <-   #Calculate the amount of ln(activity) in the early time points (~ t < 300 seconds) that is due to the longer lived nuclide. This is done by fiting these time points into the best fit line of the graph above.  Example: short_data$Time*Slope+Intercept would give you the the natural log of the counts due to isoptope B.  The format data_frame$New_variable is a way to add a column to a data frame.  It is also a way to reference a column in a data frame if you haven't specified it separately.
   
 short_data$A_long <- exp(short_data$ln_A_Long) #This converts the ln(A) back into counts due to the long-lived nuclide.
 
-short_data$A_Short <-   #subtract the long lived nuclide, short_data$A_Long from the total Counts (variable for this is short_data$Counts) to get the counts due to the shorter half-life.
+short_data$A_Short <-   #subtract the long lived nuclide, short_data$A_long from the total Counts (variable for this is short_data$Counts) to get the counts due to the shorter half-life.
   
 short_data$ln_A_Short <- log(short_data$A_Short) #ln(A) for short lived nuclide
 
