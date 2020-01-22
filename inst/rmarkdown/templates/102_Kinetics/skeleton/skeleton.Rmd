@@ -9,7 +9,7 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```   
 
-######Please turn in this worksheet as a PDF to the "E8 Chemical Clocks" Assignment on Moodle [**link**](https://moodle.reed.edu/mod/assign/view.php?id=94291).
+######Please turn in this worksheet as a PDF to the "E8 Chemical Clocks" Assignment on Moodle [**link**](https://moodle.reed.edu/mod/assign/view.php?id=119082).
 
 
 ***
@@ -17,44 +17,49 @@ library(chemistr)
 ##Results
 
 
-```{r, echo=FALSE, results = 'asis'}
-#Create a table of the results for identifying the chemical species involved in the clock reaction.  Make sure that anything that is kept constant in all reactions is included in the caption.
-Chemicals <- c("KI", "NaCl", "$KIO_3$", "$Na_2SO_4$", "$NaHSO_3$", "$I_2$") #Identity of chemicals combined
-KI<- c("Clear", "Clear", "Blue", "Clear", "Blue", "Clear" )               #Observation after mixing
-NaCl <- c("Clear", "Clear", "Blue", "Clear", "Blue", "Clear")
-KIO3 <- c("Clear", "Clear", "Blue", "Clear","Blue", "Blue")
-Na2SO4<- c("Clear", "Clear", "Blue", "Clear", "Blue", "Clear")
-I2 <- c("Clear", "Clear", "Blue", "Clear", "Blue", "Blue")
-T_1 <- data.frame(Chemicals, KI, NaCl, KIO3, Na2SO4, I2)
-chem_table(T_1, caption="Table 1: Input Caption")
-```
-
 
 ```{r, echo=FALSE, fig.cap = "Input Caption"}
-#Input your data and create a graph to see the relationship between the concentration of one reactant and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  If it doesn't, what might be a better fit to the data.  What evidence do you have for your proposed fit?
+#Concentration Reactant #1 vs Reaction Time
+#Input your data and create a scatter plot to see the relationship between the concentration of reactant #1 and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  
+#In your caption be sure to identify the variable measured and the condtions used for the reaction that were not varied (such as temperature and concentrations of other reactants)
 
+Reactant_1 <- c() #Concentrations (in M) of reactant #1 in your reaction
+Time_1 <- c() #Time (in sec) of the reaction with given reactant #1 concentrations
+data_1 <- data.frame(Reactant_1, Time_1)
+chem_scatter(data_1, Reactant_1, Time_1, xlab = "X axis label", ylab = "Y Axis label", reg_line = FALSE) #reg_line = FALSE removes the straight best fit line.  If your data does not appear linear, then it does not make sense to fit it to a striaght line.  If your data does appear linear, then changing this to TRUE will be useful.
 
 
 ```
 
 
 ```{r, echo=FALSE, fig.cap = "Input Caption"}
-#Repeat the graph creation for any other reagents that were analyzed by concentration.
+#Concentration Reactant #2 vs Reaction Time
+#Use the previous coding to help you input your data and create a scatter plot to see the relationship between the concentration of reactant #2 and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  
+#In your caption be sure to identify the variable measured and the condtions used for the reaction that were not varied (such as temperature and concentrations of other reactants)
 
+
+
+```
+
+```{r, echo=FALSE, fig.cap = "Input Caption"}
+#Concentration Starch vs Reaction Time
+#Use the previous coding to help you input your data and create a scatter plot to see the relationship between the concentration of starch and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  
+#In your caption be sure to identify the variable measured and the condtions used for the reaction that were not varied (such as temperature and concentrations of other reactants)
 
 
 
 ```
 
 ```{r, echo=FALSE, fig.cap="Input Caption "}
-#Create a graph that shows the relationship that temperature has on the reaction rate.   Make sure the caption includes anything that was kept constant, such as reaction concentrations, and also any information you have about the shape of the graph.  Does it follow a linear relationship?  Is it more logarithmic?  What evidence do you have for the proposed relationship? 
+#Temperature vs Reaction Time
+#Use the previous coding to help you input your data and create a scatter plot that shows the relationship that temperature has on the reaction rate.   Make sure the caption includes anything that was kept constant, such as reaction concentrations, and also any information you have about the shape of the graph.  Does it follow a linear relationship?  Is it more logarithmic?  What evidence do you have for the proposed relationship? 
 
 
 ```
 
 
 ```{r, echo=FALSE, results = 'asis'}
-#Create a table to show evidence for the reliability of your clock (specifically looking at the precision and accuracy of the clock)
+#Create a table to show evidence for the reliability of your clock (specifically looking at the precision and accuracy of the clock).  This table should include the number of replicates, average and 95% confidence interval of your proposed clock.  Make sure to use the correct sig figs in your final table.  The caption should indicate the conditions used to make the emasurements (aka concentrations of all reactants and temperature of the reaction)
 
 
 
@@ -63,6 +68,6 @@ chem_table(T_1, caption="Table 1: Input Caption")
 
 ##Discussion
 
-`r #Provide an evidence based discussion of your results.  The lab report should discuss the answers to the following questions as well as the evidence that supports these answers: 1.	What is the chemical reaction?  2.	How does concentration effect the chemical reaction? 3.	How does temperature effect the chemical reaction? 4.	How were all these factors put together to design a chemical clock?  A description of the clock design should be included. 5.	How successful was the designed clock. Was it accurate?  Was it precise?`
+`r #Provide an evidence based discussion of your results.  The lab report should discuss the answers to the following questions as well as the evidence that supports these answers: 1.	Purpose of the lab 2.	How does concentration of each reactant affect the chemical reaction?  Reference evidence to support your statement.  Provide a molecular leval explanation as to why this effect is seen (hint: think about collision theory)  3.	How does temperature effect the chemical reaction? Reference evidence to support your statement.  Provide a molecular leval explanation as to why this effect is seen (hint: think about the Boltzman distribution) 4.	How were all these factors put together to design a chemical clock?  A description of the clock design should be included. 5.	How successful was the designed clock. Was it accurate?  Was it precise?  Make sure you reference the evidence that supports these statments.`
 
 
