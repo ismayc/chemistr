@@ -17,15 +17,6 @@ library(chemistr)
 ##Results
 
 
-```{r, echo=FALSE, results = 'asis'}
-#Create a table of the results for investigating potential denaturants.  In the caption include the constant conditions in all the reactions such as temperature, concentration phycocyanin, pathlength, and wavelength measured.
-Denaturant <- c("Buffer", "Urea", "Guanadinium", "Sucrose", "Ethanol", "SDS", "Acetone") #Identity of denaturants
-Concentration <- c()               #Final concentration of denaturant in your reaction
-Absorbance <- c()      #Absorbance at 620 nm
-Fraction_Folded <-      #Calculate the fraction of protein folded.  Use the protein in buffer as 100% folded.  Remember to change to the correct number of sig figs when in Word. 
-T_1 <- data.frame(Denaturant, Concentration, Absorbance, Fraction_Folded)
-chem_table(T_1, caption="Table 1: Input Caption")
-```
 
 
 ```{r, echo=TRUE, results = 'asis'}
