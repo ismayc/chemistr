@@ -1,0 +1,74 @@
+---
+title: "Linear Regression Lab"
+author: "Insert Name"
+date: "Insert Date"
+output: chemistr::chem_lab_word
+---
+
+```{r setup, include=FALSE}
+library(chemistr)
+```        
+
+
+## EV Battery Example
+ 
+```{r, echo=FALSE}
+# Here is where you input your data for your two variables.  
+Time <- c(1, 2, 4, 8) #This is the X-axis values.  The currect values should be replaced with your values.
+Distance <- c(10, 100, 1000, 100000) #This is the Y-axis values.  The current values should be replaced with your values.
+data <- data_frame(Time, Distance) #This is a data frame.  This links all your variables into a single table.
+data #typing any named item into your space will allow you to see that variable in your output.
+```
+
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+# Graphing EV data - Take #1.   
+
+
+
+
+
+```
+
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+# Culled Data
+
+
+
+
+
+```
+
+
+
+## Nuclear Decay Example
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+# Radioactive Decay Data and Intial Plot
+
+
+
+
+
+
+
+
+
+```
+
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+# Linearization of Radioactive Decay Data
+
+
+
+
+
+
+
+
+
+```
+
+
