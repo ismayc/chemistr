@@ -1,0 +1,71 @@
+---
+title: "Insert Title"
+author: "Insert Name"
+date: "Insert Date"
+output: chemistr::chem_lab_word
+---
+
+```{r setup, include=FALSE}
+library(chemistr)
+```        
+## DIY Spectrophotometer Setup
+
+```{r, echo=FALSE, fig.cap="Insert Figure Caption"}
+#Take a picture of your working spectrophotometer.  Then upload it into the same folder that you saved your lab write-up.  This will allow you to use the include graphics function below.  
+
+include_graphics("Name of Figure File") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
+```
+
+## RESULTS
+```{r, results='asis'}
+# Here is where you input your data from your max wavelength experiment
+Color <- c("Color 1", "Color 2", "ETC") #Input the names of the colors you tested.  This is not a numberical variable, therefore the words must be surrounded by quotation marks. Example: "Red"
+Blank <- c(value1, value2, etc) #Input the resistance (in kOhms) for the cuvette filled with just water.  This is a numerical variable and therefore the numbers can be entered directly, without quotes. Example: c(12.5, 14.5)
+Blue <- c(value1, value2, etc) #Input the resistance (in kOhms) for the cuvette filled with 10 µM Blue Food dye
+
+#R can also be used like a calculator or spreadsheet.  Individual numbers can be calculated, for example 5*4/2.  When you type that into the console and press return, it will spit out 10.  Feel free to try it.  Variables can also be calculated by using the variable names.  For example: Normal<- Blue-Blank.  This would create a new vector that was named Normal.  This vector would contain the results of taking the Blue number and subtract the Blank in the order they are written.
+
+#The deffinition of transmittance is the fraction of light that makes it to the detector, in our case the photoresistor.  This is mathematically written as T = Photons Through Sample/ Photons given off by light.  Since we can measure both of these values simultaneously we assume the light source is stable enough that the photons going through our blank is the same as the photons being given off.  Therefore T = Transmitted Photons/Blank Photons. However, we don't measure photons directly, instead we are measuring the resistance in the resistor and the resistance is inversely proportional to the light hitting the detector (aka, as the number of photons increases, the resistance decreases).  This is mathematically written as Resistance = 1/Photons.
+
+#Based upon the aobve information, determine the mathematical relationship between transmittance (T) and resistance measured.  Check with your TA or instructor before writing this function into the line for Transmittance below.
+
+Transmittance <-   #Mathmatically calculate transmittance from your raw resistance variables above (Blank and Blue)
+
+#Create a table of your raw and calculated data to present in your final report.
+
+data1 <- data.frame(Color, Blank, Blue, Transmittance) #This is a data frame.  This links all your variables into a single matrix that could be used as a table but isn't real pretty.  Below chem_table() makes it pretty.
+
+chem_table(data=data1, caption = "Table 1: Insert Caption.  Remember it must be in sentence format.") 
+#Note1: When you calculate a variable, such as Transmittance, the calculation occurs the same as in a calculator.  In order to properly display these values, significant figures must be taken into account.  This can only be done AFTER you knit and open your document in Word.  Don't forget to do this!
+#Note2: The table headings are not usually complete since they use the simple variable names you chose.  For example units are always need.  So for this table, both Color and Blank must have units added (kOhms).  This should be done in Word after you knit.  Don't forget to do this!
+```
+
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+#Another way to present data is in a graph.  This is helpful for seeing a trend.  We'll be creating many different types of graphs using R.  For an overview of the many options of R graphs, see https://www.r-graph-gallery.com/    Many of these are made with the ggplot package, which is what we will be using to create our graph.  We are going to create a bar graph of your results to see a trend in how transmittance changes with color of light. 
+
+data1$Color <- factor(data1$Color, levels = c("Red","Orange", "Yellow", "Green", "Blue", "Purple")) #ggplot automatically orders the X-axis alphabetically.  This doesn't make sense for our data (as we want to keep the rainbow theme which matches longest to shortest wavelength).  This function allows us to set the order.  If oyu are happy with this order, there is no need to change this part of the code.
+
+#ggplot allows you to make a large variety of graphs with a similar set of functions.  There is lots of info out there on how to use ggplot.  A quick search will get you all sorts of options.  The info below is for making a bar graph (geom_bar does this)
+ggplot(data= dataframe, aes(x=xname, y=yname)) + #You need to assign the data frame your variables are in (data1) and the X vector name (Color) and Y vector name (Transmittance).
+  geom_bar(stat = "identity", fill = c("red2" , "orange", "yellow",  "green",  "skyblue",  "purple") ) + #stat = "identity" makes sure the height of the bars is relative to the Y-values, in this case Transmittance #fill = c("color1", "color2", "etc"), allows you to manually choose the colors for each of your bars.  A list of R color names can be found http://sape.inf.usi.ch/quick-reference/ggplot2/colour 
+  labs(y="Transmittance", x = "Color of Light") #Often we name variables simply, but a true axis should contain more or better information.  labs() allows us to change the labels on the axis.
+
+```
+
+##DISCUSSION
+
+####Question 1:  What region of the light interacts most with the FD&C Blue 1?  Use your table and/or graph to support your conclusion with data.  Finally explain, on a molecular level what is happening between the light and the molecule to cause the data above.
+
+
+Delete these words and type in answer.
+
+####Question 3: Based upon your data in table 1 and figure 1, explain why a solution of FD&C Blue 1 appears blue.
+
+Delete these words and type in answer.
+
+####Question 4: How accurate is your spectrophtometer?  Go to the lab Moodle to find a picture of the transmittance spectrum of FD&C Blue 1.  Based upon this data, what is the lambda max for FD&C blue?  Does this data match your data?  Explain your reasoning in 1-2 sentences. (Be sure to cite any relevant sources)
+
+Delete these words and type in answer.
+
+For information on how to cite your sources refer to Chem 101 Lab Moodle citation sheet.
