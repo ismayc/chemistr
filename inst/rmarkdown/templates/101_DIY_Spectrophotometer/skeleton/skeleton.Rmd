@@ -8,36 +8,57 @@ output: chemistr::chem_lab_word
 ```{r setup, include=FALSE}
 library(chemistr)
 ```        
+## Link to the Project for this file, along with the file name
+
+File name:
+
+Project Link: 
+
 ## DIY Spectrophotometer Setup
 
 ```{r, echo=FALSE, fig.cap="Insert Figure Caption"}
-#Take a picture of your working spectrophotometer.  Then upload it into the same folder that you saved your lab write-up.  This will allow you to use the include graphics function below.  
+#Take a picture of your working spectrophotometer.  Then upload it into the same folder that you saved your lab write-up.  This will allow you to use the included graphics function below.  
+#You can copy and paste this chunk for each person in your group.
 
 include_graphics("Name of Figure File") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
 ```
 
 ## RESULTS
-```{r, results='asis'}
-# Here is where you input your data from your max wavelength experiment
+```{r, echo=FALSE}
+# Here is where you input your data from your Part B max wavelength experiment
+# Each person should individually complete this chunk.  Each individual chunk can then be copied and pasted to create the final report.
+
 Color <- c("Color 1", "Color 2", "ETC") #Input the names of the colors you tested.  This is not a numberical variable, therefore the words must be surrounded by quotation marks. Example: "Red"
-Blank <- c(value1, value2, etc) #Input the resistance (in kOhms) for the cuvette filled with just water.  This is a numerical variable and therefore the numbers can be entered directly, without quotes. Example: c(12.5, 14.5)
+Blank <- c(value1, value2, etc) #Input the resistance (in kOhms) for the empty cuvette.  This is a numerical variable and therefore the numbers can be entered directly, without quotes. Example: c(12.5, 14.5)
+Water <- c(value1, value2, etc) #Input the resistance (in kOhms) for cuvette filled with just water.  This is a numerical variable and therefore the numbers can be entered directly, without quotes. Example: c(12.5, 14.5)
 Blue <- c(value1, value2, etc) #Input the resistance (in kOhms) for the cuvette filled with 10 µM Blue Food dye
 
 #R can also be used like a calculator or spreadsheet.  Individual numbers can be calculated, for example 5*4/2.  When you type that into the console and press return, it will spit out 10.  Feel free to try it.  Variables can also be calculated by using the variable names.  For example: Normal<- Blue-Blank.  This would create a new vector that was named Normal.  This vector would contain the results of taking the Blue number and subtract the Blank in the order they are written.
 
 #The deffinition of transmittance is the fraction of light that makes it to the detector, in our case the photoresistor.  This is mathematically written as T = Photons Through Sample/ Photons given off by light.  Since we can measure both of these values simultaneously we assume the light source is stable enough that the photons going through our blank is the same as the photons being given off.  Therefore T = Transmitted Photons/Blank Photons. However, we don't measure photons directly, instead we are measuring the resistance in the resistor and the resistance is inversely proportional to the light hitting the detector (aka, as the number of photons increases, the resistance decreases).  This is mathematically written as Resistance = 1/Photons.
 
-#Based upon the aobve information, determine the mathematical relationship between transmittance (T) and resistance measured.  Check with your TA or instructor before writing this function into the line for Transmittance below.
+#Based upon the aobve information, determine the mathematical relationship between transmittance (T) and resistance measured.  Check with your TA or instructor before writing this function into the lines for Transmittance below.
 
-Transmittance <-   #Mathmatically calculate transmittance from your raw resistance variables above (Blank and Blue)
+Transmittance_Water <-   #Mathmatically calculate transmittance from your raw resistance variables above (Blank and Water)
+Transmittance_Blue <-   #Mathmatically calculate transmittance from your raw resistance variables above (Blank and Blue)
 
-#Create a table of your raw and calculated data to present in your final report.
+Transmittance_Student1 <- #We want the transmittance only due to the bue food coloring and not any interaction of the water.  So to get the final transmittance values subtract the Transmittance_Water variable from the Transmitance_Blue variable. Also change the Transittance variable name to include your intitials.  For example Transmittance_DC.
 
-data1 <- data.frame(Color, Blank, Blue, Transmittance) #This is a data frame.  This links all your variables into a single matrix that could be used as a table but isn't real pretty.  Below chem_table() makes it pretty.
+```
+
+```{r, echo=FALSE, results='asis'}
+#Now you are going to work together as a group for the rest of the report.
+#1. Find the average transmittance across all lab mates at each color to create the variable Transmittance.  Hint: this can be done mathematically by usng the variable names added together and dividing by the total number of lab mates.
+
+Transmittance <- 
+
+#Create a table of your individual and average data to present in your final report.
+
+data1 <- data.frame(Color, Transmittance_Student1, Transmittance_Student2, Transmittance) #This is a data frame.  This links all your variables into a single matrix that could be used as a table but isn't real pretty.  Below chem_table() makes it pretty.
 
 chem_table(data=data1, caption = "Table 1: Insert Caption.  Remember it must be in sentence format.") 
 #Note1: When you calculate a variable, such as Transmittance, the calculation occurs the same as in a calculator.  In order to properly display these values, significant figures must be taken into account.  This can only be done AFTER you knit and open your document in Word.  Don't forget to do this!
-#Note2: The table headings are not usually complete since they use the simple variable names you chose.  For example units are always need.  So for this table, both Color and Blank must have units added (kOhms).  This should be done in Word after you knit.  Don't forget to do this!
+#Note2: The table headings are not usually complete since they use the simple variable names you chose.  For example You mght want to clarify that Transmittance is Average Transmittance.  This should be done in Word after you knit.  Don't forget to do this!
 ```
 
 
@@ -60,12 +81,18 @@ ggplot(data= dataframe, aes(x=xname, y=yname)) + #You need to assign the data fr
 
 Delete these words and type in answer.
 
-####Question 3: Based upon your data in table 1 and figure 1, explain why a solution of FD&C Blue 1 appears blue.
+
+
+####Question 2: Based upon your data in table 1 and figure 1, explain why a solution of FD&C Blue 1 appears blue.
 
 Delete these words and type in answer.
 
-####Question 4: How accurate is your spectrophtometer?  Go to the lab Moodle to find a picture of the transmittance spectrum of FD&C Blue 1.  Based upon this data, what is the lambda max for FD&C blue?  Does this data match your data?  Explain your reasoning in 1-2 sentences. (Be sure to cite any relevant sources)
+####Question 3: How accurate is the combined spectrophotometric data?  Go to the lab instructions to find a picture of the transmittance spectrum of FD&C Blue 1 (Figure 5.2).  Based upon this data, what is the lambda max for FD&C blue?  Does this data match your data?  Explain your reasoning in 1-2 sentences. (Be sure to cite any relevant sources or figures above)
 
 Delete these words and type in answer.
 
 For information on how to cite your sources refer to Chem 101 Lab Moodle citation sheet.
+
+####Question 4: How precise is the data?  Use your table or figure to support your answer.  Explain your reasoning in 1-2 sentences.
+
+Delete these words and type in answer.
