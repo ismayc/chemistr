@@ -42,7 +42,7 @@ Blue <- c(value1, value2, etc) #Input the resistance (in kOhms) for the cuvette 
 Transmittance_Water <-   #Mathmatically calculate transmittance from your raw resistance variables above (Blank and Water)
 Transmittance_Blue <-   #Mathmatically calculate transmittance from your raw resistance variables above (Blank and Blue)
 
-Transmittance_Student1 <- #We want the transmittance only due to the bue food coloring and not any interaction of the water.  So to get the final transmittance values subtract the Transmittance_Water variable from the Transmitance_Blue variable. Also change the Transittance variable name to include your intitials.  For example Transmittance_DC.
+Transmittance_Student1 <- #We want the transmittance only due to the blue food coloring and not any interaction of the water.  For reasons we won't go into, this is done by taking the Transmittance_Blue divided by the Transmittance_water
 
 ```
 
