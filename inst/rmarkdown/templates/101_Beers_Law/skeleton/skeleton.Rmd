@@ -1,96 +1,127 @@
 ---
-title: "Insert Title"
-author: "Insert Name"
-date: "Insert Date"
+title: "Title"
+author: "Partners"
+date: "Date of Lab"
 output: chemistr::chem_lab_word
 ---
+
 
 ```{r setup, include=FALSE}
 library(chemistr)
 ```        
+##Link to the Project for this file, along with the file name
 
+File name: 
 
-##Data
+Project Link: 
 
- 
-```{r, echo=FALSE}
-# Here is where you input your data for Part A.  
-Film <- c() #This is the # of films you have added to the cuvette
-T1 <- c() #This is the vector that includes the transmittance value you collected for each of the films added.
-log_F <-              #A power model requires you to take the log of the independent variable
-log_T1 <-           #The power model and the exponential model require you to take the log of the dependent variable.
-film_data <- data_frame(Film, T1, log_F, log_T1) #This is a data frame.  This links all your variables into a single table.
+##DIY Spectrophotometer Setup
+
+```{r, echo=FALSE, fig.cap="Figure Caption"}
+#Take a picture of your working spectrophotometer.  Then upload it into the same folder that you saved your lab write-up.  This will allow you to use the included graphics function below.  
+#You can copy and paste this chunk for each person in your group.
+
+include_graphics("Image name") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
 ```
 
-
-```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
-# Here is where you create your first graph.  Notice that we are fitting the data to the line Y=mX+b.  Determine whether this data fits well to this line and comment on this in the caption.  In order to get the slope of your fit line, run this chunk.  The value given in the console from `summary()` on the fitted model gives the slope and intercept of the best fit line (m and b in the equation above) as well as the R-squared value. If this is a good model, include this slope in the graph caption. 
-chem_scatter(data = film_data, xvar = Film, yvar = T1, xlab = "Axis Label", ylab = "Axis Label") #This is the info for making the graph.  If you are making a new graph, the variables will need to reflect this.
-fit1 <- lm(T1~Film, data = film_data)  #This is how we get the fit values out.  If you change the variables you're graphing, the same will need to be done here.
-summary(fit1) #This will show the fit parameters in your document
-```
-
-
-```{r plot2, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you ut the code for plotting the model of an exponential relationship for part A, log(Y) vs X.  Use and modify the code in the previous R chunk.
-
-
-
-
-```
-
-```{r plot3, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you put the code for plotting the model of a power relationship for part A, log(Y) vs log(x).  
-
-
-
-
-```
-
-```{r dye_data, echo=FALSE}
-# Here is where you input your data for Part B,  Use part A as a model for how to input the correct code.
-
-```
-
-```{r plot4, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you put the code for plotting the model of a linear relationship for part B, Y vs X.  
-
-
-
-
-```
-
-```{r plot5, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of an exponential relationship for part B, log(Y) vs X.  
-
-
-
-
-```
-
-```{r plot6, echo=FALSE, fig.cap="Insert Caption"}
-#Here is the code for plotting the model of a power relationship for part B, log(Y) vs log(X).  
-
-
-
-
-```
+##Results
 
 ```{r, echo=FALSE}
-#Here you input the data that you will use in your table
-Model <- c("Linear", "Exponential", "Power") #This is the names of the different models
-Film_R2 <- c() #Here are the R^2 values for the film data related to the above models
-Dye_R2 <- c() #Here are the R^2 values for the dye data related to the above models
-R2 <- data_frame(Model, Film_R2, Dye_R2) #Here are the items you want to include in Table 1
+# Each person should individually complete this chunk.  Each individual chunk can then be copied and pasted into the combined group lab report to create the final report.
+# Here is where you input your raw data from your experiment.
+
+Concentration_Student1 <- c() #include the final concentration in your dilutions in units of Molarity.  
+Blank_Student1 <- c()   
+Water_Student1 <- c()
+Blue_Student1 <- c()
+
+#Look at how you completed the DIY Spectrophotometer lab and calculate the following variables
+Transmittance_Water <-   #Transmittance of water sample
+Transmittance_Blue <-   #Transmittance of blue food color sample 
+
+Transmittance_Student1 <-  #Transmittance of Only blue sample with water removed.
+
 ```
 
 
-```{r nice_table1, results = 'asis', echo=FALSE}
-#Here is where you create the table that you input data for above.   
-chem_table(R2, caption = "Insert Caption")
+```{r, echo=FALSE}
+#From now on you will be looking at combined data.  To combine all of your data points into one data frame you must 
+#1. Combine each person's variables into a single set of variables.  For example Transmittance_group <- c(Transmittance_Student1, Transmittance_Student2) 
+#2. Create a data frame of the group Transmittance and Concentration variables.
+
+Transmittance_group <- c()
+
+Concentration_group <- c()
+
+Group_data <- data.frame()
+
+```
+
+
+
+
+```{r, echo=FALSE, fig.cap="Figure Caption"}
+
+#The first mathematical model you will test is the linear model.  In this case you can directly fit concentration versus transmittance to a straight line fit.
+
+#To create the scatter plot, go to your linear regression lab report and copy and paste the code that will 1) create a scatter plot, using chem_scatter function 2) extract the fit data using the lm function and 3) provide a summary of the fit data using the summary function.
+
+#Then change the code to represent the variables in Group_data
+
+#Once you have run this chunk, write a caption.  In your caption include the color of film, size of cuvette, mathematical model you are testing and the details of the fit (slope +/- error and Y-intercept +/- error and R^2).  Watch your significant figures.
+
+
+
+
+
+
+
+
+
+
+```
+
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+#In this chunk you are going to test an exponential model (also called a semi-log plot).  To test an exponential model you need to create a scatter plot of the log10(Y) versus X.
+#Just as in the previous chunk you will need to create a graph, extract the fit information and display a summary of it.
+#Also, your caption should include the same things as the previous chunk.
+
+
+
+
+
+
+
+
+
+```
+
+```{r, echo=FALSE, fig.cap="Insert Caption"}
+#In this chunk you are going to test a power model (also called a log-log plot).  To test a power model you need to create a scatter plot of the log10(Y) versus log10(X).
+#Just as in the previous chunk you will need to create a graph, extract the fit information and display a summary of it.
+#Also, your caption should include the same things as the previous chunk.
+
+
+
+
+
+
+
+
+
+
 ```
 
 ##Discussion
 
-Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two).  Please refer to the Beer's Law Experiment #2 for information on what to include in your discussion as well as an example discussion.
+Delete this information before handing in the assignment:
+Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two). Do not just answer the statements below as separate points.  Please refer to the appendex in the instructions for an example lab report that includes a discussion.  The things that should be part of your written discussion are:
+1.  Restate the purpose and the hypothesis of the experiment.
+2.  State the conclusion (claim) can you make about the mathematical models that describe light and concentration?	
+3.  Describe the evidence that supports your conclusions.  Make sure you specifically point out anything that the reader must see in a figure or table that supports the conclusion.  References to the figures or tables are included parenthetically.  For example:  A linear relationship was observed between apples and time (Figure 1), which is what would be predicted if the apple were eaten consistently over the course of a day.  More examples of this can be seen in Appendix 2B.
+4.  The relationship between light transmittance and concentration is summarized in the Beer-Lambert Law.  Look up this equation and report it  (include a citation with your source).  How does it compare to your results?  Use your graphs to support your conclusion with data.
+5.  Discuss the accuracy and precision of the experiment.  Make sure you talk about precision and accuracy in separate statements so it is clear what it is you are linking to precision and what you are linking to accuracy. Hint: Take a look at https://pubs.acs.org/doi/abs/10.1021/ed081p1475 for literature results to compare with for accuracy.
+
+
 
