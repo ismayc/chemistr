@@ -9,64 +9,74 @@ output: chemistr::chem_lab_word
 library(chemistr)
 ```
 
+## Link to the Project for this file, along with the file name
+
+File name:
+
+Project Link: 
+
+## Experimental Methods
+```{r, echo=FALSE, fig.cap="Insert Figure Caption"}
+#To be completed individually. Upload a picture of either the treee or individual leaves that were used in the experiment.   
+#In your caption be sure to identify the species of tree, the date, time, and location the leaves were obtained.
+
+include_graphics("Name of Figure File") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
+```
 
 ## Results
 
-`r #note that any data chunks below that you don't want in your lab report can simply be deleted.  If you need to add results chunks, feel free to add as needed.  These are simply suggested ways to present your data.`
+```{r, echo=FALSE, fig.cap="Insert Figure Caption"}
+#To be completed individually. Take a picture of your chromatogram(s).  Each person should have a chromatogram that represents the green leaf extract and the colored leaf extract.  Then upload it into the same folder that you saved your lab write-up.  This will allow you to use the included graphics function below.  
+#In your caption be sure to identify who the chromatogram belongs to, the mobile phase and stationary phase used and the identity of the pigments.  See the lab insturctions for an example photo and caption.
 
-
-```{r, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you input the code for a Chromatogram picture.  Remember the picture should be uploaded to your lab report folder.
-include_graphics("Fig1.jpg")
-```
-
-```{r, results = 'asis', echo=FALSE}
-# Table 1 - A table showing the mobile phase results.  Note: If a pigment is missing a data point, then use "NA" in place of the value  Use NT if the datapoint was not analyzed due to time or other issue.
-Mobile_phase <- c("100 % Cyclohexane") #Input the ratio of mobile phase components that were tested
-Rf_Anthocyanin <- c(0) #Input the calculated Rf values of anthocyanin for the different mobile phase tests
-Rf_ChlorA <- c(1) #Input the calculated Rf values of chlorophyll A for the different mobile phase tests
-Rf_ChlorB <- c(1) #Input the calculated Rf values of chlorophyll B for the different mobile phase tests
-Rf_Xan <- c(1) #Input the calculated Rf values of xanthophyll for the different mobile phase tests
-Rf_Car <- c(1) #Input the calculated Rf values of carotenoid for the different mobile phase tests
-Mobile <- data.frame(Mobile_phase, Rf_Anthocyanin, Rf_ChlorA, Rf_ChlorB, Rf_Xan, Rf_Car)
-chem_table(Mobile, caption = "Table 1: Insert caption")
+include_graphics("Name of Figure File") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
 ```
 
 
-```{r, results = 'asis', echo=FALSE}
-# Table 2 - A table showing the chromatogram results.  Note: If a pigment is missing a data point due to the pigment not present, then use "NA" in place of the value. Use NT if the datapoint was not analyzed due to time or other issue.
+
+
+```{r, echo=FALSE}
+# To be completed individually.  Raw data input from your chromatograms.
+#Note: If a pigment is missing a data point, then use "NA" in place of the value  
+
 Pigment <- c("Anthocyanin", "Chlorophyll B", "Chlorophyll A", "Xanthophyll", "Carotenoid")
-Rf_Control <- c() #Input the calculated Rf values from the control pigment chromatogram
-Rf_Green <- c() #input the calculated Rf values from the Green leaf chromatogram
-Rf_Colored <- c() #input the calculated Rf values from the Colored leaf chromatogram
-Rf <- data.frame(Pigment, Rf_Control, Rf_Green, Rf_Colored)
-chem_table(Rf, caption = "Table 2: Insert caption")
+Rf_Green_Student1 <- c() #input the calculated Rf values from the Green leaf chromatogram
+Rf_Colored_Student1 <- c() #input the calculated Rf values from the Colored leaf chromatogram
+
 ```
 
-```{r, echo=FALSE, fig.cap="Insert Caption"}
-#Here is where you input the code for a spectroscopy picture.  You don't need to include all your pictures, since the data might be reported in a table, but you may want to include at least one as a example of what you were looking at.  
-include_graphics("Fig3.jpg")
-```
 
 ```{r, results = 'asis', echo=FALSE}
-# Table 2 - A table showing the spectroscopy results.  Use the Anthocyanin data from the acid samples and the other pigment data from the non-acid samples.
- 
+#The rest of the report should be completed by your group
+# Note: If a pigment is missing a data point in all figures due to the pigment not being present, then use "NA" in place of the value. 
 Pigment <- c("Anthocyanin", "Chlorophyll B", "Chlorophyll A", "Xanthophyll", "Carotenoid")
-Spec_Literature<- c() #This is the lambda max from the UV/VIS spectrum of the control pigments found in the appendix of the Leaf lab instructions. If there are multiple lambda max values, you can use quotes such as c("252, 298", "520").  This shows the first pigment has two lambda max values at 252 and 298 nm while the second pigment only has a lammbda max at 520 nm.
-Spec_Green <- c() #This is the lambda max from the UV/VIS spectrum of the green leaves. If the pigment was not seen, use "NA" in its place. If the pigment was not tested use "NT" 
-Spec_Colored <- c() #This is the lambda max from the UV/VIS spectrum of the colored leaves. If the pigment was not seen, use "NA" in its place. If the pigment was not tested use "NT" 
-Spec <- data.frame(Pigment, Spec_Control, Spec_Green, Spec_Colored)
-chem_table(Spec, caption = "Table 2: Insert caption")
+Rf_Green_Average <- #Calculate the average Rf for all the pigments from the green leaves
+Rf_Colored_Average <- #Calculate the average Rf for all the pigments from the colored leaves
+
+Rf_Green <- data.frame(Pigment, Rf_Green_Student1, Rf_Green_Student2, Rf_Green_Student3, Rf_Green_Average)
+
+Rf_Colored <- data.frame(Pigment, Rf_Colored_Student1, Rf_Colored_Student2, Rf_Colored_Student3, Rf_Green_Average)
+
+chem_table(Rf_Green, caption = "Table 1: Insert caption") #Create a table of individual plus average green-leaf results
+chem_table(Rf_Colored, caption = "Table 2: Insert caption") #Create a table of individual plus average colored-leaf results
 ```
 
 
 
+##Discussion
 
-## Discussion
+Delete this information before handing in the assignment:
+Here is where you will input your discussion for this lab. The discussion should be a well-organized paragraph (or two). Do not just answer the statements below as separate points.  The things that should be part of your written discussion are:
+1.  Restate the purpose and the hypothesis of the experiment.
+2.  State the conclusion (claim) can you make about the color change model.
+3.  Explain how the evidence presented in the results section supports your claim.  
+      *Make sure you specifically point out anything that the reader must see in a figure or table that supports the conclusion.  
+      *References to the figures or tables must be included parenthetically.  For example:  The green leaves had all five pigments presented in each leaf species tested.  This is based upon matching colors (Figure 1, 3, and 5) and Rf values (Table 1).
+4.  Discuss the ordering of the pigments in yuor chromatogram.  How does your identified order compare with your prediction in the pre-lab, based upon the figure you drew.  What does the order tell us about the polarity of the paper versus the polarity of the mobile phase?  Explain how the chemical structure of each pigment supports the order in which it separated.
+5. Discuss the accuracy and precision of the experiment.  Make sure you talk about precision and accuracy in separate statements so it is clear what it is you are linking to precision and what you are linking to accuracy. Hint: Take a look at https://harvardforest.fas.harvard.edu/autumn-foliage-color for a great bibliography of papers for comparison.
 
-`r #In an evidence based discussion, present a claim for how pigment changes occur to tree leaves in the fall.  See lab instructions for more details.`
 
 
 ## References
 
-'r See how to cite on Moodle [link](https://moodle.reed.edu/mod/page/view.php?id=87220)`
+Correctly put full references in this section.
