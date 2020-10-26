@@ -27,7 +27,7 @@ include_graphics("Name of Figure File") #Between the quotes, type the name of yo
 
 ```{r, echo=FALSE, fig.cap="Insert Figure Caption"}
 #To be completed individually. Take a picture of your chromatogram(s).  Each person should have a chromatogram that represents the green leaf extract and the colored leaf extract.  Then upload it into the same folder that you saved your lab write-up.  This will allow you to use the included graphics function below.  
-#In your caption be sure to identify who the chromatogram belongs to, the mobile phase and stationary phase used and the identity of the pigments.  See the lab insturctions for an example photo and caption.
+#In your caption be sure to identify who the chromatogram belongs to, the mobile phase and stationary phase used and the identity of the pigments.  See the lab instructions for an example photo and caption.
 
 include_graphics("Name of Figure File") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
 ```
