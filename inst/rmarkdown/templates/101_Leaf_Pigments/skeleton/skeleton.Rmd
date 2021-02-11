@@ -58,10 +58,15 @@ Rf_Green <- data.frame(Pigment, Rf_Green_Student1, Rf_Green_Student2, Rf_Green_S
 Rf_Colored <- data.frame(Pigment, Rf_Colored_Student1, Rf_Colored_Student2, Rf_Colored_Student3, Rf_Green_Average)
 
 chem_table(Rf_Green, caption = "Table 1: Insert caption") #Create a table of individual plus average green-leaf results
+
 chem_table(Rf_Colored, caption = "Table 2: Insert caption") #Create a table of individual plus average colored-leaf results
 ```
 
+```{r, results = 'asis', echo=FALSE}
 
+
+chem_table(Rf_Colored, caption = "Table 2: Insert caption") #Create a table of individual plus average colored-leaf results
+```
 
 ##Discussion
 

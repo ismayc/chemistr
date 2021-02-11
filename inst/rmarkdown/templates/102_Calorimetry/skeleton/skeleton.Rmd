@@ -1,0 +1,73 @@
+---
+output: chemistr::chem_lab_word
+---
+
+```{r, include=FALSE}
+library(chemistr)
+```
+| Reed Chemistry Analytics
+| Chem 102 "Insert Lab Section"
+| Portland, OR 97202
+
+---
+
+| `r format(Sys.Date(), "%B %e, %Y") #This code provides the current date`
+
+Dear Electrolytes LLC:
+`r #Below this you should type your letter`
+| This letter is in regards to......
+
+Sincerely,
+
+Your Names
+
+
+######Calculations Appendix
+```{r, echo=FALSE, fig.cap="Figure Caption Goes Here"}
+#Take a picture of your calculations for one salt.  Make sure it is NEAT, legible and clear how you went from raw data (temperatures) to the heat of the reaction in kJ/mol, KJ/g, and $/KJ. If no one in your group has good handwriting, then you are also welcome to type in the calculations.
+
+include_graphics("Image name") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
+
+```
+
+
+```{r, results = 'asis', echo=FALSE}
+#Calorimetry Results
+
+NH4Cl <-  c()#Input the calculated heats of reaction for ammonium chloride (kJ/mol) for each trial
+NH4CL_Avg <-  #Calculate the Average heat of reaction units= kJ/mol
+NH4Cl_Avg_g <-  #Calculate the Average heat of reaction units=kJ/g
+NH4Cl_Cost <- #Calculate the Cost analysis units = $/KJ.  Use https://www.sigmaaldrich.com/united-states.html to look at salt costs
+
+
+CaCl2 <- c()#Input the calculated heats of reaction for calcium chloride (kJ/mol)
+CaCl2_Avg <-  #units= kJ/mol
+CaCl2_Avg_g <- #units=kJ/g
+CaCl2_Cost <-  #Cost analysis units = $/KJ.  
+
+MgCl2 <-  c()#Input the calculated heats of reaction for magnesium chloride (kJ/mol)
+MgCl2_Avg <-  #units= kJ/mol
+MgCl2_Avg_g <-  #units=kJ/g
+MgCl2_Cost <-  #Cost analysis units = $/KJ.  
+
+KCl <-  c()#Input the calculated heats of reaction for potassium chloride (kJ/mol)
+KCl_Avg <-  #units= kJ/mol
+KCl_Avg_g <-  #units=kJ/g
+KCl_Cost <-  #Cost analysis units = $/KJ.  
+
+Salt <- c("NH4Cl", "CaCl2", "MgCl2", "KCl")
+Avg_M <- c(NH4CL_Avg, CaCl2_Avg, MgCl2_Avg, KCl_Avg)
+Avg_g <- c(NH4Cl_Avg_g, CaCl2_Avg_g, MgCl2_Avg_g, KCl_Avg_g)
+Avg_Cost <- c(NH4Cl_Cost, CaCl2_Cost, MgCl2_Cost, KCl_Cost)
+
+Cal_Results <-  data.frame(Salt, Avg_M, Avg_g, Avg_Cost) #Create a dataframe of the average results. 
+
+Cal_Table <- chem_table(Cal_Results, caption = "Input Caption") #Create a table of the Rf results. Don't forget a cpation that is in sentence format explaining what the table represents. 
+
+#Remember after you knit it into a word document, make sure that you use the correct significant figures to report the averages and units are added to the column headings.
+
+```
+
+
+
+
