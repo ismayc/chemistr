@@ -1,73 +1,172 @@
----
-title: 'Experiment 8: Chemical Clocks'
-author: "Sample Report"
-date: "Insert Lab Section"
+----
+title: "Kinetics Blue Food Dye and Bleach"
+author: "Insert Name"
+date: "Insert Date"
 output: chemistr::chem_lab_word
 ---
 
 ```{r setup, include=FALSE}
 library(chemistr)
-```   
+```        
 
-######Please turn in this worksheet as a PDF to the "E8 Chemical Clocks" Assignment on Moodle [**link**](https://moodle.reed.edu/mod/assign/view.php?id=119082).
-
-
-***
-
-##Results
+## Data
 
 
+```{r, results="asis", echo=FALSE}
+#Molar Absorptivity Calculation using a 1-point calibration.  This can be done by hand in your worksheet or via R. Your choice.
 
-```{r, echo=FALSE, fig.cap = "Input Caption"}
-#Concentration Reactant #1 vs Reaction Time
-#Input your data and create a scatter plot to see the relationship between the concentration of reactant #1 and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  
-#In your caption be sure to identify the variable measured and the condtions used for the reaction that were not varied (such as temperature and concentrations of other reactants)
+Blue_Stock <-  #Report the concentration of blue dye in your stock solution.
 
-Reactant_1 <- c() #Concentrations (in M) of reactant #1 in your reaction
-Time_1 <- c() #Time (in sec) of the reaction with given reactant #1 concentrations
-data_1 <- data.frame(Reactant_1, Time_1)
-chem_scatter(data_1, Reactant_1, Time_1, xlab = "X axis label", ylab = "Y Axis label", reg_line = FALSE) #reg_line = FALSE removes the straight best fit line.  If your data does not appear linear, then it does not make sense to fit it to a striaght line.  If your data does appear linear, then changing this to TRUE will be useful.
+Blue_Resistance <-  #Report the resistance of the stock blue dye.
 
+Water_Resistance <- #Report the resistance of a water sample taken right before the blue dye.
 
-```
+Tran_Stock <-   #Calculate the transmittance of the stock blue dye.  Hint: remember that photons are proportional to 1/resistance.
+  
+Abs_Stock <-  #Calculate the absorbance of the stock blue dye.  Hint log is log10() in R
+  
 
+Molar_Absorptivity_Constant <-  #Calculate the molar absorptivity constant using Beer's Law - Absorbance = Molar Absorptivity Constant* Path Length * Concentration.
+  
+Calibration <- data.frame(Blue_Stock, Abs_Stock, Molar_Absorptivity_Constant)
+Calibration
 
-```{r, echo=FALSE, fig.cap = "Input Caption"}
-#Concentration Reactant #2 vs Reaction Time
-#Use the previous coding to help you input your data and create a scatter plot to see the relationship between the concentration of reactant #2 and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  
-#In your caption be sure to identify the variable measured and the condtions used for the reaction that were not varied (such as temperature and concentrations of other reactants)
-
-
-
-```
-
-```{r, echo=FALSE, fig.cap = "Input Caption"}
-#Concentration Starch vs Reaction Time
-#Use the previous coding to help you input your data and create a scatter plot to see the relationship between the concentration of starch and the time needed for the reaction to reach its endpoint.  Think about whether you want to include a straight line best fit or not.  Does the data fit a straight line model?  
-#In your caption be sure to identify the variable measured and the condtions used for the reaction that were not varied (such as temperature and concentrations of other reactants)
-
-
-
-```
-
-```{r, echo=FALSE, fig.cap="Input Caption "}
-#Temperature vs Reaction Time
-#Use the previous coding to help you input your data and create a scatter plot that shows the relationship that temperature has on the reaction rate.   Make sure the caption includes anything that was kept constant, such as reaction concentrations, and also any information you have about the shape of the graph.  Does it follow a linear relationship?  Is it more logarithmic?  What evidence do you have for the proposed relationship? 
-
+#Run your chunk and record the results in question #1 of the worksheet.
 
 ```
 
 
-```{r, echo=FALSE, results = 'asis'}
-#Create a table to show evidence for the reliability of your clock (specifically looking at the precision and accuracy of the clock).  This table should include the number of replicates, average and 95% confidence interval of your proposed clock.  Make sure to use the correct sig figs in your final table.  The caption should indicate the conditions used to make the emasurements (aka concentrations of all reactants and temperature of the reaction)
+```{r}
+#Trial #1 Data.  You'll need to copy and past this chunk for each trial.  Make sure you change the variable names to reflect the trial number.
+
+time_1 <- c() #Input the time in seconds for all the values you collected.  You should have collected from ~30-180 seconds, at 10 second intervals.
+
+water_1 <-  #Input the resistance for the water blank you measured at the start of your trial.
+  
+resistance_1 <- c() #Input the resistance values you recorded for the varying time points.
+
+Abs_1 <-  #Calculate the absorbance at each time point based upon the resistance of the blue dye and the resistance of the water sample.
+  
+Con_1 <-  #calculate the concentration of blue dye based upon your experimentally determined molar absorptivity value.  Remember Beer's Law: Absorbance = Molar Absorptivity * Pathlength * Concentration.  This code can be used to answer question #3.
+
+T_1 <- data.frame(Abs_1, Con_1, time_1)
+
+T_1 <- subset(T_1, time_1 <= 100) #Limit the graphed values by using this code. In this code only the data which has time less than or equal to 100 seconds will be used.  Choose the first time at which the next resistance value has not changed or goes up.  If it changes throughout the data collection there is no need for this code.
 
 
 
 ```
 
+```{r, echo=FALSE, fig.cap=""}
+# Here is a R chunk where you will create a graph with your kinetics data. Note: ln (natural log) in R is log().  You'll need to copy and paste this chunk for each trial.  Make sure you change the variable names to reflect the trial number. 
 
-##Discussion
+chem_scatter(data = , xvar = , yvar = , xlab = "Input Label", ylab = "Input Label", reg_line=TRUE) #This is the info for making the graph.  You will need to input your data and variables to reflect your naming system and the integrated rate law you are modeling. For example, if you are modeling a second order reaction the yvar = 1/Concentration.
 
-`r #Provide an evidence based discussion of your results.  The lab report should discuss the answers to the following questions as well as the evidence that supports these answers: 1.	Purpose of the lab 2.	How does concentration of each reactant affect the chemical reaction?  Reference evidence to support your statement.  Provide a molecular leval explanation as to why this effect is seen (hint: think about collision theory)  3.	How does temperature effect the chemical reaction? Reference evidence to support your statement.  Provide a molecular leval explanation as to why this effect is seen (hint: think about the Boltzman distribution) 4.	How were all these factors put together to design a chemical clock?  A description of the clock design should be included. 5.	How successful was the designed clock. Was it accurate?  Was it precise?  Make sure you reference the evidence that supports these statments.`
+fit1a <- lm()  #This is how we get the fit values out.  The function lm() should be filled out usng the following scheme: lm(Y-Variable ~ X-Variable, data = DataFrame Name)
+
+summary(fit1a) #This will show the fit parameters in your document.  
+
+#Run this chunk and record the order and R^2 value in your notebook.  Then update this chunk to reflect a different order integrated rate law.  Run again and record the new R^2 value in your notebook.  Continue through order = 0, 1, and 2.  Then complete question #4 on your worksheet with the trial #1 results.  Next, copy and paste your best fit graph into question #5.  Use the fit parameters to write your caption.
+```
+
+```{r, results="asis", echo=FALSE}
+
+# Report the R^2 values for trial #1 to use as evidence for the order of the reaction in terms of bleach
+
+Order <- c(0, 1, 2)
+R_2 <- c() #R^2 values come from the best fit lines of the graphs
+Y_axis <- c() #Indicate what was graphed on the Y-axis to obtain the fit and R^2 value.
+
+R_2 <- data.frame(Order, Y_axis, R_2)
+
+R_2
+
+#Input this data in the question #4 of the worksheet.
 
 
+```
+
+```{r}
+#Trial #2 Data
+
+```
+
+```{r}
+#Trial #2 Graphing, using the integrated rate law order determined for trial #1.
+#Record the k' value from the graph in question #7 of the worksheet.
+
+```
+
+```{r}
+#Trial #3 Data
+
+```
+
+```{r}
+#Trial #3 Graphing, using the integrated rate law order determined for trial #1.
+#Record the k' value from the graph in question #7 of the worksheet.
+
+```
+
+```{r}
+#Trial #4 Data
+
+```
+
+```{r}
+#Trial #4 Graphing, using the integrated rate law order determined for trial #1.
+#Record the k' value from the graph in question #7 of the worksheet.
+
+```
+
+```{r}
+#Trial #5 Data
+
+```
+
+```{r}
+#Trial #5 Graphing, using the integrated rate law order determined for trial #1.
+#Record the k' value from the graph in question #7 of the worksheet.
+
+```
+
+```{r}
+#Trial #6 Data
+
+```
+
+```{r}
+#Trial #6 Graphing, using the integrated rate law order determined for trial #1.
+#Record the k' value from the graph in question #7 of the worksheet.
+
+```
+
+
+
+```{r, echo=FALSE, fig.cap="Input Caption"}
+#Determine the order in terms of bleach by graphing log10(k') versus log10[OCl-].
+
+#From your tables in question #2 and question #7 report the following data:
+
+Bleach <- c() #Concentrations of hypochlorite for trials in which only bleach concentration changes.
+
+k_prime <- c() #k' values from each trial.
+
+Bleach_order <- data_frame(Bleach, k_prime)
+
+chem_scatter(data = , xvar = , yvar = , xlab = "X label", ylab = "Y label", reg_line=TRUE) #This is the info for making the graph.  You will need to input your data and variables to reflect your naming system and the integrated rate law you are modeling. For example, in this model the yvar = log10(k_prime).
+
+fit7 <- lm()  #This is how we get the fit values out.  The function lm() should be filled out usng the following scheme: lm(Y-Variable ~ X-Variable, data = DataFrame Name)
+
+summary(fit7) #This will show the fit parameters in your document. 
+
+#Copy and paste your graph into question #8.  Use the fit parameters to write your caption.
+
+
+```
+
+```{r}
+#Based upon all of your results so far, calculate the average and 95% confidence interval for the rate constant (k) of this reaction.  Copy and paste the code from your 95% confidence interval calculator (from the leaf decay lab) into this section.  Then report the results in question #10.
+
+
+```
