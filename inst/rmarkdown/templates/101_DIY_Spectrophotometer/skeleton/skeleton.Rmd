@@ -41,7 +41,7 @@ data1 <- data.frame(Transmittance, Color) #creates a data frame for variables.
 
 
 ggplot(data= dataframe, aes(x=xname, y=yname)) + #You need to assign the data frame your variables are in (data1) and the X vector name (Color) and Y vector name (Transmittance).
-  geom_bar( ) +
+  geom_bar( ) 
 
 
 ```
@@ -58,7 +58,7 @@ Delete these words and type in answer.
 Delete these words and type in answer.
 
 
-####Question 3: How accurate is the DIY spectrophotometric data? Based upon the lab spectrum, what is the lambda max for FD&C blue?  Does this data match your DIY data?  Explain your reasoning in 1-2 sentences. 
+####Question 3: How accurate is the DIY spectrophotometric data? Explain your reasoning in 1-2 sentences. (Hint: Based upon the lab spectrum, what is the lambda max for FD&C blue?  Does this data match your DIY data?) 
 
 Delete these words and type in answer.
 
