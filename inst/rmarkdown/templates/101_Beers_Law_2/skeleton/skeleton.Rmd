@@ -1,0 +1,73 @@
+---
+output: chemistr::chem_lab_word
+---
+
+```{r, include=FALSE}
+library(chemistr)
+```
+| Reed Chemistry Analytics
+| Chem 101 "Insert your Lab Section"
+| Portland, OR 97202
+
+---
+
+| `r format(Sys.Date(), "%B %e, %Y") #This code provides the current date`
+
+Dear Health Advocacy Group:
+`r #Below this line you should type your letter`
+
+
+Sincerely,
+
+Your Names (first and last)
+
+
+######Data Analysis Appendix
+
+```{r, echo=FALSE}
+# Here is where you input your standards data that you want to graph
+Concentration <- c() # This should be the concentrations of your standards.  Use Molarity as your units.  Don't forget 0M.
+Absorbance <- c() #Don't forget to include your blank value.  These should all be within the quantitative range of 0.1-2 Absorbance Units. 
+E6B_data <- data_frame(Independent_Variable, Dependent_Variable) # Creation of data frame
+```
+
+
+```{r plot1, echo=FALSE, fig.cap="Insert Caption"}
+# Here is where you create your standard curve. To create the scatter plot, go to your E5 or E6A lab report and copy and paste the code that will 1) create a scatter plot, using chem_scatter function 2) extract the fit data using the lm function and 3) provide a summary of the fit data using summary.
+
+#Change the code to represent the variables names in your data frame.
+
+#Once you have run this chunk, write a caption after fig.cap = "Insert Caption" in the R chunk heading.  In your caption (sentence format) include the molecule being measured. the wavelength being tested, the size of the cuvette and the details of the fit (slope +/- error and Y-intercept +/- error and R^2)
+
+
+
+
+
+
+
+```
+
+
+```{r image, echo=FALSE, fig.cap="Insert Caption"}
+#This is a GOOD picture of your calculation starting at Abs of sample and showing every calculation to final reported values.  Include every calc and every unit.
+
+include_graphics("Name of Figure, ex: Iron.jpg") #To make this work, you must upload the picture into the same folder on RStudio that you saved this file into.  If you choose to type out your calculations, then this code can be deleted.
+```
+
+
+```{r, echo=TRUE, results = "asis"}
+
+#Possiblity #1: R Calculations for Average, Standard Deviation, 95% Confidence Interval.  Use the Stats help sheet on Moodle for inputting this code or by looking at how it was done in Appendix 6B.1.  Finish with creating a data_frame() of the values you want to put into a nice table, using the chem_table() function, of your stats results (in Word change the table to have the correct sig figs).
+#Possibility #2: Input a picture on how you estimated your uncertainty by thinking through all of your measurements. Help with this can be found on the Moodle document, "Estimating Uncertainty".  Finish with creating a data_frame() of the values you want to put into a nice table, using the chem_table() function, of your stats results (in Word change the table to have the correct sig figs).
+
+
+
+
+
+
+```
+
+
+
+
+
