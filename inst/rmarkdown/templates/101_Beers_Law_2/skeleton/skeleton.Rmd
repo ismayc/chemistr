@@ -27,7 +27,7 @@ Your Names (first and last)
 ```{r, echo=FALSE}
 # Here is where you input your standards data that you want to graph
 Concentration <- c() # This should be the concentrations of your standards.  Use Molarity as your units.  Don't forget 0M.
-Absorbance <- c() #Don't forget to include your blank value.  These should all be within the quantitative range of 0.1-2 Absorbance Units. 
+Absorbance <- c() #Don't forget to include your blank (0M) value.  These should all be within the quantitative range of 0.1-2 Absorbance Units. 
 E6B_data <- data_frame(Independent_Variable, Dependent_Variable) # Creation of data frame
 ```
 
@@ -57,7 +57,7 @@ include_graphics("Name of Figure, ex: Iron.jpg") #To make this work, you must up
 
 ```{r, echo=TRUE, results = "asis"}
 
-#Possiblity #1: R Calculations for Average, Standard Deviation, 95% Confidence Interval.  Use the Stats help sheet on Moodle for inputting this code or by looking at how it was done in Appendix 6B.1.  Finish with creating a data_frame() of the values you want to put into a nice table, using the chem_table() function, of your stats results (in Word change the table to have the correct sig figs).
+#Possibility #1: R Calculations for Average, Standard Deviation, 95% Confidence Interval.  Use the Stats help sheet on Moodle for inputting this code or by looking at how it was done in Appendix 6B.1.  Finish with creating a data_frame() of the values you want to put into a nice table, using the chem_table() function, of your stats results (in Word change the table to have the correct sig figs).
 #Possibility #2: Input a picture on how you estimated your uncertainty by thinking through all of your measurements. Help with this can be found on the Moodle document, "Estimating Uncertainty".  Finish with creating a data_frame() of the values you want to put into a nice table, using the chem_table() function, of your stats results (in Word change the table to have the correct sig figs).
 
 
