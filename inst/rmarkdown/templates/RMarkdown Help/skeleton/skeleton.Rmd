@@ -1,0 +1,354 @@
+---
+title: "R Markdown Guide"
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 3.4
+    fig_width: 6
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage[labelfont=bf, margin=2in]{caption}
+- \usepackage{floatrow}
+- \floatsetup[table]{capposition=top}
+---
+
+Files with the extension .rmd are known as R markdown files. These files combine the use of markdown, which can convert text into many different formats (html, pdf, Microsoft word, etc.), with the use of R code. This allows you to create documents with pretty text and data analysis all in one. This file will knit without errors and is a resource for you to see how  what is written in a .rmd translates when it is knit to a pdf.
+
+
+In this document the white space contains markdown text while the gray boxes contain R code. In markdown text, spaces between words actually produce spaces. Here are some other examples of how to format your document.
+
+
+##Example: Starting a New Paragraph
+
+
+I want this to be in paragraph 1. 
+I want this to be in paragraph 2.
+
+vs
+
+I want this to be in paragraph 1.
+
+I want this to be in paragraph 2.
+
+**By putting two line spaces in between text you can break the line.**
+
+##Example: Bold and Italic Text
+
+This is normal text
+
+
+**This is bold text**
+
+
+*This is italicized text*
+
+
+##Example: Making Headers
+
+#Header size 1
+
+##Header size 2 
+
+###Header size 3
+
+####Header size 4 
+
+##How to Add Links
+
+In [] add the name for the link and in () add the URL for the link
+
+[Latex Equation Editor](https://www.codecogs.com/latex/eqneditor.php) 
+
+##Example: How to Make Pretty Equations!
+
+We can use Latex code in a markdown file to format equations by putting it in between two $ signs 
+
+For an in line equation we can use $y = mx + b$
+
+For an stand alone equation we want to be centered on the page we can use $$ y = mx + b $$
+
+**Here are some common examples of equations you will use in chemistry.**
+
+Beer's law is $A = a b c$ where A is the absorbance, $a$ is the molar absorbtivity in units of $M^{-1} cm^{-1}$ $b$ is the path length in $cm$, and $c$ is the concentration in $M$. 
+
+**Conversions**
+
+$P_{atm} = 29.83\: in\:  Hg\: * \frac{2.54\: cm}{1\: in} * \frac{1000\: mm}{1\: cm} * \frac{1\: atm}{760\: mm\: Hg}$
+
+In equations to add spaces, $29.83 in Hg$ must be written as $29.83\: in \: Hg$.
+
+**Supercript and Subscript**
+
+$P_{atm}$ vs $P^{atm}$, the sub-scripted or super-scripted text must be written within the {}
+
+$1.3 \times 10^{-3}$
+
+$S_{2}O_{8}^{2-}$
+
+**Fractions**
+
+$\frac{a}{b}$  $\frac{1}{1000}$
+
+You can also do sub scripts and super scripts within fractions...
+
+$K_{a} = \frac{[A^{-}][H_{3}O^{+}]}{[HA]}$
+
+**Commonly Used Symbols**
+
+Degree Symbol: $^\circ$, e.g. 25 $^\circ$C
+
+Delta Symbol: $\Delta$, e.g. $\Delta{A}$
+
+Less Than/Greater Than: < / > , e.g. 10 < 30
+
+Plus or Minus Sign: $\pm$, e.g. 5.0 $\pm$ 0.2
+
+Percent Sign: %, e.g. 25 %
+
+**More Example Equations**
+
+$P = \frac{nRT}{V}$
+
+$x = \sqrt{x^{2}}$
+
+$rate = k[I^{-}]^{m}\,[S_{2}O_{8}^{2-}]^{n}$
+
+Arrhenius Equation
+
+$k = Ae^{-E_{a}/RT}$
+
+\clearpage  This pushes everything after it to the next page
+
+**If you want to get fancy...you can also write reaction equations**
+
+Mechanism A: 
+
+$S_{2}O_{8}^{2-} \rightarrow SO_{4} + SO_{4}^{2-} \: (slow)$  
+
+$SO_{4} + I^{-} \rightarrow SO_{4}^{2-} + I^{+}$
+
+$I^{+} + I^{-} \rightarrow I_{2}$
+
+$I_{2} + I^{-} \rightarrow I_{3}^{-}$
+
+**Reactions in Equilibrium**
+
+$X_{(l)} \rightleftharpoons X_{(g)}$
+
+$2H_{2}O_{l} \rightleftharpoons H_{3}O^{+}_{aq} + OH^{-}_{aq}$
+
+
+##Example: Adding Images
+
+`![Caption of Photo](name of file)` 
+
+Follow this format without the ` ` and make sure the image is in the same folder as your .rmd file to which you are trying to add the image. 
+
+
+##Now for some R code Examples
+ 
+R code is written in gray chunks, which start with ```{r} and end with ``` (see below)
+
+Comments can be added to the code by adding a # in front of text
+
+```{r}
+x <- 10 + 5 # x is the number 15
+
+print(x) #this function prints what x is
+
+x <- as.numeric(c("1", "2", "X")) # Code that gives a warning. It converts X to NA and is warning that this is what is happening
+
+pkg <- c("dplyr", "knitr", "xtable", "rmarkdown", "readr", "ggplot2")
+
+new.pkg <- pkg[!(pkg %in% installed.packages())]
+
+if (length(new.pkg)) {
+
+  install.packages(new.pkg, repos = "http://cran.rstudio.com")
+  
+}
+
+library(dplyr) # Code that produces messages
+library(xtable)
+```
+ We can choose not to show messages from the code in the pdf by adding messages = FALSE to the beginning of the chunk ```{r, message = FALSE} (see below)
+ 
+```{r, message=FALSE}
+x <- 10 + 5 # x is the number 15
+
+print(x) #this function prints what x is
+
+x <- as.numeric(c("1", "2", "X")) # Code that gives a warning. It converts X to NA and is warning that this is what is happening
+
+pkg <- c("dplyr", "knitr", "xtable", "rmarkdown", "readr", "ggplot2")
+
+new.pkg <- pkg[!(pkg %in% installed.packages())]
+
+if (length(new.pkg)) {
+
+  install.packages(new.pkg, repos = "http://cran.rstudio.com")
+  
+}
+
+library(dplyr) # Code that produces messages
+```
+ 
+We can control whether or not the code is shown in the pdf by adding echo = FALSE to the beginning of the chunk ```{r, echo = FALSE} (see below)
+
+```{r, message = FALSE, echo=FALSE}
+x <- 10 + 5 # x is the number 15
+
+print(x) #this function prints what x is
+
+x <- as.numeric(c("1", "2", "X")) # Code that gives a warning. 
+# It converts X to NA and is warning that this is what is happening
+
+pkg <- c("dplyr", "knitr", "xtable", "rmarkdown", "readr", "ggplot2")
+
+new.pkg <- pkg[!(pkg %in% installed.packages())]
+
+if (length(new.pkg)) {
+
+  install.packages(new.pkg, repos = "http://cran.rstudio.com")
+  
+}
+
+library(dplyr) # Code that produces messages
+```
+
+We can choose not to show warnings from the code in the pdf by adding warning = FALSE to the beginning of the chunk ```{r, warning = FALSE} (see below)
+
+```{r, message = FALSE, echo=FALSE, warning=FALSE}
+x <- 10 + 5 # x is the number 15
+
+print(x) #this function prints what x is
+
+x <- as.numeric(c("1", "2", "X")) # Code that gives a warning. It 
+# converts X to NA and is warning that this is what is happening
+
+pkg <- c("dplyr", "knitr", "xtable", "rmarkdown", "readr", "ggplot2")
+
+new.pkg <- pkg[!(pkg %in% installed.packages())]
+
+if (length(new.pkg)) {
+
+  install.packages(new.pkg, repos = "http://cran.rstudio.com")
+  
+}
+
+library(dplyr) # Code that produces messages
+```
+
+\clearpage 
+
+
+The % symbol in LaTex is used for comments. When writing r code (only gray chunks) either avoid using the percent symbol (in captions for tables and such) or use \\%. 
+If when trying to knit to pdf you get an error message in red that reads, ! File ended while scanning use of \textbf, then you have used the percent symbol somewhere in the file where it is being read as a comment in LaTex. To fix the error, try either removing % symbols from r code or using \\%. 
+
+## Example: Creating Plots in R
+
+
+```{r} 
+# Add caption title within quotes above 
+
+#Defining values for x and y to plot
+x <- c(1, 2.2, 4, 6.3, 8.1) 
+y <- c(5, 7.2, 8.4, 9.5, 12.3)
+
+#Basic plot of y vs x (2 options)
+
+plot(x, y)
+
+#or
+
+plot(y ~ x)
+
+# The data look pretty linear, so let's fit a straight line (y = mx + b) to it 
+# and plot with the best fit line
+
+# First, let's put x and y values into a dataframe, much like columns in excel
+x.and.y <- data_frame(x, y) 
+
+# Take a look at the data frame by typing the name for the data frame
+x.and.y
+
+
+# Let's fit the data to our equation y = mx + b
+fit <- nls(y ~ m*x + b, data = x.and.y, start = list(m = 1, b = 4)) # put in 
+# very rough guesses for slope (m) and y intercept (b)
+
+# Now for every x value we have we want the y values that the equation 
+# predicts in order to plot the best fit line. We can extract these as a 
+# vector by using the function as.vector() and the function fitted().
+ycalc <- as.vector(fitted(fit))
+
+# Now let's plot our data with the best fit line using the function lines()
+plot(x, y)
+lines(x, ycalc)
+
+# To produce a plot with colored lines and solid black dots use this
+plot(x, y,
+     pch = 20)
+lines(x, ycalc, col = "blue")
+
+```
+
+**Adding Axis Labels and Captions with Superscripts and Subscripts)** 
+
+Now let's reassign x to be concentration of persulfate and y to be rate when varying persulfate concentration 
+```{r, fig.cap= "Plot of Rate vs Persulfate Concentration"} 
+# Add caption title within quotes above 
+
+# reassigning x and y 
+rate <- y
+persulfate.conc <- x
+fitted.rate <- ycalc
+
+# Plot of rate vs persulfate concentration with appropriate labels that include units
+# Within expression function, ~ is for a space while * is for no space, [] is for 
+# subscript, ^ is for superscript 
+
+plot(persulfate.conc, rate,
+    xlab = expression("[" ~ S[2] * O[8]^"2-" ~ "]"  ~ (M)),   
+    ylab = expression("Rate" ~ ("M" * s^-1)),
+     pch = 20)
+lines(persulfate.conc, fitted.rate, col = "green")
+```
+
+
+
+## Example: Creating Tables
+
+```{r nice_table2, results = 'asis', echo=FALSE}
+# Making a dataframe with newly named x and y values
+rate.and.conc <- data_frame(rate, persulfate.conc) 
+
+# Renaming column names for the table
+rate.and.conc <- rename(rate.and.conc, "Rate (M/s)" = rate, "Persulfate Concentration (M)" = persulfate.conc)
+
+
+
+bold_all_col_names <- function(x) {paste('\\textbf{', x, '}', sep ='')} # function to bold column names
+
+title <- 'Rate and Persulfate Concentration' # Giving the table a title
+
+print(xtable(rate.and.conc,   #This is the data frame you're going to use for the table 
+             caption = title,  # set the caption to be the specified title above
+             align = "|r|r|r|",  # right align all columns and create vertical lines, need one more |r|                                     than total columns.  Use l or c for left or center aligned
+             digits = c(0, 1, 2),             # number of decimal places for each column
+             display = c("d", "f", "f") # This is the type of number you want.  Like in excel where you can display it scientifically (E), as an integer (d), or as a number (f), or changing a number into an obect (s).  The first letter corresponds to an unseen row number.  It must stay there but can be ignored. 
+             ), 
+      caption.placement = 'top',  
+      hline.after = seq(-1, nrow(rate.and.conc)),  # Horizontal lines on top through bottom of table, must match datframe name, here rate.and.conc
+      include.rownames = FALSE, 
+      comment = FALSE, 
+      caption.width = '2.7in', 
+      sanitize.colnames.function = bold_all_col_names
+      )
+
+
+```
+
+ 
+
