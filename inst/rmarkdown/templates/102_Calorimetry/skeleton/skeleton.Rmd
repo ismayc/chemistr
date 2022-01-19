@@ -8,10 +8,11 @@ library(chemistr)
 | Reed Chemistry Analytics
 | Chem 102 "Insert Lab Section"
 | Portland, OR 97202
+| Link to RStudio File: "Input Link Here"
 
 ---
 
-| `r format(Sys.Date(), "%B %e, %Y") #This code provides the current date`
+| `r format(Sys.Date(), "%B %e, %Y") #This code provides the current date.  Don't change.`
 
 Dear Electrolytes LLC:
 `r #Below this you should type your letter`
@@ -24,9 +25,9 @@ Your Names
 
 ######Calculations Appendix
 ```{r, echo=FALSE, fig.cap="Figure Caption Goes Here"}
-#Take a picture of your calculations for one salt.  Make sure it is NEAT, legible and clear how you went from raw data (temperatures) to the heat of the reaction in kJ/mol, KJ/g, and $/KJ. If no one in your group has good handwriting, then you are also welcome to type in the calculations.
+#Take a picture of the following calculations.  Make sure it is NEAT, legible and all units are included. See the Appendix 9A example.  Calculations should include: 1) Heat Capacity of Calorimeter, 2) Heat of Reaction for one salt trial. 3) Hot Pack calculations for total mass needed and total price for a pack. If no one in your group has good handwriting, then you are also welcome to type in the calculations but they should be jus as clear and easy to follow, with units.
 
-include_graphics("Image name") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded.
+include_graphics("Image name") #Between the quotes, type the name of your image file EXACTLY as it appears in the file you uploaded. To make this work, you must upload the picture into the same folder on RStudio that you saved this file into and it must be a jpeg or png file.  .heic files will not work.  If you have mutliple pictures, just copy and paste more of these functions.  If you are struggling to get this to work, the picture can be added to your knitted word document instead.
 
 ```
 
@@ -34,40 +35,65 @@ include_graphics("Image name") #Between the quotes, type the name of your image 
 ```{r, results = 'asis', echo=FALSE}
 #Calorimetry Results
 
-NH4Cl <-  c()#Input the calculated heats of reaction for ammonium chloride (kJ/mol) for each trial
-NH4CL_Avg <-  #Calculate the Average heat of reaction units= kJ/mol
-NH4Cl_Avg_g <-  #Calculate the Average heat of reaction units=kJ/g
-NH4Cl_Cost <- #Calculate the Cost analysis units = $/KJ.  Use https://www.sigmaaldrich.com/united-states.html to look at salt costs
-
+NH4CH3COO <-  c()#Input the calculated heats of reaction for ammonium acetate (kJ/mol) for each trial
+NH4CH3COO_Avg <-  mean(NH4CH3COO) #Calculate the Average heat of reaction units= kJ/mol
+NH4CH3COO_sd <- sd(NH4CH3COO) #Standard deviation of trials
+NH4CH3COO_n <- length(NH4CH3COO) #Number of trials
+NH4CH3COO_95CI <- qt(0.975,df=NH4CH3COO_n-1)*NH4CH3COO_sd/sqrt(NH4CH3COO_n) #Calculate the 95% Confidence Interval 
+NH4CH3COO_Mass <-  #Mass of salt needed to create a 100-mL hot pack that reaches 50C
+NH4CH3COO_Cost <-   #Cost analysis units = price per hot pack.
 
 CaCl2 <- c()#Input the calculated heats of reaction for calcium chloride (kJ/mol)
-CaCl2_Avg <-  #units= kJ/mol
-CaCl2_Avg_g <- #units=kJ/g
-CaCl2_Cost <-  #Cost analysis units = $/KJ.  
+CaCl2_Avg <-  #Calculate the Average heat of reaction units= kJ/mol
+CaCl2_sd <-  #Standard deviation of trials
+CaCl2_n <-  #Number of trials
+CaCl2_95CI <- #Calculate the 95% Confidence Interval 
+CaCl2_Mass <-  #Mass of salt needed to create a 100-mL hot pack that reaches 50C
+CaCl2_Cost <-   #Cost analysis units = price per hot pack. 
 
 MgCl2 <-  c()#Input the calculated heats of reaction for magnesium chloride (kJ/mol)
-MgCl2_Avg <-  #units= kJ/mol
-MgCl2_Avg_g <-  #units=kJ/g
-MgCl2_Cost <-  #Cost analysis units = $/KJ.  
+MgCl2_Avg <-  #Calculate the Average heat of reaction units= kJ/mol
+MgCl2_sd <- #Standard deviation of trials
+MgCl2_n <-  #Number of trials
+MgCl2_95CI <- #Calculate the 95% Confidence Interval 
+MgCl2_Mass <-  #Mass of salt needed to create a 100-mL hot pack that reaches 50C
+MgCl2_Cost <-   #Cost analysis units = price per hot pack.  
 
-KCl <-  c()#Input the calculated heats of reaction for potassium chloride (kJ/mol)
-KCl_Avg <-  #units= kJ/mol
-KCl_Avg_g <-  #units=kJ/g
-KCl_Cost <-  #Cost analysis units = $/KJ.  
+NaCH3COO <-  c()#Input the calculated heats of reaction for sodium acetate (kJ/mol) for each trial
+NaCH3COO_Avg <-  mean(NH4CH3COO) #Calculate the Average heat of reaction units= kJ/mol
+NaCH3COO_sd <- sd(NH4CH3COO) #Standard deviation of trials
+NaCH3COO_n <- length(NH4CH3COO) #Number of trials
+NaCH3COO_95CI <- qt(0.975,df=NH4CH3COO_n-1)*NH4CH3COO_sd/sqrt(NH4CH3COO_n) #Calculate the 95% Confidence Interval 
+NaCH3COO_Mass <-  #Mass of salt needed to create a 100-mL hot pack that reaches 50C
+NaCH3COO_Cost <-   #Cost analysis units = price per hot pack.  
 
-Salt <- c("NH4Cl", "CaCl2", "MgCl2", "KCl")
-Avg_M <- c(NH4CL_Avg, CaCl2_Avg, MgCl2_Avg, KCl_Avg)
-Avg_g <- c(NH4Cl_Avg_g, CaCl2_Avg_g, MgCl2_Avg_g, KCl_Avg_g)
-Avg_Cost <- c(NH4Cl_Cost, CaCl2_Cost, MgCl2_Cost, KCl_Cost)
+Salt <- c("NH4CH3COO", "CaCl2", "MgCl2", "NaCH3COO")
+Avg_M <- c(NH4CH3COO_Avg, CaCl2_Avg, MgCl2_Avg, NaCH3COO_Avg)
+CI_95 <- c(NH4CH3COO_95CI, CaCl2_95CI, MgCl2_95CI, NaCH3COO_95CI)
+Mass <- c(NH4CH3COO_Mass, CaCl2_Mass, MgCl2_Mass, NaCH3COO_Mass)
+Cost <- c(NH4CH3COO_Cost, CaCl2_Cost, MgCl2_Cost, NaCH3COO_Cost)
 
-Cal_Results <-  data.frame(Salt, Avg_M, Avg_g, Avg_Cost) #Create a dataframe of the average results. 
+Cal_Results <-  data.frame(Salt, Avg_M, CI_95, Mass, Cost) #Create a data frame of the calorimetry results. 
 
-Cal_Table <- chem_table(Cal_Results, caption = "Input Caption") #Create a table of the Rf results. Don't forget a cpation that is in sentence format explaining what the table represents. 
+Cal_Table <- chem_table(Cal_Results, caption = "Input Caption") #Create a table of the results. Don't forget a caption that is in sentence format explaining what the table represents. 
 
-#Remember after you knit it into a word document, make sure that you use the correct significant figures to report the averages and units are added to the column headings.
+#Remember after you knit it into a word document, make sure that you use the correct significant figures to report the values and units are added to the column headings.
 
 ```
 
 
+```{r, results = 'asis', echo=FALSE}
+#RAMP Table.  You can either fill out this table in R OR kinit to word and complete the table in word.
+
+Salt <- c("NH4CH3COO", "CaCl2", "MgCl2", "NaCH3COO")
+Recognize <- c("","","","") #To add table content in R, place text between parenthesis
+Assess <- c("","","","")
+Minimize <- c("","","","")
+Prepare <- c("","","","")
+
+RAMP_Results <-  data.frame(Salt, Recognize, Assess, Minimize, Prepare) #Create a dataframe of the average results. 
+
+RAMP_Table <- chem_table(RAMP_Results, caption = "Input Caption") #Create a table of the results. Don't forget a caption that is in sentence format explaining what the table represents. 
+```
 
 
