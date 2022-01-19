@@ -15,7 +15,7 @@ library(chemistr)
 | `r format(Sys.Date(), "%B %e, %Y") #This code provides the current date.  Don't change.`
 
 Dear Electrolytes LLC:
-`r #Below this you should type your letter`
+`r #Below this you should type your letter.  See appendix 9A in instructions for an example letter.`
 | This letter is in regards to......
 
 Sincerely,
