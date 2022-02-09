@@ -60,10 +60,10 @@ MgCl2_Mass <-  #Mass of salt needed to create a 100-mL hot pack that reaches 50C
 MgCl2_Cost <-   #Cost analysis units = price per hot pack.  
 
 NaCH3COO <-  c()#Input the calculated heats of reaction for sodium acetate (kJ/mol) for each trial
-NaCH3COO_Avg <-  mean(NH4CH3COO) #Calculate the Average heat of reaction units= kJ/mol
-NaCH3COO_sd <- sd(NH4CH3COO) #Standard deviation of trials
-NaCH3COO_n <- length(NH4CH3COO) #Number of trials
-NaCH3COO_95CI <- qt(0.975,df=NH4CH3COO_n-1)*NH4CH3COO_sd/sqrt(NH4CH3COO_n) #Calculate the 95% Confidence Interval 
+NaCH3COO_Avg <-   #Calculate the Average heat of reaction units= kJ/mol
+NaCH3COO_sd <-  #Standard deviation of trials
+NaCH3COO_n <-  #Number of trials
+NaCH3COO_95CI <- #Calculate the 95% Confidence Interval 
 NaCH3COO_Mass <-  #Mass of salt needed to create a 100-mL hot pack that reaches 50C
 NaCH3COO_Cost <-   #Cost analysis units = price per hot pack.  
 
