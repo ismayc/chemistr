@@ -21,26 +21,26 @@ Project Link:
 
 ##Results
 
-```{r, echo=TRUE, fig.cap = "Input Caption", results = 'asis'}
+```{r, echo=TRUE, fig.cap = "Input Caption"}
 
 #Create a table of the results for calculating Entropy of the Universe with Gdn-Cl and a constant temperature.  In the caption include the constant conditions in all the reactions such as denaturant used, concentration phycocyanin, pathlength, wavelength measured, and temperature.
 GdnCl_Concentration <- c()#Concentration of Gdn-Cl used in the reaction
 Absorbance_1 <- c()      #Absorbance at lambda max
-Fraction_Folded_1 <-   #Calculate the fraction of protein folded = (Absorbance of Sample in Guanadinium)/(Absorbance of Sample in Buffer) Use the absorbance in only phosphate buffer as 100% folded.  Watch sig figs.
-d_Suniverse_1 <-  #Calculate dSuniverse based upon Equation 3 in the instructions
+Fraction_Folded_1 <-   #Calculate the fraction of protein folded = (Absorbance of Sample in Guanadinium - Absorbance of Sample in Max Guanadinium)/(Absorbance of Sample in Buffer-Asborbance of Sample in Max Guanadinium) Use the absorbance in only phosphate buffer as 100% folded.  Watch sig figs.
+d_Suniverse_1 <-  #Calculate dSuniverse based upon Equation 3 in the instructions.  Ln in R is log()
 T_1 <- data.frame(GdnCl_Concentration, Absorbance_1, Fraction_Folded_1, d_Suniverse_1)
 
 #Create a graph to determine the delta S universe of folding in the biological state based upon Equation 4 in the instructions.  Only include Entropy values that are significantly above and below the 100% folded and unfolded state (consult an instructor on this if you are unsure). Make sure you include the  y-intercept, slope, and R^2 value in the caption.
-newdata <- subset(T_3, GdnCl_Concentration >= 0.1 & GdnCl_Concentration <= 5, select=c(GdnCl_Concentration, d_Suniverse_1))  #This code will allow you to only select a subset of your values in Table 2.  This is important in making sure you are significantly above 0% and below 100% folded.
+newdata <- subset(T_1, GdnCl_Concentration >= 0.1 & GdnCl_Concentration <= 4, select=c(GdnCl_Concentration, d_Suniverse_1))  #This code will allow you to only select a subset of your values in your data.  This is important in making sure you are significantly above 0% and below 100% folded.
 chem_scatter(newdata, GdnCl_Concentration, d_Suniverse_1, xlab = "Insert Label", ylab= "Insert Label")
-fit1 <- lm(d_Suniverse_1 ~ Gdn_Concentration, data = newdata) #remember to view the values from this, you must type summary(fit1) into the console.
+fit1 <- lm(d_Suniverse_1 ~ GdnCl_Concentration, data = newdata) #remember to view the values from this, you must type summary(fit1) into the console.
 summary(fit1)
 
 
 ```
 
 
-```{r, echo=FALSE, fig.cap = "Input Caption", results = 'asis'}
+```{r, echo=FALSE, fig.cap = "Input Caption"}
 #Repeat the above chunk for temperature #2
 
 GdnCl_Concentration <- c() 
@@ -55,7 +55,7 @@ summary(fit2)
 
 ```
 
-```{r, echo=FALSE, fig.cap = "Input Caption", results = 'asis'}
+```{r, echo=FALSE, fig.cap = "Input Caption"}
 #Repeat the above chunk for temperature #3
 
 GdnCl_Concentration <- c() 
@@ -70,7 +70,7 @@ summary(fit3)
 
 ```
 
-```{r, echo=FALSE, fig.cap = "Input Caption", results = 'asis'}
+```{r, echo=FALSE, fig.cap = "Input Caption"}
 #Repeat the above chunk for temperature #4
 
 GdnCl_Concentration <- c() 
@@ -88,9 +88,9 @@ summary(fit4)
 ```{r, echo=FALSE, fig.cap="Input Caption"}
 #Use equation 2 in the instructions to create a graph that will determine the entropy and enthalpy of folding.  Make sure to include the protein you are studying, the slope (+/- uncertainty) and the intercept (+/- uncertainty) in the caption.
 
-T <- c() #Temperature of Reactions (in K)
+Inv_T <- c() #1/Temperature of Reactions (in K)
 dSuniverse <- c() #dSuniverse biological values from above Y-intercepts of Equation 4 in the instructions
-T_5 <- data.frame(T, dSuniverse)
+T_5 <- data.frame(Inv_T, dSuniverse)
 chem_scatter() #Fill out the graphing command with variables, etc. See examples above.
 fit5 <- lm() #Fill out the fit parameters command with variable, etc.  See examples above.
 summary(fit5)
@@ -100,8 +100,6 @@ summary(fit5)
 ##Discussion
 
 `r #Provide an evidence based discussion of your two goals fo this lab.  The discussion should include 1.  The purpose of the lab (big picture).  2.  What claim can be made about the enthalpic effects in folding?  3.  An explanation of how the evidence supports the claim.  Make sure any data is directly referenced and cited and it is clear how this evidence relates to the enthalopic effects (aka explain how the experiment relates to enthalpy) 4.  What claim can be made about the entropic effects in folding?  5.  What evidence supports this claim?  Make sure any data are directly referenced and cited and it is clear how this evidence relates to the entropic effects (aka explain how the experiment relates to entropy).  5.  A molecular level explanation of why folding is driven either entropically or enthalpically or both.  This is based upon your current models of atoms, molecules, and entropy.  If your results seem to not fit your molecular understanding based upon the information you recieved in lab and lecture, then make it clear why you expected a different result based upon your model of understanding.  6.  End with one concern you have with the data and how specifically to improve the issue OR any future research (not repeating this experiment) that could be done based upon this data.  If proposing future research, include an if/then/because hypothesis in your idea. 7.  Make sure to include in-text citations for any facts or understanding that came from outside references and a complete list of references at the end of the report`
-
-
 
 
 
