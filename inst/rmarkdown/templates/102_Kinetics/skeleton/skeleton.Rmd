@@ -13,22 +13,17 @@ library(chemistr)
 
 
 ```{r, results="asis", echo=FALSE}
-#Molar Absorptivity Calculation using a 1-point calibration.  This can be done by hand in your worksheet or via R. Your choice.
+#Molar Absorptivity Calculation using a 1-point calibration.  
 
-Blue_Stock <-  #Report the concentration of blue dye in your stock solution.
+Blue_Stock <-   #Report the concentration of blue dye in your stock solution units = M (moles/L).
 
-Blue_Resistance <-  #Report the resistance of the stock blue dye.
+Blue_Abs <-   #Report the absorbance of the stock blue dye.
 
-Water_Resistance <- #Report the resistance of a water sample taken right before the blue dye.
-
-Tran_Stock <-   #Calculate the transmittance of the stock blue dye.  Hint: remember that photons are proportional to 1/resistance.
-  
-Abs_Stock <-  #Calculate the absorbance of the stock blue dye.  Hint log is log10() in R
-  
+Pathlength <-  #Report the pathlength of the cuvette, units = cm
 
 Molar_Absorptivity_Constant <-  #Calculate the molar absorptivity constant using Beer's Law - Absorbance = Molar Absorptivity Constant* Path Length * Concentration.
   
-Calibration <- data.frame(Blue_Stock, Abs_Stock, Molar_Absorptivity_Constant)
+Calibration <- data.frame(Blue_Stock, Blue_Abs, Pathlength, Molar_Absorptivity_Constant)
 Calibration
 
 #Run your chunk and record the results in question #1 of the worksheet.
@@ -39,108 +34,62 @@ Calibration
 ```{r}
 #Trial #1 Data.  You'll need to copy and past this chunk for each trial.  Make sure you change the variable names to reflect the trial number.
 
-time_1 <- c() #Input the time in seconds for all the values you collected.  You should have collected from ~30-180 seconds, at 10 second intervals.
+T1 <- read.csv("File location and name") #After uploading your csv data files into RStudio and saving them to the same folder that you saved this .rmd file to, then you can use this code to import the data into your report.
 
-water_1 <-  #Input the resistance for the water blank you measured at the start of your trial.
-  
-resistance_1 <- c() #Input the resistance values you recorded for the varying time points.
+T1 <- subset(T1, Absorbance >= 0.05) #Limit the graphed values by using this code. In this code only the data which has absorbance greater than or equal to 0.05 will be used.  Data below this is below the quantitative range of the spectrophotometers. 
 
-Abs_1 <-  #Calculate the absorbance at each time point based upon the resistance of the blue dye and the resistance of the water sample.
-  
-Con_1 <-  #calculate the concentration of blue dye based upon your experimentally determined molar absorptivity value.  Remember Beer's Law: Absorbance = Molar Absorptivity * Pathlength * Concentration.  This code can be used to answer question #3.
+Con_1 <-  #Calculate the concentration of blue food dye at each time point by converting the absorbance variable into concentration using Beer's law. To use a specific variable from your dataset use the code variable$dataset.  For example, if I want to call the absorbance values from dataset T1, I would use T1$absorbance.
 
-T_1 <- data.frame(Abs_1, Con_1, time_1)
+Time_1 <- T1$Time #create a time variable from the input dataset.
 
-T_1 <- subset(T_1, time_1 <= 100) #Limit the graphed values by using this code. In this code only the data which has time less than or equal to 100 seconds will be used.  Choose the first time at which the next resistance value has not changed or goes up.  If it changes throughout the data collection there is no need for this code.
+T1_Data <- data.frame(Time_1, Con_1) #create a new dataframe for graphing
 
-
-
-```
-
-```{r, echo=FALSE, fig.cap=""}
 # Here is a R chunk where you will create a graph with your kinetics data. Note: ln (natural log) in R is log().  You'll need to copy and paste this chunk for each trial.  Make sure you change the variable names to reflect the trial number. 
 
-chem_scatter(data = , xvar = , yvar = , xlab = "Input Label", ylab = "Input Label", reg_line=TRUE) #This is the info for making the graph.  You will need to input your data and variables to reflect your naming system and the integrated rate law you are modeling. For example, if you are modeling a second order reaction the yvar = 1/Concentration.
+chem_scatter(data = T1_Data, xvar = Time_1, yvar = Con_1, xlab = "Label Axis", ylab = "Label Axis", reg_line=TRUE) #This is the info for making the graph.  You will need to input your data and variables to reflect your naming system and the integrated rate law you are modeling. For example, if you are modeling a second order reaction the yvar = 1/Concentration.
 
-fit1a <- lm()  #This is how we get the fit values out.  The function lm() should be filled out usng the following scheme: lm(Y-Variable ~ X-Variable, data = DataFrame Name)
+fit1a <- lm(Con_1~Time_1, T1_Data)  #This is how we get the fit values out.  The function lm() should be filled out using the following scheme: lm(Y-Variable ~ X-Variable, data = DataFrame Name)
 
 summary(fit1a) #This will show the fit parameters in your document.  
 
 #Run this chunk and record the order and R^2 value in your notebook.  Then update this chunk to reflect a different order integrated rate law.  Run again and record the new R^2 value in your notebook.  Continue through order = 0, 1, and 2.  Then complete question #4 on your worksheet with the trial #1 results.  Next, copy and paste your best fit graph into question #5.  Use the fit parameters to write your caption.
-```
 
-```{r, results="asis", echo=FALSE}
-
-# Report the R^2 values for trial #1 to use as evidence for the order of the reaction in terms of bleach
-
-Order <- c(0, 1, 2)
-R_2 <- c() #R^2 values come from the best fit lines of the graphs
-Y_axis <- c() #Indicate what was graphed on the Y-axis to obtain the fit and R^2 value.
-
-R_2 <- data.frame(Order, Y_axis, R_2)
-
-R_2
-
-#Input this data in the question #4 of the worksheet.
 
 
 ```
+
 
 ```{r}
-#Trial #2 Data
+#Trial #2 Data and Graphing, using the integrated rate law order determined for trial #1.
+#Record the k' value from the graph in question #7 of the worksheet.
 
 ```
 
+
+
 ```{r}
-#Trial #2 Graphing, using the integrated rate law order determined for trial #1.
+#Trial #3 Data and Graphing, using the integrated rate law order determined for trial #1.
 #Record the k' value from the graph in question #7 of the worksheet.
 
 ```
 
 ```{r}
-#Trial #3 Data
-
-```
-
-```{r}
-#Trial #3 Graphing, using the integrated rate law order determined for trial #1.
+#Trial #4 Data and Graphing, using the integrated rate law order determined for trial #1.
 #Record the k' value from the graph in question #7 of the worksheet.
 
 ```
 
 ```{r}
-#Trial #4 Data
-
-```
-
-```{r}
-#Trial #4 Graphing, using the integrated rate law order determined for trial #1.
+#Trial #5 Data and Graphing, using the integrated rate law order determined for trial #1.
 #Record the k' value from the graph in question #7 of the worksheet.
 
 ```
 
 ```{r}
-#Trial #5 Data
-
-```
-
-```{r}
-#Trial #5 Graphing, using the integrated rate law order determined for trial #1.
+#Trial #6 Data and Graphing, using the integrated rate law order determined for trial #1.
 #Record the k' value from the graph in question #7 of the worksheet.
 
 ```
-
-```{r}
-#Trial #6 Data
-
-```
-
-```{r}
-#Trial #6 Graphing, using the integrated rate law order determined for trial #1.
-#Record the k' value from the graph in question #7 of the worksheet.
-
-```
-
 
 
 ```{r, echo=FALSE, fig.cap="Input Caption"}
@@ -148,7 +97,7 @@ R_2
 
 #From your tables in question #2 and question #7 report the following data:
 
-Bleach <- c() #Concentrations of hypochlorite for trials in which only bleach concentration changes.
+Bleach <- c() #Concentrations of hypochlorite for trials.
 
 k_prime <- c() #k' values from each trial.
 
