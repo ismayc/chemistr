@@ -36,11 +36,11 @@ data <- data.frame(Concentration, Transmittance) #This creates a table of data. 
 
 #The first mathematical model you will test is the intensity independent model which predicts a linear relationship between %T and concentration.  In this case you can directly fit concentration versus transmittance to a straight line fit.
 
-#To create the scatter plot, go to your linear regression lab report and copy and paste the code that will 1) create a scatter plot, using chem_scatter function 2) extract the fit data using the lm function and 3) provide a summary of the fit data using summary.
+#To create the scatter plot, go to your linear regression lab report or the Chem_ScatterPlot template and copy and paste the code that will 1) create a scatter plot, using chem_scatter function 2) extract the fit data using the lm function and 3) provide a summary of the fit data using summary.
 
-#Change the code to represent the variables names n your data frame.
+#Change the code to represent the variables names in your data frame.
 
-#Once you have run this chunk, write a caption after fig.cap = "Insert Caption" in the R chunk heading.  In your caption (sentence format) include the wavelength being tested, size of the cuvette, mathematical model you are testing and the details of the fit (slope +/- error and Y-intercept +/- error and R^2)
+#Once you have run this chunk, write a caption after fig.cap = "Insert Caption" in the R chunk heading above.  In your caption (sentence format) include the wavelength being tested, size of the cuvette, mathematical model you are testing and the details of the fit (slope +/- error and Y-intercept +/- error and R^2)
 
 
 
