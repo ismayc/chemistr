@@ -78,4 +78,8 @@ Example wording (should be deleted):  A linear relationship was observed between
 
 Delete this and write your answer.
 
+####Qustion 3: Explain why you blanked the cuvette with DI water instead of just using an empty cuvette.  (It may be helpful to consider that the stock solution of FD&C blue dye is made by adding dry powder that contains the dye to DI water to make the solution).
+
+Delete this and write your answer.
+
 
