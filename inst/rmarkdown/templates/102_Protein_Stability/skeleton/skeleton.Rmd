@@ -1,5 +1,5 @@
 ---
-title: 'Experiment 10: Protein Stability'
+title: 'Experiment 12: Protein Stability'
 author: "Insert Names"
 date: "Insert Lab Section"
 output: chemistr::chem_lab_word
@@ -26,9 +26,9 @@ Project Link:
 #Create a table of the results for calculating Entropy of the Universe with Gdn-Cl and a constant temperature.  In the caption include the constant conditions in all the reactions such as denaturant used, concentration phycocyanin, pathlength, wavelength measured, and temperature.
 GdnCl_Concentration <- c()#Concentration of Gdn-Cl used in the reaction
 Absorbance_1 <- c()      #Absorbance at lambda max
-Fraction_Folded_1 <-   #Calculate the fraction of protein folded = (Absorbance of Sample in Guanadinium - Absorbance of Sample in Max Guanadinium)/(Absorbance of Sample in Buffer-Asborbance of Sample in Max Guanadinium) Use the absorbance in only phosphate buffer as 100% folded.  Watch sig figs.
+Absorbance_0 <-#Input the absorbance with 0M Gdn-Hcl, this is proportional to the total protein in your sample
 d_Suniverse_1 <-  #Calculate dSuniverse based upon Equation 3 in the instructions.  Ln in R is log()
-T_1 <- data.frame(GdnCl_Concentration, Absorbance_1, Fraction_Folded_1, d_Suniverse_1)
+T_1 <- data.frame(GdnCl_Concentration, Absorbance_1, d_Suniverse_1)
 
 #Create a graph to determine the delta S universe of folding in the biological state based upon Equation 4 in the instructions.  Only include Entropy values that are significantly above and below the 100% folded and unfolded state (consult an instructor on this if you are unsure). Make sure you include the  y-intercept, slope, and R^2 value in the caption.
 newdata <- subset(T_1, GdnCl_Concentration >= 0.1 & GdnCl_Concentration <= 4, select=c(GdnCl_Concentration, d_Suniverse_1))  #This code will allow you to only select a subset of your values in your data.  This is important in making sure you are significantly above 0% and below 100% folded.
@@ -45,9 +45,8 @@ summary(fit1)
 
 GdnCl_Concentration <- c() 
 Absorbance_2 <- c()     
-Fraction_Folded_2 <-      
 d_Suniverse_2 <- -
-T_2 <- data.frame(GdnCl_Concentration, Absorbance_2, Fraction_Folded_2, d_Suniverse_2)
+T_2 <- data.frame(GdnCl_Concentration, Absorbance_2, d_Suniverse_2)
 newdata_2 <- subset(T_2, GdnCl_Concentration >= 0.1 & GdnCl_Concentration <= 5, select=c(GdnCl_Concentration, d_Suniverse_2))  
 chem_scatter(newdata_2, GdnCl_Concentration, d_Suniverse_2, xlab = "Label", ylab= "Label") 
 fit2 <- lm(d_Suniverse_2 ~ GdnCl_Concentration, data = newdata_2)
@@ -60,9 +59,8 @@ summary(fit2)
 
 GdnCl_Concentration <- c() 
 Absorbance_3 <- c()     
-Fraction_Folded_3 <-      
 d_Suniverse_3 <- -
-T_3 <- data.frame(GdnCl_Concentration, Absorbance_3, Fraction_Folded_3, d_Suniverse_3)
+T_3 <- data.frame(GdnCl_Concentration, Absorbance_3, d_Suniverse_3)
 newdata_3 <- subset(T_3, GdnCl_Concentration >= 0.1 & GdnCl_Concentration <= 5, select=c(GdnCl_Concentration, d_Suniverse_3))  
 chem_scatter(newdata_3, GdnCl_Concentration, d_Suniverse_3, xlab = "Label", ylab= "Label") 
 fit3 <- lm(d_Suniverse_3 ~ GdnCl_Concentration, data = newdata_3)
@@ -75,9 +73,8 @@ summary(fit3)
 
 GdnCl_Concentration <- c() 
 Absorbance_4 <- c()     
-Fraction_Folded_4 <-      
 d_Suniverse_4 <- -
-T_4 <- data.frame(GdnCl_Concentration, Absorbance_4, Fraction_Folded_4, d_Suniverse_4)
+T_4 <- data.frame(GdnCl_Concentration, Absorbance_4, d_Suniverse_4)
 newdata_4 <- subset(T_4, GdnCl_Concentration >= 0.1 & GdnCl_Concentration <= 5, select=c(GdnCl_Concentration, d_Suniverse_4))  
 chem_scatter(newdata_4, GdnCl_Concentration, d_Suniverse_4, xlab = "Label", ylab= "Label") 
 fit4 <- lm(d_Suniverse_4 ~ GdnCl_Concentration, data = newdata_4)
@@ -86,7 +83,7 @@ summary(fit4)
 ```
 
 ```{r, echo=FALSE, fig.cap="Input Caption"}
-#Use equation 2 in the instructions to create a graph that will determine the entropy and enthalpy of folding.  Make sure to include the protein you are studying, the slope (+/- uncertainty) and the intercept (+/- uncertainty) in the caption.
+#Use equation 2 in the instructions to create a graph that will determine the entropy and enthalpy of folding.  Make sure to include the protein you are studying, the slope (aka the enthalpy) (+/- uncertainty) and the intercept (aka the entropy) (+/- uncertainty) in the caption.
 
 Inv_T <- c() #1/Temperature of Reactions (in K)
 dSuniverse <- c() #dSuniverse biological values from above Y-intercepts of Equation 4 in the instructions
